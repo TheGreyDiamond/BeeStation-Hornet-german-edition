@@ -37,7 +37,9 @@ mob/living/simple_animal/bot/cambot
 	var/idle = 1 // In relation to world time. In case there aren't any valid targets nearby.
 	var/idle_delay = 300 // For how long?
 
-	var/obj/item/camera_test/camera = null
+	//var/obj/item/camera/cameraO
+	var/obj/item/camera/cameraO
+
 	var/photographing = 0 // Are we currently photographing something?
 	var/list/photographed = null // what we've already photographed
 
@@ -63,7 +65,7 @@ mob/living/simple_animal/bot/cambot
 	prev_access = access_card.access
 	//src.botcard.access = get_access(src.access_lookup)
 
-	camera = new /obj/item/camera()   //camera = new /obj/item/camera(src)
+	cameraO = new /obj/item/camera(src)   //camera = new /obj/item/camera(src)
 	icon_state = "cambot[on]"
 
 /*/mob/living/simple_animal/bot/cambot/examine()
@@ -107,8 +109,8 @@ mob/living/simple_animal/bot/cambot
 		if (!user && usr)
 			user = usr
 		if (user)
-			user.show_text("You short out the flash control circuit on [src]!", "red")
-			src.emagger = user
+			to_chat(user, "<span class='warning'>You short out the flash control circuit on [src]!</span>", "red")
+			//src.emagger = user
 			src.add_fingerprint(user)
 			//logTheThing("station", src.emagger, null, "emagged a cambot[src.name != "Cambot" ? ", [src.name]," : null] at [log_loc(src)].")
 
@@ -119,15 +121,15 @@ mob/living/simple_animal/bot/cambot
 		src.emagged = 1
 		return 1
 	return 0
-
+/*
 /mob/living/simple_animal/bot/cambot/demag(var/mob/user)
 	if (!src.emagged)
 		return 0
 	if (user)
-		user.show_text("You repair [src]'s flash control circuit.", "blue")
+		to_chat(user, "<span class='notice'>You repair [src]'s flash control circuit.</span>")
 	src.emagged = 0
 	return 1
-
+*/
 /mob/living/simple_animal/bot/cambot/emp_act()
 	..()
 	if (!src.emagged && prob(75))
@@ -313,7 +315,7 @@ mob/living/simple_animal/bot/cambot
 */
 	return
 
-/mob/living/simple_animal/bot/cambot/proc/find_target()
+/*/mob/living/simple_animal/bot/cambot/proc/find_target()
 	// Let's find us something to photograph.
 	if (!src.target)
 		var/list/mob_options = list()
@@ -346,7 +348,7 @@ mob/living/simple_animal/bot/cambot
 		else
 			src.idle = world.time
 			return
-
+*/
 /mob/living/simple_animal/bot/cambot/proc/flash_blink(var/loops, var/delay)
 	set waitfor = 0
 	/*for (var/i=loops, i>0, i--)
@@ -381,7 +383,7 @@ mob/living/simple_animal/bot/cambot
 			if (src.emagged) // if emagged, flash the target too
 				if (ismob(target))
 					var/mob/M = target
-					M.apply_flash(30, 8, 0, 0, 0, rand(0, 2), 0, 0, 100)
+					//target.apply_flash(30, 8, 0, 0, 0, rand(0, 2), 0, 0, 100)  // TODO: apply flash
 				playsound(get_turf(src), "sound/weapons/flash.ogg", 100, 1)
 
 		if (!islist(src.photographed)) // don't sit there taking pictures of the same thing over and over
@@ -399,7 +401,7 @@ mob/living/simple_animal/bot/cambot
 	return
 
 // Assembly
-
+/*
 /obj/item/camera_arm_assembly
 	name = "camera/robot arm assembly"
 	desc = "A camera with a robot arm grafted to it."
@@ -436,6 +438,6 @@ mob/living/simple_animal/bot/cambot
 		else
 			..()
 		return
-
+*/
 /obj/machinery/bot_core/cambot
 	req_one_access = list(ACCESS_THEATRE, ACCESS_ROBOTICS)
