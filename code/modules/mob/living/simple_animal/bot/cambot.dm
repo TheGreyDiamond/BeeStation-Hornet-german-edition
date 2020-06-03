@@ -374,12 +374,12 @@ mob/living/simple_animal/bot/cambot
 	if (src.on)
 		if (get_dist(src,target) <= 1)
 			src.flash_blink(1, 5)
-			if (camera) // take the picture
+			/*if (camera) // take the picture
 				var/obj/item/photo/P = camera.create_photo(target, emagged)
 				if (P)
 					src.visible_message("[src] takes \a [target == src ? "selfie! How?" : P]!")
 				playsound(get_turf(src), "sound/items/polaroid[rand(1,2)].ogg", 75, 1, -3)
-
+*/
 			if (src.emagged) // if emagged, flash the target too
 				if (ismob(target))
 					var/mob/M = target
