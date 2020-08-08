@@ -67,6 +67,7 @@ GLOBAL_VAR_INIT(hsboxspawn, TRUE)
 			"Spawn Cleanbot"					= "hsbspawn&path=[/mob/living/simple_animal/bot/cleanbot]",
 			"Spawn Floorbot"					= "hsbspawn&path=[/mob/living/simple_animal/bot/floorbot]",
 			"Spawn Medbot"						= "hsbspawn&path=[/mob/living/simple_animal/bot/medbot]",
+			"Spawn Cambot"						= "hsbspawn&path=[/mob/living/simple_animal/bot/cambot]",
 
 			"Canisters",
 			"Spawn O2 Canister" 				= "hsbspawn&path=[/obj/machinery/portable_atmospherics/canister/oxygen]",
