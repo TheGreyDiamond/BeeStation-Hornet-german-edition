@@ -171,6 +171,16 @@
 	time = 40
 	category = CAT_ROBOT
 
+/datum/crafting_recipe/cambot
+	name = "Cambot"
+	result = /mob/living/simple_animal/bot/cambot
+	reqs = list(/obj/item/reagent_containers/glass/bucket = 1,
+				/obj/item/assembly/prox_sensor = 1,
+				/obj/item/bodypart/r_arm/robot = 1)
+	time = 40
+	category = CAT_ROBOT
+
+
 /datum/crafting_recipe/floorbot
 	name = "Floorbot"
 	result = /mob/living/simple_animal/bot/floorbot
@@ -360,7 +370,7 @@
 
 /datum/crafting_recipe/switchblade_kitchenupgrade
 	name = "Plastitanium Switchblade"
-	result = /obj/item/switchblade/plastitanium 
+	result = /obj/item/switchblade/plastitanium
 	reqs = list(/obj/item/switchblade/kitchen = 1,
 				/obj/item/stack/sheet/mineral/plastitanium = 2)
 	tools = list(TOOL_WELDER)
@@ -370,7 +380,7 @@
 
 /datum/crafting_recipe/switchblade_plastitanium
 	name = "Plastitanium Switchblade"
-	result = /obj/item/switchblade/plastitanium 
+	result = /obj/item/switchblade/plastitanium
 	reqs = list(/obj/item/weaponcrafting/stock = 1,
 				/obj/item/weaponcrafting/receiver = 1,
 				/obj/item/kitchen/knife = 1,
