@@ -2,7 +2,7 @@
 /mob/living/simple_animal/bot/cambot
 	name = "\improper cambot"
 	desc = "A little robot with a camera. A less annyoing toursist."
-	icon = 'icons/mob/aibots.dmi'
+	icon = 'goon/icons/obj/cambot.dmi'
 	icon_state = "cambot0"
 	density = FALSE
 	anchored = FALSE
@@ -18,11 +18,10 @@
 	pass_flags = PASSMOB
 	path_image_color = "#993299"
 
-	var/blood = 1
-	var/trash = 0
-	var/pests = 0
-	var/drawn = 0
+	var/allowHumans = 1 // Allow a photo of a human?
 
+	var/cam = /obj/item/camera
+	var/list/photographed = null
 	var/list/target_types
 	var/obj/effect/decal/cleanable/target
 	var/max_targets = 50 //Maximum number of targets a cambot can ignore.
@@ -96,10 +95,10 @@
 	if(!..())
 		return
 
-	if(mode == BOT_CLEANING)
+	if(mode == BOT_PHOTOGRAPHING)
 		return
 
-	if(emagged == 2) //Emag functions
+	/*if(emagged == 2) //Emag functions
 		if(isopenturf(loc))
 
 			for(var/mob/living/carbon/victim in loc)
@@ -107,9 +106,9 @@
 					UnarmedAttack(victim) // Acid spray
 
 			if(prob(15)) // Wets floors and spawns foam randomly
-				UnarmedAttack(src)
+				UnarmedAttack(src)*/
 
-	else if(prob(5))
+	if(prob(5))
 		audible_message("[src] makes an excited beeping booping sound!")
 
 	if(ismob(target))
@@ -118,20 +117,20 @@
 		if(!process_scan(target))
 			target = null
 
-	if(!target && emagged == 2) // When emagged, target humans who slipped on the water and melt their faces off
-		target = scan(/mob/living/carbon)
+	/*if(!target && emagged == 2) // When emagged, target humans who slipped on the water and melt their faces off
+		target = scan(/mob/living/carbon)*/
 
-	if(!target && pests) //Search for pests to exterminate first.
+	/*if(!target && pests) //Search for pests to exterminate first.
 		target = scan(/mob/living/simple_animal)
 
 	if(!target) //Search for decals then.
 		target = scan(/obj/effect/decal/cleanable)
 
 	if(!target) //Checks for remains
-		target = scan(/obj/effect/decal/remains)
+		target = scan(/obj/effect/decal/remains)*/
 
-	if(!target && trash) //Then for trash.
-		target = scan(/obj/item/trash)
+	if(!target && allowHumans) //Then for trash.
+		target = scan(/mob/living/carbon/human)
 
 	if(!target && auto_patrol) //Search for cleanables it can see.
 		if(mode == BOT_IDLE || mode == BOT_START_PATROL)
@@ -175,32 +174,14 @@
 
 /mob/living/simple_animal/bot/cambot/proc/get_targets()
 	target_types = list(
-		/obj/effect/decal/cleanable/oil,
-		/obj/effect/decal/cleanable/vomit,
-		/obj/effect/decal/cleanable/robot_debris,
-		/obj/effect/decal/cleanable/molten_object,
-		/obj/effect/decal/cleanable/food,
-		/obj/effect/decal/cleanable/ash,
-		/obj/effect/decal/cleanable/greenglow,
-		/obj/effect/decal/cleanable/dirt,
-		/obj/effect/decal/cleanable/insectguts,
-		/obj/effect/decal/remains
+		/mob/living/simple_animal/bot/cambot,  // Maybe a photo of another cambot would be cool
+		/mob/living/simple_animal/bot/cleanbot, // Maybe a photo of cleanbot would also be cool
+		/mob/living/simple_animal/bot/firebot
 		)
 
-	if(blood)
-		target_types += /obj/effect/decal/cleanable/xenoblood
-		target_types += /obj/effect/decal/cleanable/blood
-		target_types += /obj/effect/decal/cleanable/trail_holder
 
-	if(pests)
-		target_types += /mob/living/simple_animal/cockroach
-		target_types += /mob/living/simple_animal/mouse
-
-	if(drawn)
-		target_types += /obj/effect/decal/cleanable/crayon
-
-	if(trash)
-		target_types += /obj/item/trash
+	if(allowHumans)
+		target_types += /mob/living/carbon/human
 
 	target_types = typecacheof(target_types)
 
@@ -287,10 +268,10 @@ Status: <A href='?src=[REF(src)];power=1'>[on ? "On" : "Off"]</A><BR>
 Behaviour controls are [locked ? "locked" : "unlocked"]<BR>
 Maintenance panel panel is [open ? "opened" : "closed"]"})
 	if(!locked || issilicon(user)|| IsAdminGhost(user))
-		dat += "<BR>Clean Blood: <A href='?src=[REF(src)];operation=blood'>[blood ? "Yes" : "No"]</A>"
-		dat += "<BR>Clean Trash: <A href='?src=[REF(src)];operation=trash'>[trash ? "Yes" : "No"]</A>"
+		dat += "<BR>Photograph humans: <A href='?src=[REF(src)];operation=allowHumans'>[allowHumans ? "Yes" : "No"]</A>"
+		/*dat += "<BR>Clean Trash: <A href='?src=[REF(src)];operation=trash'>[trash ? "Yes" : "No"]</A>"
 		dat += "<BR>Clean Graffiti: <A href='?src=[REF(src)];operation=drawn'>[drawn ? "Yes" : "No"]</A>"
-		dat += "<BR>Exterminate Pests: <A href='?src=[REF(src)];operation=pests'>[pests ? "Yes" : "No"]</A>"
+		dat += "<BR>Exterminate Pests: <A href='?src=[REF(src)];operation=pests'>[pests ? "Yes" : "No"]</A>"*/
 		dat += "<BR><BR>Patrol Station: <A href='?src=[REF(src)];operation=patrol'>[auto_patrol ? "Yes" : "No"]</A>"
 	return dat
 
@@ -299,13 +280,7 @@ Maintenance panel panel is [open ? "opened" : "closed"]"})
 		return 1
 	if(href_list["operation"])
 		switch(href_list["operation"])
-			if("blood")
-				blood = !blood
-			if("pests")
-				pests = !pests
-			if("trash")
-				trash = !trash
-			if("drawn")
-				drawn = !drawn
+			if("allowHumans")
+				allowHumans = !allowHumans
 		get_targets()
 		update_controls()
