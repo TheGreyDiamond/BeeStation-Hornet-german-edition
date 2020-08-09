@@ -260,7 +260,8 @@
 	// Print out all images
 	for (var/i in photographed)
 		cam.printpicture(src, i, FALSE)
-		visible_message("<span class='notice'>DEBUG [i]</span>")
+		visible_message("<span class='notice'>DEBUG " + i + "</span>")
+	visible_message("<span class='notice'>DONE!</span>")
 	do_sparks(3, TRUE, src)
 	..()
 
