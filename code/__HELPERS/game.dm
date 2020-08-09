@@ -60,6 +60,27 @@
 	for(var/I in adjacent_turfs)
 		. |= get_area(I)
 
+/**
+ * Get a bounding box of a list of atoms.
+ *
+ * Arguments:
+ * - atoms - List of atoms. Can accept output of view() and range() procs.
+ *
+ * Returns: list(x1, y1, x2, y2)
+ */
+/proc/get_bbox_of_atoms(list/atoms)
+	var/list/list_x = list()
+	var/list/list_y = list()
+	for(var/_a in atoms)
+		var/atom/a = _a
+		list_x += a.x
+		list_y += a.y
+	return list(
+		min(list_x),
+		min(list_y),
+		max(list_x),
+		max(list_y))
+
 // Like view but bypasses luminosity check
 
 /proc/get_hear(range, atom/source)
@@ -277,7 +298,13 @@
 	// Returns a list of mobs who can hear any of the radios given in @radios
 	for(var/obj/item/radio/R in radios)
 		if(R)
-			. |= get_hearers_in_view(R.canhear_range, R)
+			if(R.canhear_range != -1)
+				. |= get_hearers_in_view(R.canhear_range, R)
+			else
+				if(istype(R.loc, /obj/item/implant))
+					var/obj/item/implant/I = R.loc
+					if(I.imp_in)
+						. |= I.imp_in
 
 
 #define SIGNV(X) ((X<0)?-1:1)
@@ -561,15 +588,6 @@
 
 	var/obj/machinery/announcement_system/announcer = pick(GLOB.announcement_systems)
 	announcer.announce("ARRIVAL", character.real_name, rank, list()) //make the list empty to make it announce it in common
-
-/proc/GetRedPart(const/hexa)
-	return hex2num(copytext(hexa, 2, 4))
-
-/proc/GetGreenPart(const/hexa)
-	return hex2num(copytext(hexa, 4, 6))
-
-/proc/GetBluePart(const/hexa)
-	return hex2num(copytext(hexa, 6, 8))
 
 /proc/lavaland_equipment_pressure_check(turf/T)
 	. = FALSE

@@ -15701,7 +15701,7 @@
 /obj/effect/turf_decal/stripes/corner{
 	dir = 1
 	},
-/obj/machinery/computer/prisoner{
+/obj/machinery/computer/prisoner/management{
 	dir = 4;
 	icon_state = "computer"
 	},
@@ -41382,12 +41382,12 @@
 	pixel_y = 2
 	},
 /obj/item/book/manual/wiki/robotics_cyborgs,
-/obj/item/assembly/flash/handheld,
-/obj/item/assembly/flash/handheld,
-/obj/item/assembly/flash/handheld,
-/obj/item/assembly/flash/handheld,
-/obj/item/assembly/flash/handheld,
-/obj/item/assembly/flash/handheld,
+/obj/item/assembly/flash/handheld/weak,
+/obj/item/assembly/flash/handheld/weak,
+/obj/item/assembly/flash/handheld/weak,
+/obj/item/assembly/flash/handheld/weak,
+/obj/item/assembly/flash/handheld/weak,
+/obj/item/assembly/flash/handheld/weak,
 /turf/open/floor/plasteel/dark,
 /area/science/robotics/lab)
 "bhC" = (
@@ -48783,7 +48783,7 @@
 /turf/open/floor/plasteel/dark,
 /area/crew_quarters/bar/atrium)
 "brJ" = (
-/obj/machinery/computer/prisoner{
+/obj/machinery/computer/prisoner/management{
 	dir = 4
 	},
 /obj/effect/turf_decal/tile/red{
@@ -54166,7 +54166,7 @@
 /obj/machinery/newscaster/security_unit{
 	pixel_x = -28
 	},
-/obj/machinery/computer/prisoner{
+/obj/machinery/computer/prisoner/management{
 	dir = 4;
 	icon_state = "computer"
 	},
@@ -57173,8 +57173,7 @@
 	environment_smash = 0;
 	health = 60;
 	maxHealth = 60;
-	melee_damage_lower = 5;
-	melee_damage_upper = 10;
+	melee_damage = 10;
 	name = "scrawny spider"
 	},
 /turf/open/floor/plasteel/dark,
@@ -70443,7 +70442,7 @@
 	dir = 8
 	},
 /obj/effect/turf_decal/bot,
-/obj/machinery/computer/prisoner,
+/obj/machinery/computer/prisoner/management,
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
@@ -75409,14 +75408,12 @@
 	pixel_y = 6
 	},
 /obj/item/radio/intercom{
-	anyai = 1;
 	freerange = 1;
 	listening = 0;
 	name = "Custom Channel";
 	pixel_y = 22
 	},
 /obj/item/radio/intercom{
-	anyai = 1;
 	freerange = 1;
 	frequency = 1447;
 	name = "Private Channel";
@@ -75461,7 +75458,6 @@
 "cef" = (
 /obj/effect/landmark/start/ai/secondary,
 /obj/item/radio/intercom{
-	anyai = 1;
 	freerange = 1;
 	listening = 0;
 	name = "Custom Channel";
@@ -75474,7 +75470,6 @@
 	pixel_x = -27
 	},
 /obj/item/radio/intercom{
-	anyai = 1;
 	freerange = 1;
 	frequency = 1447;
 	name = "Private Channel";
@@ -75596,7 +75591,6 @@
 "ceo" = (
 /obj/effect/landmark/start/ai/secondary,
 /obj/item/radio/intercom{
-	anyai = 1;
 	freerange = 1;
 	listening = 0;
 	name = "Custom Channel";
@@ -75609,7 +75603,6 @@
 	pixel_x = 27
 	},
 /obj/item/radio/intercom{
-	anyai = 1;
 	freerange = 1;
 	frequency = 1447;
 	name = "Private Channel";
@@ -88272,8 +88265,7 @@
 	environment_smash = 0;
 	health = 160;
 	maxHealth = 160;
-	melee_damage_lower = 15;
-	melee_damage_upper = 25;
+	melee_damage = 20;
 	name = "hungry show bear"
 	},
 /turf/open/floor/wood,
@@ -92977,8 +92969,7 @@
 	environment_smash = 0;
 	health = 60;
 	maxHealth = 60;
-	melee_damage_lower = 5;
-	melee_damage_upper = 10;
+	melee_damage = 10;
 	name = "scrawny spider"
 	},
 /turf/open/floor/plating,
@@ -95117,11 +95108,11 @@
 	pixel_y = 4
 	},
 /obj/item/folder/red,
-/obj/item/clothing/glasses/sunglasses/big{
+/obj/item/clothing/glasses/sunglasses/advanced/big{
 	pixel_x = 4;
 	pixel_y = 8
 	},
-/obj/item/clothing/glasses/sunglasses/big,
+/obj/item/clothing/glasses/sunglasses/advanced/big,
 /turf/open/floor/carpet/green,
 /area/lawoffice)
 "cID" = (
@@ -95709,7 +95700,7 @@
 /obj/structure/table/wood,
 /obj/item/clipboard,
 /obj/item/folder/red,
-/obj/item/clothing/glasses/sunglasses,
+/obj/item/clothing/glasses/sunglasses/advanced,
 /turf/open/floor/carpet/green,
 /area/security/detectives_office)
 "cJu" = (

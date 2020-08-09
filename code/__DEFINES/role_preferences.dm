@@ -12,6 +12,7 @@
 #define ROLE_CHANGELING			"Changeling"
 #define ROLE_WIZARD				"Wizard"
 #define ROLE_MALF				"Malf AI"
+#define ROLE_INCURSION			"Incursion Team"
 #define ROLE_REV				"Revolutionary"
 #define ROLE_REV_HEAD			"Head Revolutionary"
 #define ROLE_ALIEN				"Xenomorph"
@@ -23,7 +24,6 @@
 #define ROLE_ABDUCTOR			"Abductor"
 #define ROLE_REVENANT			"Revenant"
 #define ROLE_DEVIL				"Devil"
-#define ROLE_SERVANT_OF_RATVAR	"Servant of Ratvar"
 #define ROLE_BROTHER			"Blood Brother"
 #define ROLE_BRAINWASHED		"Brainwashed Victim"
 #define ROLE_OVERTHROW			"Syndicate Mutineer"
@@ -37,6 +37,7 @@
 #define ROLE_LAVALAND			"Lavaland"
 #define ROLE_INTERNAL_AFFAIRS	"Internal Affairs Agent"
 #define ROLE_GANG				"Gangster"
+#define ROLE_HOLOPARASITE		"Holoparasite"
 
 //Missing assignment means it's not a gamemode specific role, IT'S NOT A BUG OR ERROR.
 //The gamemode specific ones are just so the gamemodes can query whether a player is old enough
@@ -44,6 +45,7 @@
 GLOBAL_LIST_INIT(special_roles, list(
 	ROLE_TRAITOR = /datum/game_mode/traitor,
 	ROLE_BROTHER = /datum/game_mode/traitor/bros,
+	ROLE_INCURSION = /datum/game_mode/incursion,
 	ROLE_OPERATIVE = /datum/game_mode/nuclear,
 	ROLE_CHANGELING = /datum/game_mode/changeling,
 	ROLE_WIZARD = /datum/game_mode/wizard,
@@ -59,12 +61,12 @@ GLOBAL_LIST_INIT(special_roles, list(
 	ROLE_REVENANT,
 	ROLE_ABDUCTOR,
 	ROLE_DEVIL = /datum/game_mode/devil,
-	ROLE_SERVANT_OF_RATVAR = /datum/game_mode/clockwork_cult,
 	ROLE_OVERTHROW = /datum/game_mode/overthrow,
 	ROLE_HIVE = /datum/game_mode/hivemind,
 	ROLE_INTERNAL_AFFAIRS = /datum/game_mode/traitor/internal_affairs,
 	ROLE_SENTIENCE,
-	ROLE_GANG = /datum/game_mode/gang
+	ROLE_GANG = /datum/game_mode/gang,
+	ROLE_HOLOPARASITE
 ))
 
 //Job defines for what happens when you fail to qualify for any job during job selection
