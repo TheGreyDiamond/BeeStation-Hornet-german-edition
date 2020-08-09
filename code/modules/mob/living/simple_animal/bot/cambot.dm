@@ -19,7 +19,7 @@
 	path_image_color = "#004080"
 
 	var/allowHumans = 1 // Allow a photo of a human?
-	var/test = 1 // Test
+	var/test = 0 // Test
 
 	var/obj/item/camera/cam = null
 	var/list/photographed = null
@@ -84,6 +84,7 @@
 	if(emagged == 2)
 		if(user)
 			to_chat(user, "<span class='danger'>[src] buzzes and beeps.</span>")
+			icon_state = "cambot-spark"
 
 /mob/living/simple_animal/bot/cambot/process_scan(atom/A)
 	if(iscarbon(A))
@@ -133,9 +134,10 @@
 
 	if(test)
 		icon_state = "cambot-c"
-		cam.captureimage(src, src, "", FALSE)  // ~Selfie~
+		var/datum/picture/Image = cam.captureimage(src, src, "", allowCustomise=FALSE, printImage=FALSE)  // ~~Selfie~~
+		photographed.Add(Image)
 		audible_message("SELFIEEEEEEEEEEEE!")
-	else:
+	else
 		icon_state = "cambot[on]"
 
 	if(!target && allowHumans) //Then for trash. Haha Humans == Trash
@@ -247,6 +249,7 @@
 /mob/living/simple_animal/bot/cambot/explode()
 	on = FALSE
 	visible_message("<span class='boldannounce'>[src] blows apart!</span>")
+
 	var/atom/Tsec = drop_location()
 
 	new /obj/item/camera(Tsec)
@@ -256,6 +259,11 @@
 	if(prob(50))
 		drop_part(robot_arm, Tsec)
 
+	visible_message("<span class='notice'>As a last thing [src] drops all phtots.</span>")
+	var/i  // Print out all images
+	for(i=1,i<=photographed.len,i++)
+		cam.printpicture(src, photographed[i], FALSE)
+		visible_message("<span class='notice'>DEBUG [i]</span>")
 	do_sparks(3, TRUE, src)
 	..()
 
@@ -264,16 +272,21 @@
 
 
 /mob/living/simple_animal/bot/cambot/get_controls(mob/user)
+	var/word = "photos"
+	if(photographed.len == 1)
+		word = "photo"
+		// This fixes "the Took 1 photos" issue
 	var/dat
 	dat += hack(user)
 	dat += showpai(user)
 	dat += text({"
 Status: <A href='?src=[REF(src)];power=1'>[on ? "On" : "Off"]</A><BR>
 Behaviour controls are [locked ? "locked" : "unlocked"]<BR>
-Maintenance panel panel is [open ? "opened" : "closed"]"})
+Maintenance panel panel is [open ? "opened" : "closed"]<BR>
+This bot took [photographed.len] [word]."})
 	if(!locked || issilicon(user)|| IsAdminGhost(user))
 		dat += "<BR>Photograph humans: <A href='?src=[REF(src)];operation=allowHumans'>[allowHumans ? "Yes" : "No"]</A>"
-		dat += "<BR>Test: <A href='?src=[REF(src)];operation=trash'>[test ? "Yes" : "No"]</A>"
+		dat += "<BR>Test: <A href='?src=[REF(src)];operation=test'>[test ? "Yes" : "No"]</A>"
 		/*dat += "<BR>Clean Graffiti: <A href='?src=[REF(src)];operation=drawn'>[drawn ? "Yes" : "No"]</A>"
 		dat += "<BR>Exterminate Pests: <A href='?src=[REF(src)];operation=pests'>[pests ? "Yes" : "No"]</A>"*/
 		dat += "<BR><BR>Patrol Station: <A href='?src=[REF(src)];operation=patrol'>[auto_patrol ? "Yes" : "No"]</A>"

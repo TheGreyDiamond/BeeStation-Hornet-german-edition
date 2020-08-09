@@ -148,7 +148,7 @@
 	to_chat(user, P.desc)
 	qdel(P)
 
-/obj/item/camera/proc/captureimage(atom/target, mob/user, flag, size_x = 1, size_y = 1, allowCustomise = TRUE)
+/obj/item/camera/proc/captureimage(atom/target, mob/user, flag, size_x = 1, size_y = 1, allowCustomise = TRUE, printImage = TRUE)
 	if(flash_enabled)
 		flash_lighting_fx(8, light_power, light_color)
 	blending = TRUE
@@ -201,7 +201,9 @@
 	temp.Blend(get_icon, ICON_OVERLAY)
 
 	var/datum/picture/P = new("picture", desc.Join(" "), mobs_spotted, dead_spotted, temp, null, psize_x, psize_y, blueprints)
-	after_picture(user, P, flag, allowCustomise)
+	if(printImage)
+		after_picture(user, P, flag, allowCustomise)
+	return(P)
 	blending = FALSE
 
 /obj/item/camera/proc/after_picture(mob/user, datum/picture/picture, proximity_flag, allowCustomise = TRUE)
