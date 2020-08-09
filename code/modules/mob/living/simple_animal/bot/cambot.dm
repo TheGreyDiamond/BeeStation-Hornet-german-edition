@@ -268,7 +268,7 @@
 	if(prob(50))
 		drop_part(robot_arm, Tsec)
 
-	var/amountOfImages2 = photographed.len
+	amountOfImages2 = photographed.len
 	visible_message("<span class='notice'>As a last thing [src] drops all photos. </span>")
 	// Print out all images
 	for (var/i in photographed)
@@ -297,7 +297,7 @@ Maintenance panel panel is [open ? "opened" : "closed"]<BR>"})
 		/*dat += "<BR>Clean Graffiti: <A href='?src=[REF(src)];operation=drawn'>[drawn ? "Yes" : "No"]</A>"
 		dat += "<BR>Exterminate Pests: <A href='?src=[REF(src)];operation=pests'>[pests ? "Yes" : "No"]</A>"*/
 		dat += "<BR><BR>Patrol Station: <A href='?src=[REF(src)];operation=patrol'>[auto_patrol ? "Yes" : "No"]</A>"
-		dat += "<BR><BR>This bot took." //  [amountOfImages] [word]
+		dat += "<BR><BR>This bot took [amountOfImages2] [word]." //  [amountOfImages] [word]
 
 	return dat
 
