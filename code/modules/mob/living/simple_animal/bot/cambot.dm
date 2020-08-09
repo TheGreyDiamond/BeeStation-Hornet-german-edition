@@ -13,18 +13,18 @@
 	bot_type = CAM_BOT
 	model = "Cambot"
 	bot_core_type = /obj/machinery/bot_core/cambot
+	var/obj/effect/decal/cleanable/target
 	window_id = "autocam"
 	window_name = "Automatic Station Photographer v1.5"
 	pass_flags = PASSMOB
 	path_image_color = "#004080"
 
 	var/allowHumans = 1 // Allow a photo of a human?
-	var/test = 1 // Test
+	var/test = 1 // Spam the fuck out of making photos  ONLY FOR DEVELOPMENT REASONS, REMOVE BEFOR PRODUCTION DEPLOYMENT!
 
 	var/obj/item/camera/cam = null
 	var/list/photographed = null
 	var/list/target_types
-	var/obj/effect/decal/cleanable/target
 	var/max_targets = 50 //Maximum number of targets a cambot can ignore.
 	var/oldloc = null
 	var/closest_dist
@@ -57,7 +57,7 @@
 
 /mob/living/simple_animal/bot/cambot/bot_reset()
 	..()
-	ignore_list = list() //Allows the bot to clean targets it previously ignored due to being unreachable.
+	ignore_list = list() //Allows the bot to see targets it previously ignored due to being unreachable.
 	target = null
 	oldloc = null
 
@@ -132,7 +132,7 @@
 	if(test)
 		icon_state = "cambot-c"
 		var/datum/picture/Image = cam.captureimage(src, src, "", allowCustomise=FALSE, printImage=FALSE)  // ~~Selfie~~
-		photographed.Add(Image)
+		photographed += Image
 		audible_message("SELFIEEEEEEEEEEEE!")
 	else
 		icon_state = "cambot[on]"
@@ -208,7 +208,7 @@
 	spawn(50)
 		if(mode == BOT_PHOTOGRAPHING)
 			var/datum/picture/Image = cam.captureimage(A, src, "", allowCustomise=FALSE, printImage=FALSE)  // ~~Selfie~~
-			photographed.Add(Image)
+			photographed += Image
 			anchored = FALSE
 			target = null
 			amountOfImages2 = photographed.len
