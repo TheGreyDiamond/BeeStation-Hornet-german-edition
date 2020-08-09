@@ -203,8 +203,8 @@
 	var/datum/picture/P = new("picture", desc.Join(" "), mobs_spotted, dead_spotted, temp, null, psize_x, psize_y, blueprints)
 	if(printImage)
 		after_picture(user, P, flag, allowCustomise)
-	return(P)
 	blending = FALSE
+	return(P)
 
 /obj/item/camera/proc/after_picture(mob/user, datum/picture/picture, proximity_flag, allowCustomise = TRUE)
 	printpicture(user, picture, allowCustomise)

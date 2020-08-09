@@ -256,10 +256,11 @@
 	if(prob(50))
 		drop_part(robot_arm, Tsec)
 
-	visible_message("<span class='notice'>As a last thing [src] drops all phtots.</span>")
+	var/amountOfImages2 = photographed.len
+	visible_message("<span class='notice'>As a last thing [src] drops [amountOfImages2] photos. </span>")
 	// Print out all images
 	for (var/i in photographed)
-		cam.printpicture(src, i, FALSE)
+		cam.printpicture(src, i, allowCustomise = FALSE)
 		visible_message("<span class='notice'>DEBUG " + i + "</span>")
 	visible_message("<span class='notice'>DONE!</span>")
 	do_sparks(3, TRUE, src)
