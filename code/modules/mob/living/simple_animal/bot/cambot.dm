@@ -130,10 +130,10 @@
 */
 
 	if(test)
+		audible_message("SELFIEEEEEEEEEEEE!")
 		icon_state = "cambot-c"
 		var/datum/picture/Image = cam.captureimage(src, src, "", allowCustomise=FALSE, printImage=FALSE)  // ~~Selfie~~
 		photographed += Image
-		audible_message("SELFIEEEEEEEEEEEE!")
 	else
 		icon_state = "cambot[on]"
 
@@ -268,14 +268,12 @@
 	if(prob(50))
 		drop_part(robot_arm, Tsec)
 
-	amountOfImages2 = photographed.len
-	visible_message("<span class='notice'>As a last thing [src] drops all photos. </span>")
+	visible_message("<span class='notice'>As a last thing [src] drops all photos.</span>")
 	// Print out all images
 	for (var/i in photographed)
 		cam.printpicture(src, i, allowCustomise = FALSE)
 		visible_message("<span class='notice'>DEBUG " + i + "</span>")
 	visible_message("<span class='notice'>DONE!</span>")
-	visible_message(photographed.len)
 	do_sparks(3, TRUE, src)
 	..()
 
