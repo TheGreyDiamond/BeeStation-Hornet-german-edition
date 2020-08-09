@@ -260,9 +260,9 @@
 		drop_part(robot_arm, Tsec)
 
 	visible_message("<span class='notice'>As a last thing [src] drops all phtots.</span>")
-	var/i  // Print out all images
-	for(i=1,i<=photographed.len,i++)
-		cam.printpicture(src, photographed[i], FALSE)
+	// Print out all images
+	for (var/i in photographed)
+		cam.printpicture(src, i, FALSE)
 		visible_message("<span class='notice'>DEBUG [i]</span>")
 	do_sparks(3, TRUE, src)
 	..()
@@ -273,6 +273,7 @@
 
 /mob/living/simple_animal/bot/cambot/get_controls(mob/user)
 	var/word = "photos"
+	var/amountOfImages = photographed.len
 	if(photographed.len == 1)
 		word = "photo"
 		// This fixes "the Took 1 photos" issue
@@ -282,14 +283,14 @@
 	dat += text({"
 Status: <A href='?src=[REF(src)];power=1'>[on ? "On" : "Off"]</A><BR>
 Behaviour controls are [locked ? "locked" : "unlocked"]<BR>
-Maintenance panel panel is [open ? "opened" : "closed"]<BR>
-This bot took [photographed.len] [word]."})
+Maintenance panel panel is [open ? "opened" : "closed"]<BR>"})
 	if(!locked || issilicon(user)|| IsAdminGhost(user))
 		dat += "<BR>Photograph humans: <A href='?src=[REF(src)];operation=allowHumans'>[allowHumans ? "Yes" : "No"]</A>"
 		dat += "<BR>Test: <A href='?src=[REF(src)];operation=test'>[test ? "Yes" : "No"]</A>"
 		/*dat += "<BR>Clean Graffiti: <A href='?src=[REF(src)];operation=drawn'>[drawn ? "Yes" : "No"]</A>"
 		dat += "<BR>Exterminate Pests: <A href='?src=[REF(src)];operation=pests'>[pests ? "Yes" : "No"]</A>"*/
 		dat += "<BR><BR>Patrol Station: <A href='?src=[REF(src)];operation=patrol'>[auto_patrol ? "Yes" : "No"]</A>"
+		dat += "<BR><BR>This bot took [amountOfImages] [word]."
 	return dat
 
 /mob/living/simple_animal/bot/cambot/Topic(href, href_list)
