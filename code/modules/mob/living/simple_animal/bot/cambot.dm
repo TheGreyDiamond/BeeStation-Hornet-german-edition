@@ -20,7 +20,7 @@
 
 	var/allowHumans = 1 // Allow a photo of a human?
 
-	var/cam = /obj/item/camera
+	var/obj/item/camera/cam = null
 	var/list/photographed = null
 	var/list/target_types
 	var/obj/effect/decal/cleanable/target
@@ -35,6 +35,7 @@
 /mob/living/simple_animal/bot/cambot/Initialize()
 	. = ..()
 	get_targets()
+	cam = new /obj/item/camera(src)
 	icon_state = "cambot[on]"
 
 	var/datum/job/janitor/J = new/datum/job/janitor
@@ -193,7 +194,7 @@
 	mode = BOT_PHOTOGRAPHING
 	spawn(50)
 		if(mode == BOT_PHOTOGRAPHING)
-			captureimage(A, src, "")
+			cam.captureimage(A, src, "")
 			anchored = FALSE
 			target = null
 		mode = BOT_IDLE
