@@ -134,10 +134,13 @@
 		icon_state = "cambot-c"
 		var/datum/picture/Image = cam.captureimage(src, src, "", allowCustomise=FALSE, printImage=FALSE)  // ~~Selfie~~
 		photographed += Image
+		audible_message("BAMM DONE!")
+		amountOfImages2 = photographed.len
+		audible_message("I even counted")
 	else
 		icon_state = "cambot[on]"
 
-	amountOfImages2 = photographed.len
+
 	if(amountOfImages2 == 1)
 		word = "photo"
 	else
