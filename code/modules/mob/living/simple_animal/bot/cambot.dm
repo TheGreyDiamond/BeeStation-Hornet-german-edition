@@ -32,6 +32,8 @@
 	var/failed_steps
 	var/next_dest
 	var/next_dest_loc
+	var/word = "photos"
+	var/amountOfImages2 = 0
 
 /mob/living/simple_animal/bot/cambot/Initialize()
 	. = ..()
@@ -131,11 +133,15 @@
 		icon_state = "cambot-c"
 		var/datum/picture/Image = cam.captureimage(src, src, "", allowCustomise=FALSE, printImage=FALSE)  // ~~Selfie~~
 		photographed.Add(Image)
-
-		visible_message(photographed.len)
 		audible_message("SELFIEEEEEEEEEEEE!")
 	else
 		icon_state = "cambot[on]"
+
+	amountOfImages2 = photographed.len
+	if(amountOfImages2 == 1)
+		word = "photo"
+	else
+		word = "photos"
 
 	if(!target && allowHumans) //Then for trash. Haha Humans == Trash
 		target = scan(/mob/living/carbon/human)
@@ -201,9 +207,15 @@
 	mode = BOT_PHOTOGRAPHING
 	spawn(50)
 		if(mode == BOT_PHOTOGRAPHING)
-			cam.captureimage(A, src, "")
+			var/datum/picture/Image = cam.captureimage(A, src, "", allowCustomise=FALSE, printImage=FALSE)  // ~~Selfie~~
+			photographed.Add(Image)
 			anchored = FALSE
 			target = null
+			amountOfImages2 = photographed.len
+			if(amountOfImages2 == 1)
+				word = "photo"
+			else
+				word = "photos"
 		mode = BOT_IDLE
 		icon_state = "cambot[on]"
 	/*else if(istype(A, /obj/item) || istype(A, /obj/effect/decal/remains))
@@ -257,12 +269,13 @@
 		drop_part(robot_arm, Tsec)
 
 	var/amountOfImages2 = photographed.len
-	visible_message("<span class='notice'>As a last thing [src] drops [amountOfImages2] photos. </span>")
+	visible_message("<span class='notice'>As a last thing [src] drops all photos. </span>")
 	// Print out all images
 	for (var/i in photographed)
 		cam.printpicture(src, i, allowCustomise = FALSE)
 		visible_message("<span class='notice'>DEBUG " + i + "</span>")
 	visible_message("<span class='notice'>DONE!</span>")
+	visible_message(photographed.len)
 	do_sparks(3, TRUE, src)
 	..()
 
@@ -271,15 +284,6 @@
 
 
 /mob/living/simple_animal/bot/cambot/get_controls(mob/user)
-	/*var/word = "photos"
-	var/amountOfImages = photographed.len
-	if(amountOfImages == 1)
-		word = "photo"
-	else
-		word = "photos"
-		// This fixes "the Took 1 photos" issue
-		*/
-
 	var/dat
 	dat += hack(user)
 	dat += showpai(user)
