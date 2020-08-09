@@ -193,12 +193,7 @@
 	mode = BOT_PHOTOGRAPHING
 	spawn(50)
 		if(mode == BOT_PHOTOGRAPHING)
-			if(A && isturf(A.loc))
-				var/atom/movable/AM = A
-				if(istype(AM, /obj/effect/decal/cleanable))
-					for(var/obj/effect/decal/cleanable/C in A.loc)
-						qdel(C)
-
+			captureimage(A, src, "")
 			anchored = FALSE
 			target = null
 		mode = BOT_IDLE
