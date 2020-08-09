@@ -131,6 +131,7 @@
 
 	if(!target && allowHumans) //Then for trash.
 		target = scan(/mob/living/carbon/human)
+		audible_message("I WILL STALK HUMANS!")
 
 	if(!target && auto_patrol) //Search for cleanables it can see.
 		if(mode == BOT_IDLE || mode == BOT_START_PATROL)
@@ -186,24 +187,23 @@
 	target_types = typecacheof(target_types)
 
 /mob/living/simple_animal/bot/cambot/UnarmedAttack(atom/A)
-	if(istype(A, /obj/effect/decal/cleanable))
-		anchored = TRUE
-		icon_state = "cambot-c"
-		visible_message("<span class='notice'>[src] begins to clean up [A].</span>")
-		mode = BOT_CLEANING
-		spawn(50)
-			if(mode == BOT_CLEANING)
-				if(A && isturf(A.loc))
-					var/atom/movable/AM = A
-					if(istype(AM, /obj/effect/decal/cleanable))
-						for(var/obj/effect/decal/cleanable/C in A.loc)
-							qdel(C)
+	anchored = TRUE
+	icon_state = "cambot-c"
+	visible_message("<span class='notice'>[src] begins to clean up [A].</span>")
+	mode = BOT_PHOTOGRAPHING
+	spawn(50)
+		if(mode == BOT_PHOTOGRAPHING)
+			if(A && isturf(A.loc))
+				var/atom/movable/AM = A
+				if(istype(AM, /obj/effect/decal/cleanable))
+					for(var/obj/effect/decal/cleanable/C in A.loc)
+						qdel(C)
 
-				anchored = FALSE
-				target = null
-			mode = BOT_IDLE
-			icon_state = "cambot[on]"
-	else if(istype(A, /obj/item) || istype(A, /obj/effect/decal/remains))
+			anchored = FALSE
+			target = null
+		mode = BOT_IDLE
+		icon_state = "cambot[on]"
+	/*else if(istype(A, /obj/item) || istype(A, /obj/effect/decal/remains))
 		visible_message("<span class='danger'>[src] sprays hydrofluoric acid at [A]!</span>")
 		playsound(src, 'sound/effects/spray2.ogg', 50, 1, -6)
 		A.acid_act(75, 10)
@@ -212,9 +212,9 @@
 		if(!M.stat)
 			visible_message("<span class='danger'>[src] smashes [target] with its mop!</span>")
 			M.death()
-		target = null
+		target = null*/
 
-	else if(emagged == 2) //Emag functions
+	if(emagged == 2) //Emag functions
 		if(istype(A, /mob/living/carbon))
 			var/mob/living/carbon/victim = A
 			if(victim.stat == DEAD)//cambots always finish the job

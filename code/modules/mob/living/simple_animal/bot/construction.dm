@@ -53,6 +53,27 @@
 		qdel(src)
 
 
+//Cambot assembly
+/obj/item/bot_assembly/cambot
+	desc = "It's a camera with a sensor attached."
+	name = "incomplete cambot assembly"
+	icon_state = "bucket_proxy"
+	throwforce = 5
+	created_name = "Cambot"
+
+/obj/item/bot_assembly/cambot/attackby(obj/item/W, mob/user, params)
+	..()
+	if(istype(W, /obj/item/bodypart/l_arm/robot) || istype(W, /obj/item/bodypart/r_arm/robot))
+		if(!can_finish_build(W, user))
+			return
+		var/mob/living/simple_animal/bot/cambot/A = new(drop_location())
+		A.name = created_name
+		A.robot_arm = W.type
+		to_chat(user, "<span class='notice'>You add [W] to [src]. Beep boop!</span>")
+		qdel(W)
+		qdel(src)
+
+
 //Edbot Assembly
 /obj/item/bot_assembly/ed209
 	name = "incomplete ED-209 assembly"
