@@ -19,7 +19,7 @@
 	path_image_color = "#004080"
 
 	var/allowHumans = 1 // Allow a photo of a human?
-	var/test = 0 // Test
+	var/test = 1 // Test
 
 	var/obj/item/camera/cam = null
 	var/list/photographed = null
@@ -125,17 +125,14 @@
 
 	/*if(!target && pests) //Search for pests to exterminate first.
 		target = scan(/mob/living/simple_animal)
-
-	if(!target) //Search for decals then.
-		target = scan(/obj/effect/decal/cleanable)
-
-	if(!target) //Checks for remains
-		target = scan(/obj/effect/decal/remains)*/
+*/
 
 	if(test)
 		icon_state = "cambot-c"
 		var/datum/picture/Image = cam.captureimage(src, src, "", allowCustomise=FALSE, printImage=FALSE)  // ~~Selfie~~
 		photographed.Add(Image)
+
+		visible_message(photographed.len)
 		audible_message("SELFIEEEEEEEEEEEE!")
 	else
 		icon_state = "cambot[on]"
@@ -272,11 +269,15 @@
 
 
 /mob/living/simple_animal/bot/cambot/get_controls(mob/user)
-	var/word = "photos"
+	/*var/word = "photos"
 	var/amountOfImages = photographed.len
-	if(photographed.len == 1)
+	if(amountOfImages == 1)
 		word = "photo"
+	else
+		word = "photos"
 		// This fixes "the Took 1 photos" issue
+		*/
+
 	var/dat
 	dat += hack(user)
 	dat += showpai(user)
@@ -290,7 +291,8 @@ Maintenance panel panel is [open ? "opened" : "closed"]<BR>"})
 		/*dat += "<BR>Clean Graffiti: <A href='?src=[REF(src)];operation=drawn'>[drawn ? "Yes" : "No"]</A>"
 		dat += "<BR>Exterminate Pests: <A href='?src=[REF(src)];operation=pests'>[pests ? "Yes" : "No"]</A>"*/
 		dat += "<BR><BR>Patrol Station: <A href='?src=[REF(src)];operation=patrol'>[auto_patrol ? "Yes" : "No"]</A>"
-		dat += "<BR><BR>This bot took [amountOfImages] [word]."
+		dat += "<BR><BR>This bot took." //  [amountOfImages] [word]
+
 	return dat
 
 /mob/living/simple_animal/bot/cambot/Topic(href, href_list)
