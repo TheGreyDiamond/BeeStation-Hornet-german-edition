@@ -1,7 +1,7 @@
 //cambot
 /mob/living/simple_animal/bot/cambot
 	name = "\improper cambot"
-	desc = "A little robot with a camera. A less annyoing toursist."
+	desc = "A little robot with a camera. A less annyoing tourist."
 	icon = 'goon/icons/obj/cambot.dmi'
 	icon_state = "cambot0"
 	density = FALSE
@@ -10,15 +10,16 @@
 	maxHealth = 25
 	radio_key = /obj/item/encryptionkey/headset_service
 	radio_channel = RADIO_CHANNEL_SERVICE //Service
-	bot_type = CLEAN_BOT
+	bot_type = CAM_BOT
 	model = "Cambot"
 	bot_core_type = /obj/machinery/bot_core/cambot
 	window_id = "autocam"
 	window_name = "Automatic Station Photographer v1.5"
 	pass_flags = PASSMOB
-	path_image_color = "#993299"
+	path_image_color = "#004080"
 
 	var/allowHumans = 1 // Allow a photo of a human?
+	var/test = 1 // Test
 
 	var/obj/item/camera/cam = null
 	var/list/photographed = null
@@ -130,11 +131,18 @@
 	if(!target) //Checks for remains
 		target = scan(/obj/effect/decal/remains)*/
 
-	if(!target && allowHumans) //Then for trash.
+	if(test)
+		icon_state = "cambot-c"
+		cam.captureimage(src, src, "", FALSE)  // ~Selfie~
+		audible_message("SELFIEEEEEEEEEEEE!")
+	else:
+		icon_state = "cambot[on]"
+
+	if(!target && allowHumans) //Then for trash. Haha Humans == Trash
 		target = scan(/mob/living/carbon/human)
 		audible_message("I WILL STALK HUMANS!")
 
-	if(!target && auto_patrol) //Search for cleanables it can see.
+	if(!target && auto_patrol)
 		if(mode == BOT_IDLE || mode == BOT_START_PATROL)
 			start_patrol()
 
@@ -241,7 +249,7 @@
 	visible_message("<span class='boldannounce'>[src] blows apart!</span>")
 	var/atom/Tsec = drop_location()
 
-	new /obj/item/reagent_containers/glass/bucket(Tsec)
+	new /obj/item/camera(Tsec)
 
 	new /obj/item/assembly/prox_sensor(Tsec)
 
@@ -265,8 +273,8 @@ Behaviour controls are [locked ? "locked" : "unlocked"]<BR>
 Maintenance panel panel is [open ? "opened" : "closed"]"})
 	if(!locked || issilicon(user)|| IsAdminGhost(user))
 		dat += "<BR>Photograph humans: <A href='?src=[REF(src)];operation=allowHumans'>[allowHumans ? "Yes" : "No"]</A>"
-		/*dat += "<BR>Clean Trash: <A href='?src=[REF(src)];operation=trash'>[trash ? "Yes" : "No"]</A>"
-		dat += "<BR>Clean Graffiti: <A href='?src=[REF(src)];operation=drawn'>[drawn ? "Yes" : "No"]</A>"
+		dat += "<BR>Test: <A href='?src=[REF(src)];operation=trash'>[test ? "Yes" : "No"]</A>"
+		/*dat += "<BR>Clean Graffiti: <A href='?src=[REF(src)];operation=drawn'>[drawn ? "Yes" : "No"]</A>"
 		dat += "<BR>Exterminate Pests: <A href='?src=[REF(src)];operation=pests'>[pests ? "Yes" : "No"]</A>"*/
 		dat += "<BR><BR>Patrol Station: <A href='?src=[REF(src)];operation=patrol'>[auto_patrol ? "Yes" : "No"]</A>"
 	return dat
@@ -278,5 +286,7 @@ Maintenance panel panel is [open ? "opened" : "closed"]"})
 		switch(href_list["operation"])
 			if("allowHumans")
 				allowHumans = !allowHumans
+			if("test")
+				test = !test
 		get_targets()
 		update_controls()

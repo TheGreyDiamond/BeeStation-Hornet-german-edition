@@ -174,7 +174,8 @@
 /datum/crafting_recipe/cambot
 	name = "Cambot"
 	result = /mob/living/simple_animal/bot/cambot
-	reqs = list(/obj/item/reagent_containers/glass/bucket = 1,
+	reqs = list(/obj/item/camera = 1,
+				/obj/item/camera_film = 1,
 				/obj/item/assembly/prox_sensor = 1,
 				/obj/item/bodypart/r_arm/robot = 1)
 	time = 40

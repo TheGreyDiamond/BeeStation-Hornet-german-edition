@@ -148,7 +148,7 @@
 	to_chat(user, P.desc)
 	qdel(P)
 
-/obj/item/camera/proc/captureimage(atom/target, mob/user, flag, size_x = 1, size_y = 1)
+/obj/item/camera/proc/captureimage(atom/target, mob/user, flag, size_x = 1, size_y = 1, allowCustomise = TRUE)
 	if(flash_enabled)
 		flash_lighting_fx(8, light_power, light_color)
 	blending = TRUE
@@ -177,7 +177,7 @@
 			T = SSmapping.get_turf_below(T)
 			if(!T)
 				break
-		
+
 		if(T && ((ai_user && GLOB.cameranet.checkTurfVis(placeholder)) || (placeholder in seen)))
 			turfs += T
 			for(var/mob/M in T)
@@ -201,20 +201,20 @@
 	temp.Blend(get_icon, ICON_OVERLAY)
 
 	var/datum/picture/P = new("picture", desc.Join(" "), mobs_spotted, dead_spotted, temp, null, psize_x, psize_y, blueprints)
-	after_picture(user, P, flag)
+	after_picture(user, P, flag, allowCustomise)
 	blending = FALSE
 
-/obj/item/camera/proc/after_picture(mob/user, datum/picture/picture, proximity_flag)
-	printpicture(user, picture)
+/obj/item/camera/proc/after_picture(mob/user, datum/picture/picture, proximity_flag, allowCustomise = TRUE)
+	printpicture(user, picture, allowCustomise)
 
-/obj/item/camera/proc/printpicture(mob/user, datum/picture/picture) //Normal camera proc for creating photos
+/obj/item/camera/proc/printpicture(mob/user, datum/picture/picture, allowCustomise = TRUE) //Normal camera proc for creating photos
 	var/obj/item/photo/p = new(get_turf(src), picture)
 	if(in_range(src, user)) //needed because of TK
 		user.put_in_hands(p)
 		pictures_left--
 		to_chat(user, "<span class='notice'>[pictures_left] photos left.</span>")
 		var/customise = "No"
-		if(can_customise)
+		if(can_customise && allowCustomise)
 			customise = alert(user, "Do you want to customize the photo?", "Customization", "Yes", "No")
 		if(customise == "Yes")
 			var/name1 = stripped_input(user, "Set a name for this photo, or leave blank. 32 characters max.", "Name", max_length = 32)
