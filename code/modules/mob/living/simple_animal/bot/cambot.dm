@@ -128,7 +128,7 @@
 	/*if(!target && pests) //Search for pests to exterminate first.
 		target = scan(/mob/living/simple_animal)
 */
-
+	..()
 	if(test)
 		audible_message("SELFIEEEEEEEEEEEE!")
 		icon_state = "cambot-c"
