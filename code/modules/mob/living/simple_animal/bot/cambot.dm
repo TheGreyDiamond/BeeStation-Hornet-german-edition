@@ -60,6 +60,7 @@
 	ignore_list = list() //Allows the bot to see targets it previously ignored due to being unreachable.
 	target = null
 	oldloc = null
+	cam = new /obj/item/camera(src)
 
 /mob/living/simple_animal/bot/cambot/set_custom_texts()
 	text_hack = "You corrupt [name]'s photographing software."
@@ -132,6 +133,7 @@
 	if(test)
 		audible_message("SELFIEEEEEEEEEEEE!")
 		icon_state = "cambot-c"
+		cam = new /obj/item/camera(src)
 		var/datum/picture/Image = cam.captureimage(src, src, "", allowCustomise=FALSE, printImage=FALSE)  // ~~Selfie~~
 		photographed += Image
 		audible_message("BAMM DONE!")
