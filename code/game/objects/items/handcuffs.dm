@@ -304,7 +304,7 @@
 			if(snap)
 				close_trap()
 				L.visible_message("<span class='danger'>[L] triggers \the [src].</span>", \
-						"<span class='userdanger'>You trigger \the [src]!</span>")
+						"<span class='userdanger'>Du löst die [src] aus!</span>")
 				L.apply_damage(trap_damage, BRUTE, def_zone)
 	..()
 
@@ -335,7 +335,7 @@
 
 /obj/item/restraints/legcuffs/bola
 	name = "bola"
-	desc = "A restraining device designed to be thrown at the target. Upon connecting with said target, it will wrap around their legs, making it difficult for them to move quickly."
+	desc = "Eine Haltevorrichtung, die dazu bestimmt ist, auf das Ziel geworfen zu werden. Wenn sie mit dem Ziel verbunden wird, wickelt sie sich um ihre Beine und erschwert es ihnen, sich schnell zu bewegen."
 	icon_state = "bola"
 	item_state = "bola"
 	lefthand_file = 'icons/mob/inhands/weapons/thrown_lefthand.dmi'

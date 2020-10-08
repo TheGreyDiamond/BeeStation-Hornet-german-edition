@@ -13,7 +13,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 
 /obj/item/pda
 	name = "\improper PDA"
-	desc = "A portable microcomputer by Thinktronic Systems, LTD. Functionality determined by a preprogrammed ROM cartridge."
+	desc = "Ein tragbarer Mikrocomputer von Thinktronic Systems, LTD. Die Funktionalität wird durch eine vorprogrammierte ROM-Kassette bestimmt."
 	icon = 'icons/obj/pda.dmi'
 	icon_state = "pda"
 	item_state = "electronic"
