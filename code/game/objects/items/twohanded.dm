@@ -54,9 +54,9 @@
 		user.update_inv_hands()
 	if(show_message)
 		if(iscyborg(user))
-			to_chat(user, "<span class='notice'>You free up your module.</span>")
+			to_chat(user, "<span class='notice'>Du befreist dein Modul</span>")
 		else
-			to_chat(user, "<span class='notice'>You are now carrying [src] with one hand.</span>")
+			to_chat(user, "<span class='notice'>Du trägst jetzt [src] mit einer Hand.</span>")
 	if(unwieldsound)
 		playsound(loc, unwieldsound, 50, 1)
 	var/obj/item/twohanded/offhand/O = user.get_inactive_held_item()
@@ -68,13 +68,13 @@
 	if(wielded)
 		return
 	if(ismonkey(user))
-		to_chat(user, "<span class='warning'>It's too heavy for you to wield fully.</span>")
+		to_chat(user, "<span class='warning'>Es ist zu schwer für dich, um es vollständig zu tragen.</span>")
 		return
 	if(user.get_inactive_held_item())
-		to_chat(user, "<span class='warning'>You need your other hand to be empty!</span>")
+		to_chat(user, "<span class='warning'>Deine andere Hand muss leer sein!</span>")
 		return
 	if(user.get_num_arms() < 2)
-		to_chat(user, "<span class='warning'>You don't have enough intact hands.</span>")
+		to_chat(user, "<span class='warning'>Du hast nicht genug gesunde Hände!</span>")
 		return
 	wielded = 1
 	if(force_wielded)
@@ -86,7 +86,7 @@
 	if(iscyborg(user))
 		to_chat(user, "<span class='notice'>You dedicate your module to [src].</span>")
 	else
-		to_chat(user, "<span class='notice'>You grab [src] with both hands.</span>")
+		to_chat(user, "<span class='notice'>Du greifst [src] mit beiden Händen.</span>")
 	if (wieldsound)
 		playsound(loc, wieldsound, 50, 1)
 	var/obj/item/twohanded/offhand/O = new(user) ////Let's reserve his other hand~
@@ -218,7 +218,7 @@
 	if(!wielded)
 		return
 	if(show_message)
-		to_chat(user, "<span class='notice'>You drop [src].</span>")
+		to_chat(user, "<span class='notice'>Du lässt [src] fallen.</span>")
 	..(user, FALSE)
 
 /*
@@ -229,7 +229,7 @@
 	lefthand_file = 'icons/mob/inhands/weapons/axes_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/axes_righthand.dmi'
 	name = "fire axe"
-	desc = "Truly, the weapon of a madman. Who would think to fight fire with an axe?"
+	desc = "Wahrhaftig, die Waffe eines Verrückten. Wer käme auf die Idee, Feuer mit einer Axt zu bekämpfen?"
 	attack_weight = 3
 	block_power_wielded = 25
 	block_upgrade_walk = 1
@@ -280,7 +280,7 @@
 	lefthand_file = 'icons/mob/inhands/weapons/swords_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/swords_righthand.dmi'
 	name = "double-bladed energy sword"
-	desc = "Handle with care."
+	desc = "Gehen Sie vorsichtig damit um."
 	force = 3
 	throwforce = 5
 	throw_speed = 3
@@ -326,7 +326,7 @@
 					myhead.drop_limb()
 				sleep(3)
 			else
-				user.visible_message("<span class='suicide'>[user] panics and starts choking to death!</span>")
+				user.visible_message("<span class='suicide'>[user] bekommt Panik und erstickt!</span>")
 				return OXYLOSS
 
 
