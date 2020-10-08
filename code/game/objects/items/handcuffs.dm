@@ -22,7 +22,7 @@
 
 /obj/item/restraints/handcuffs
 	name = "handcuffs"
-	desc = "Use this to keep prisoners in line."
+	desc = "Nutzen Sie dies, um Gefangene in Schach zu halten."
 	gender = PLURAL
 	icon = 'icons/obj/items_and_weapons.dmi'
 	icon_state = "handcuff"
@@ -57,7 +57,7 @@
 
 	if(!C.handcuffed)
 		if(C.get_num_arms(FALSE) >= 2 || C.get_arm_ignore())
-			C.visible_message("<span class='danger'>[user] is trying to put [src.name] on [C]!</span>", \
+			C.visible_message("<span class='danger'>[user] versucht,[C] [src.name] anzulegen!</span>", \
 								"<span class='userdanger'>[user] is trying to put [src.name] on you!</span>")
 
 			playsound(loc, cuffsound, 30, 1, -2)
