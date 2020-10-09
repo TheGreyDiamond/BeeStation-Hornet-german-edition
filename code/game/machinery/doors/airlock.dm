@@ -248,7 +248,7 @@
 		return
 	locked = TRUE
 	playsound(src,boltDown,30,0,3)
-	audible_message("<span class='italics'>You hear a click from the bottom of the door.</span>", null,  1)
+	audible_message("<span class='italics'>Du hörst ein klicken von der Unterseite der Tür.</span>", null,  1)
 	update_icon()
 
 /obj/machinery/door/airlock/unlock()
@@ -259,7 +259,7 @@
 		return
 	locked = FALSE
 	playsound(src,boltUp,30,0,3)
-	audible_message("<span class='italics'>You hear a click from the bottom of the door.</span>", null,  1)
+	audible_message("<span class='italics'>Du hörst ein klicken von der Unterseite der Tür.</span>", null,  1)
 	update_icon()
 
 /obj/machinery/door/airlock/narsie_act()
@@ -296,9 +296,9 @@
 	to_chat(usr, "<span class='brass'>You begin manipulating [src]!</span>")
 	if(do_after(eminence, 20, target=get_turf(eminence)))
 		if(welded)
-			to_chat(eminence, text("The airlock has been welded shut!"))
+			to_chat(eminence, text("Die Luftschleuse ist zugeschweißt worden!"))
 		else if(locked)
-			to_chat(eminence, text("The door bolts are down!"))
+			to_chat(eminence, text("Die Türriegel sind unten!"))
 		else if(!density)
 			close()
 		else
