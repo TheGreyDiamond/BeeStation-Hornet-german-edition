@@ -80,7 +80,7 @@
 /obj/structure/closet/examine(mob/user)
 	. = ..()
 	if(welded)
-		. += "<span class='notice'>It's welded shut.</span>"
+		. += "<span class='notice'>Es ist zugeschweißt</span>"
 	if(anchored)
 		. += "<span class='notice'>It is <b>bolted</b> to the ground.</span>"
 	if(opened)
