@@ -16,16 +16,16 @@
 		. = capitalize(.)
 
 /datum/proc/p_have(temp_gender)
-	. = "has"
+	. = "hat"
 
 /datum/proc/p_are(temp_gender)
-	. = "is"
+	. = "ist"
 
 /datum/proc/p_were(temp_gender)
-	. = "was"
+	. = "war"
 
 /datum/proc/p_do(temp_gender)
-	. = "does"
+	. = "tut"
 
 /datum/proc/p_theyve(capitalized, temp_gender)
 	. = p_they(capitalized, temp_gender) + "'" + copytext_char(p_have(temp_gender), 3)
@@ -123,9 +123,9 @@
 	. = "it"
 	switch(temp_gender)
 		if(FEMALE)
-			. = "she"
+			. = "sie"
 		if(MALE)
-			. = "he"
+			. = "her"
 		if(PLURAL)
 			. = "they"
 	if(capitalized)
@@ -137,9 +137,9 @@
 	. = "its"
 	switch(temp_gender)
 		if(FEMALE)
-			. = "her"
+			. = "seine"
 		if(MALE)
-			. = "his"
+			. = "ihre"
 		if(PLURAL)
 			. = "their"
 	if(capitalized)
@@ -162,23 +162,23 @@
 /mob/p_have(temp_gender)
 	if(!temp_gender)
 		temp_gender = gender
-	. = "has"
+	. = "hatt"
 	if(temp_gender == PLURAL)
-		. = "have"
+		. = "haben"
 
 /mob/p_are(temp_gender)
 	if(!temp_gender)
 		temp_gender = gender
-	. = "is"
+	. = "ist"
 	if(temp_gender == PLURAL)
-		. = "are"
+		. = "sind"
 
 /mob/p_were(temp_gender)
 	if(!temp_gender)
 		temp_gender = gender
-	. = "was"
+	. = "war"
 	if(temp_gender == PLURAL)
-		. = "were"
+		. = "waren"
 
 /mob/p_do(temp_gender)
 	if(!temp_gender)
