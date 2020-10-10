@@ -5,12 +5,12 @@
 	var/announcement
 
 	if(type == "Priority")
-		announcement += "<h1 class='alert'>Priority Announcement</h1>"
+		announcement += "<h1 class='alert'>Prioritäts-Ankündigung</h1>"
 		if (title && length(title) > 0)
 			announcement += "<br><h2 class='alert'>[html_encode(title)]</h2>"
 	else if(type == "Captain")
 		announcement += "<h1 class='alert'>Captain Announces</h1>"
-		GLOB.news_network.SubmitArticle(text, "Captain's Announcement", "Station Announcements", null)
+		GLOB.news_network.SubmitArticle(text, "Kapitäns Ankündigung", "Station-Ankündigungen", null)
 
 	else
 		if(!sender_override)
@@ -22,9 +22,9 @@
 
 		if(!sender_override)
 			if(title == "")
-				GLOB.news_network.SubmitArticle(text, "Central Command Update", "Station Announcements", null)
+				GLOB.news_network.SubmitArticle(text, "Central Command Update", "Stations Ankündigung", null)
 			else
-				GLOB.news_network.SubmitArticle(title + "<br><br>" + text, "Central Command", "Station Announcements", null)
+				GLOB.news_network.SubmitArticle(title + "<br><br>" + text, "Central Command", "Station Ankündigung", null)
 
 	announcement += "<br><span class='alert'>[html_encode(text)]</span><br>"
 	announcement += "<br>"
@@ -38,10 +38,10 @@
 
 /proc/print_command_report(text = "", title = null, announce=TRUE)
 	if(!title)
-		title = "Classified [command_name()] Update"
+		title = "Klassifiziert [command_name()] Update"
 
 	if(announce)
-		priority_announce("A report has been downloaded and printed out at all communications consoles.", "Incoming Classified Message", 'sound/ai/commandreport.ogg')
+		priority_announce("Ein Bericht wurde heruntergeladen und an allen Kommunikationskonsolen ausgedruckt.", "Eingehende klassifizierte Nachricht", 'sound/ai/commandreport.ogg')
 
 	var/datum/comm_message/M  = new
 	M.title = title
@@ -49,7 +49,7 @@
 
 	SScommunications.send_message(M)
 
-/proc/minor_announce(message, title = "Attention:", alert)
+/proc/minor_announce(message, title = "Achtung:", alert)
 	if(!message)
 		return
 

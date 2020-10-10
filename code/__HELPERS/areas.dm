@@ -44,20 +44,20 @@ GLOBAL_LIST_INIT(typecache_powerfailure_safe_areas, typecacheof(/area/engine/eng
 		/turf/open/space,
 		/area/shuttle,
 		))
-		
+
 	if(creator)
 		if(creator.create_area_cooldown >= world.time)
-			to_chat(creator, "<span class='warning'>You're trying to create a new area a little too fast.</span>")
+			to_chat(creator, "<span class='warning'>Sie versuchen, ein neues Gebiet etwas zu schnell zu schaffen.</span>")
 			return
 		creator.create_area_cooldown = world.time + 10
-		
+
 	// Ignore these areas and dont let people expand them. They can expand into them though
 	var/static/blacklisted_areas = typecacheof(list(
 		/area/space,
 		))
 	var/list/turfs = detect_room(get_turf(creator), area_or_turf_fail_types)
 	if(!turfs)
-		to_chat(creator, "<span class='warning'>The new area must be completely airtight and not a part of a shuttle.</span>")
+		to_chat(creator, "<span class='warning'>Der neue Bereich muss vollkommen luftdicht sein und darf nicht Teil eines Shuttles sein.</span>")
 		return
 	if(turfs.len > BP_MAX_ROOM_SIZE)
 		to_chat(creator, "<span class='warning'>The room you're in is too big. It is [((turfs.len / BP_MAX_ROOM_SIZE)-1)*100]% larger than allowed.</span>")
@@ -74,7 +74,7 @@ GLOBAL_LIST_INIT(typecache_powerfailure_safe_areas, typecacheof(/area/engine/eng
 	area_choice = areas[area_choice]
 
 	if(!area_choice)
-		to_chat(creator, "<span class='warning'>No choice selected. The area remains undefined.</span>")
+		to_chat(creator, "<span class='warning'>Keine Auswahl ausgewählt. Der Bereich bleibt undefiniert.</span>")
 		return
 	var/area/newA
 	var/area/oldA = get_area(get_turf(creator))

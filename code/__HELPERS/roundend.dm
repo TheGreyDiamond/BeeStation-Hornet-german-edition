@@ -204,7 +204,7 @@
 							C.inc_metabalance(METACOIN_CO_REWARD, reason="Completed your crew objective!")
 							break
 
-	to_chat(world, "<BR><BR><BR><span class='big bold'>The round has ended.</span>")
+	to_chat(world, "<BR><BR><BR><span class='big bold'>Die Runde ist beendet.</span>")
 	log_game("The round has ended.")
 	if(LAZYLEN(GLOB.round_end_notifiees))
 		send2irc("Notice", "[GLOB.round_end_notifiees.Join(", ")] the round has ended.")
@@ -234,7 +234,7 @@
 
 	CHECK_TICK
 
-	set_observer_default_invisibility(0, "<span class='warning'>The round is over! You are now visible to the living.</span>")
+	set_observer_default_invisibility(0, "<span class='warning'>Die Runde ist vorbei! Sie sind jetzt für die Lebenden sichtbar.</span>")
 	//These need update to actually reflect the real antagonists
 	//Print a list of antagonists to the server log
 	var/list/total_antagonists = list()
@@ -273,9 +273,9 @@
 /datum/controller/subsystem/ticker/proc/standard_reboot()
 	if(ready_for_reboot)
 		if(mode.station_was_nuked)
-			Reboot("Station destroyed by Nuclear Device.", "nuke")
+			Reboot("Station durch Kernwaffe zerstört.", "nuke")
 		else
-			Reboot("Round ended.", "proper completion")
+			Reboot("Runde zuende.", "proper completion")
 	else
 		CRASH("Attempted standard reboot without ticker roundend completion")
 
@@ -313,28 +313,28 @@
 	if(GLOB.round_id)
 		var/statspage = CONFIG_GET(string/roundstatsurl)
 		var/info = statspage ? "<a href='?action=openLink&link=[rustg_url_encode(statspage)][GLOB.round_id]'>[GLOB.round_id]</a>" : GLOB.round_id
-		parts += "[GLOB.TAB]Round ID: <b>[info]</b>"
-	parts += "[GLOB.TAB]Shift Duration: <B>[DisplayTimeText(world.time - SSticker.round_start_time)]</B>"
-	parts += "[GLOB.TAB]Station Integrity: <B>[mode.station_was_nuked ? "<span class='redtext'>Destroyed</span>" : "[popcount["station_integrity"]]%"]</B>"
+		parts += "[GLOB.TAB]Runden ID: <b>[info]</b>"
+	parts += "[GLOB.TAB]Schichtlänge: <B>[DisplayTimeText(world.time - SSticker.round_start_time)]</B>"
+	parts += "[GLOB.TAB]Integrität der Station: <B>[mode.station_was_nuked ? "<span class='redtext'>Zerst&ouml;rt</span>" : "[popcount["station_integrity"]]%"]</B>"
 	var/total_players = GLOB.joined_player_list.len
 	if(total_players)
-		parts+= "[GLOB.TAB]Total Population: <B>[total_players]</B>"
+		parts+= "[GLOB.TAB]Gesamtbevölkerung: <B>[total_players]</B>"
 		if(station_evacuated)
-			parts += "<BR>[GLOB.TAB]Evacuation Rate: <B>[popcount[POPCOUNT_ESCAPEES]] ([PERCENT(popcount[POPCOUNT_ESCAPEES]/total_players)]%)</B>"
-			parts += "[GLOB.TAB](on emergency shuttle): <B>[popcount[POPCOUNT_SHUTTLE_ESCAPEES]] ([PERCENT(popcount[POPCOUNT_SHUTTLE_ESCAPEES]/total_players)]%)</B>"
-		parts += "[GLOB.TAB]Survival Rate: <B>[popcount[POPCOUNT_SURVIVORS]] ([PERCENT(popcount[POPCOUNT_SURVIVORS]/total_players)]%)</B>"
+			parts += "<BR>[GLOB.TAB]Evakuierungsrate: <B>[popcount[POPCOUNT_ESCAPEES]] ([PERCENT(popcount[POPCOUNT_ESCAPEES]/total_players)]%)</B>"
+			parts += "[GLOB.TAB](auf dem Fluchtshuttle): <B>[popcount[POPCOUNT_SHUTTLE_ESCAPEES]] ([PERCENT(popcount[POPCOUNT_SHUTTLE_ESCAPEES]/total_players)]%)</B>"
+		parts += "[GLOB.TAB]Überlebensrate: <B>[popcount[POPCOUNT_SURVIVORS]] ([PERCENT(popcount[POPCOUNT_SURVIVORS]/total_players)]%)</B>"
 		if(SSblackbox.first_death)
 			var/list/ded = SSblackbox.first_death
 			if(ded.len)
-				parts += "[GLOB.TAB]First Death: <b>[ded["name"]], [ded["role"]], at [ded["area"]]. Damage taken: [ded["damage"]].[ded["last_words"] ? " Their last words were: \"[ded["last_words"]]\"" : ""]</b>"
+				parts += "[GLOB.TAB]Erster Tod: <b>[ded["name"]], [ded["role"]], at [ded["area"]]. Damage taken: [ded["damage"]].[ded["last_words"] ? " Die letzten Worte waren: \"[ded["last_words"]]\"" : ""]</b>"
 			//ignore this comment, it fixes the broken sytax parsing caused by the " above
 			else
-				parts += "[GLOB.TAB]<i>Nobody died this shift!</i>"
+				parts += "[GLOB.TAB]<i>Niemand ist diese Schicht gestorben. (WOW!)</i>"
 	if(istype(SSticker.mode, /datum/game_mode/dynamic))
 		var/datum/game_mode/dynamic/mode = SSticker.mode
-		parts += "[FOURSPACES]Threat level: [mode.threat_level]"
-		parts += "[FOURSPACES]Threat left: [mode.threat]" //yes
-		parts += "[FOURSPACES]Executed rules:"
+		parts += "[FOURSPACES]Bedrohungsstufe: [mode.threat_level]"
+		parts += "[FOURSPACES]Bedrohung übrig: [mode.threat]" //yes
+		parts += "[FOURSPACES]Ausgeführte Regeln:"
 		for(var/datum/dynamic_ruleset/rule in mode.executed_rules)
 			parts += "[FOURSPACES][FOURSPACES][rule.ruletype] - <b>[rule.name]</b>: -[rule.cost] threat"
 	return parts.Join("<br>")
@@ -370,25 +370,25 @@
 			if(EMERGENCY_ESCAPED_OR_ENDGAMED)
 				if(!M.onCentCom() && !M.onSyndieBase())
 					parts += "<div class='panel stationborder'>"
-					parts += "<span class='marooned'>You managed to survive, but were marooned on [station_name()]...</span>"
+					parts += "<span class='marooned'>Sie schafften es, zu überleben, wurden aber auf [station_name()] zurückgelassen....</span>"
 				else
 					parts += "<div class='panel greenborder'>"
-					parts += "<span class='greentext'>You managed to survive the events on [station_name()] as [M.real_name].</span>"
+					parts += "<span class='greentext'>Du überlebst die Ereignisse auf [station_name()] als [M.real_name].</span>"
 			else
 				parts += "<div class='panel greenborder'>"
-				parts += "<span class='greentext'>You managed to survive the events on [station_name()] as [M.real_name].</span>"
+				parts += "<span class='greentext'>Du hast auf [station_name()] als [M.real_name] überlebt.</span>"
 
 		else
 			parts += "<div class='panel redborder'>"
-			parts += "<span class='redtext'>You did not survive the events on [station_name()]...</span>"
+			parts += "<span class='redtext'>Du hast nicht überlebt [station_name()]...</span>"
 
 		if(CONFIG_GET(flag/allow_crew_objectives))
 			if(M.mind.current && LAZYLEN(M.mind.crew_objectives))
 				for(var/datum/objective/crew/CO in M.mind.crew_objectives)
 					if(CO.check_completion())
-						parts += "<br><br><B>Your optional objective</B>: [CO.explanation_text] <span class='greentext'><B>Success!</B></span><br>"
+						parts += "<br><br><B>Dein optinales Ziel:</B>: [CO.explanation_text] <span class='greentext'><B>Erfolg!</B></span><br>"
 					else
-						parts += "<br><br><B>Your optional objective</B>: [CO.explanation_text] <span class='redtext'><B>Failed.</B></span><br>"
+						parts += "<br><br><B>Dein optinales Ziel:</B>: [CO.explanation_text] <span class='redtext'><B>Failed.</B></span><br>"
 
 	else
 		parts += "<div class='panel stationborder'>"
@@ -413,10 +413,10 @@
 	for (var/i in GLOB.ai_list)
 		var/mob/living/silicon/ai/aiPlayer = i
 		if(aiPlayer.mind)
-			parts += "<b>[aiPlayer.name]</b> (Played by: <b>[aiPlayer.mind.key]</b>)'s laws [aiPlayer.stat != DEAD ? "at the end of the round" : "when it was <span class='redtext'>deactivated</span>"] were:"
+			parts += "<b>[aiPlayer.name]</b> (Played by: <b>[aiPlayer.mind.key]</b>)s Gesetze [aiPlayer.stat != DEAD ? "zum Rundenende" : "when it was <span class='redtext'>deactivated</span>"] waren:"
 			parts += aiPlayer.laws.get_law_list(include_zeroth=TRUE)
 
-		parts += "<b>Total law changes: [aiPlayer.law_change_counter]</b>"
+		parts += "<b>Insgesamte Gesetzesänderungen: [aiPlayer.law_change_counter]</b>"
 
 		if(aiPlayer.law_change_counter >= 15)
 			if (aiPlayer.client)
@@ -425,11 +425,11 @@
 
 		if (aiPlayer.connected_robots.len)
 			var/borg_num = aiPlayer.connected_robots.len
-			var/robolist = "<br><b>[aiPlayer.real_name]</b>'s minions were: "
+			var/robolist = "<br><b>[aiPlayer.real_name]</b>s minions waren: "
 			for(var/mob/living/silicon/robot/robo in aiPlayer.connected_robots)
 				borg_num--
 				if(robo.mind)
-					robolist += "<b>[robo.name]</b> (Played by: <b>[robo.mind.key]</b>)[robo.stat == DEAD ? " <span class='redtext'>(Deactivated)</span>" : ""][borg_num ?", ":""]<br>"
+					robolist += "<b>[robo.name]</b> (Gespielt von: <b>[robo.mind.key]</b>)[robo.stat == DEAD ? " <span class='redtext'>(Deactivated)</span>" : ""][borg_num ?", ":""]<br>"
 			parts += "[robolist]"
 		if(!borg_spacer)
 			borg_spacer = TRUE
@@ -658,11 +658,11 @@
 
 /datum/controller/subsystem/ticker/proc/sendtodiscord(var/survivors, var/escapees, var/integrity)
     var/discordmsg = ""
-    discordmsg += "--------------ROUND END--------------\n"
-    discordmsg += "Round Number: [GLOB.round_id]\n"
-    discordmsg += "Duration: [DisplayTimeText(world.time - SSticker.round_start_time)]\n"
-    discordmsg += "Players: [GLOB.player_list.len]\n"
-    discordmsg += "Survivors: [survivors]\n"
+    discordmsg += "--------------Runden Ende--------------\n"
+    discordmsg += "Rundennummer: [GLOB.round_id]\n"
+    discordmsg += "Länge: [DisplayTimeText(world.time - SSticker.round_start_time)]\n"
+    discordmsg += "Spieler: [GLOB.player_list.len]\n"
+    discordmsg += "Überlebende: [survivors]\n"
     discordmsg += "Escapees: [escapees]\n"
     discordmsg += "Integrity: [integrity]\n"
     discordmsg += "Gamemode: [SSticker.mode.name]\n"
