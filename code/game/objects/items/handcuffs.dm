@@ -22,7 +22,7 @@
 
 /obj/item/restraints/handcuffs
 	name = "handcuffs"
-	desc = "öäüß Nutzen Sie dies, um Gefangene in Schach zu halten."
+	desc = "Nutzen Sie dies, um Gefangene in Schach zu halten."
 	gender = PLURAL
 	icon = 'icons/obj/items_and_weapons.dmi'
 	icon_state = "handcuff"
