@@ -97,7 +97,7 @@
 					permitted = FALSE
 
 				if(!permitted)
-					to_chat(M, "<span class='warning'>Your current species or role does not permit you to spawn with [gear]!</span>")
+					to_chat(M, "<span class='warning'>Deine aktuelle Spezies oder Rolle erlaubt es dir nicht, mit [gear] zu spawnen!</span>")
 					continue
 
 				if(G.slot)
@@ -232,7 +232,7 @@
 	return TRUE
 
 /datum/job/proc/radio_help_message(mob/M)
-	to_chat(M, "<b>Prefix your message with :h to speak on your department's radio. To see other prefixes, look closely at your headset.</b>")
+	to_chat(M, "<b>Füge deiner Nachricht :h vor, um über das Radio deiner Abteilung zu sprechen. Um andere Vorwahlen zu sehen, schau genau auf dein Headset.</b>")
 
 /datum/outfit/job
 	name = "Standard Gear"

@@ -35,4 +35,4 @@
 /datum/game_mode/extended/send_intercept(report = 0)
 	if(secret)
 		return ..()
-	priority_announce("Dank der unermüdlichen Bemühungen unserer Sicherheits- und Geheimdienstabteilungen gibt es derzeit keine glaubwürdigen Bedrohungen für [station_name()]. Alle Stationsbauvorhaben sind genehmigt worden. Ich wünsche Ihnen eine sichere Schicht!", "Security Report", 'sound/ai/commandreport.ogg')
+	priority_announce("Dank der unermüdlichen Bemühungen unserer Sicherheits- und Geheimdienstabteilungen gibt es derzeit keine glaubwürdigen Bedrohungen für [station_name()]. Alle Stationsbauvorhaben sind genehmigt worden. Ich wünsche Ihnen eine sichere Schicht!", "Sicherheitsbericht", 'sound/ai/commandreport.ogg')

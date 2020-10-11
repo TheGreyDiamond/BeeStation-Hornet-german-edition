@@ -40,38 +40,38 @@
 	msg += "<span class='notice'>Dein mentaler Zustand: </span>" //Long term
 	switch(sanity)
 		if(SANITY_GREAT to INFINITY)
-			msg += "<span class='nicegreen'>My mind feels like a temple!<span>\n"
+			msg += "<span class='nicegreen'>Mein Geist fühlt sich wie ein Tempel an!<span>\n"
 		if(SANITY_NEUTRAL to SANITY_GREAT)
-			msg += "<span class='nicegreen'>I have been feeling great lately!<span>\n"
+			msg += "<span class='nicegreen'>Ich habe mich in letzter Zeit großartig gefühlt!<span>\n"
 		if(SANITY_DISTURBED to SANITY_NEUTRAL)
-			msg += "<span class='nicegreen'>I have felt quite decent lately.<span>\n"
+			msg += "<span class='nicegreen'>Ich habe mich in letzter Zeit recht anständig gefühlt.<span>\n"
 		if(SANITY_UNSTABLE to SANITY_DISTURBED)
-			msg += "<span class='warning'>I'm feeling a little bit unhinged...</span>\n"
+			msg += "<span class='warning'>Ich fühle mich ein wenig aus den Fugen geraten...</span>\n"
 		if(SANITY_CRAZY to SANITY_UNSTABLE)
-			msg += "<span class='boldwarning'>I'm freaking out!!</span>\n"
+			msg += "<span class='boldwarning'>Ich flippe aus!</span>\n"
 		if(SANITY_INSANE to SANITY_CRAZY)
 			msg += "<span class='boldwarning'>AHAHAHAHAHAHAHAHAHAH!!</span>\n"
 
-	msg += "<span class='notice'>My current mood: </span>" //Short term
+	msg += "<span class='notice'>Meine Stimmung: </span>" //Short term
 	switch(mood_level)
 		if(1)
-			msg += "<span class='boldwarning'>I wish I was dead!<span>\n"
+			msg += "<span class='boldwarning'>Ich wünschte, ich wäre tot!<span>\n"
 		if(2)
-			msg += "<span class='boldwarning'>I feel terrible...<span>\n"
+			msg += "<span class='boldwarning'>Ich fühle mich schrecklich...<span>\n"
 		if(3)
-			msg += "<span class='boldwarning'>I feel very upset.<span>\n"
+			msg += "<span class='boldwarning'>Ich fühle mich sehr aufgeregt.<span>\n"
 		if(4)
-			msg += "<span class='boldwarning'>I'm a bit sad.<span>\n"
+			msg += "<span class='boldwarning'>Ich bin ein bisschen traurig.<span>\n"
 		if(5)
-			msg += "<span class='nicegreen'>I'm alright.<span>\n"
+			msg += "<span class='nicegreen'>Ich bin in Ordnung.<span>\n"
 		if(6)
-			msg += "<span class='nicegreen'>I feel pretty okay.<span>\n"
+			msg += "<span class='nicegreen'>Ich fühle mich ziemlich okay.<span>\n"
 		if(7)
-			msg += "<span class='nicegreen'>I feel pretty good.<span>\n"
+			msg += "<span class='nicegreen'>Ich fühle mich ziemlich gut.<span>\n"
 		if(8)
-			msg += "<span class='nicegreen'>I feel amazing!<span>\n"
+			msg += "<span class='nicegreen'>Ich fühle mich unglaublich!<span>\n"
 		if(9)
-			msg += "<span class='nicegreen'>I love life!<span>\n"
+			msg += "<span class='nicegreen'>Ich liebe das Leben!<span>\n"
 
 	msg += "<span class='notice'>Moodlets:\n</span>"//All moodlets
 	if(mood_events.len)
@@ -79,7 +79,7 @@
 			var/datum/mood_event/event = mood_events[i]
 			msg += event.description
 	else
-		msg += "<span class='nicegreen'>I don't have much of a reaction to anything right now.<span>\n"
+		msg += "<span class='nicegreen'>Ich habe im Moment keine große Reaktion auf irgendetwas.<span>\n"
 	to_chat(user || parent, msg)
 
 /datum/component/mood/proc/update_mood() //Called whenever a mood event is added or removed

@@ -22,7 +22,7 @@
 
 		if(!sender_override)
 			if(title == "")
-				GLOB.news_network.SubmitArticle(text, "Central Command Update", "Stations Ankündigung", null)
+				GLOB.news_network.SubmitArticle(text, "Update des Zentralkommandos", "Stations Ankündigung", null)
 			else
 				GLOB.news_network.SubmitArticle(title + "<br><br>" + text, "Central Command", "Station Ankündigung", null)
 
