@@ -70,10 +70,10 @@
 		var/datum/bank_account/D = SSeconomy.get_dep_account(account_job.paycheck_department)
 		if(D)
 			if(!transfer_money(D, money_to_transfer))
-				bank_card_talk("ERROR: Payday aborted, departmental funds insufficient.")
+				bank_card_talk("FEHLER: Zahltag abgebrochen, Mittel der Abteilung unzureichend.")
 				return FALSE
 			else
-				bank_card_talk("Payday processed, account now holds $[account_balance].")
+				bank_card_talk("Zahltag verarbeitet, Konto hält jetzt $[account_balance].")
 				//The bonus only resets once it goes through.
 				if(paycheck_bonus > 0) //And we're not getting rid of debt
 					paycheck_bonus = 0

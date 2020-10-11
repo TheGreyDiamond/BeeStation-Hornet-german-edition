@@ -20,10 +20,10 @@
 
 	for(var/obj/item/I in held_items)
 		if(!(I.item_flags & ABSTRACT))
-			. += "[t_He] [t_is] holding [I.get_examine_string(user)] in [t_his] [get_held_index_name(get_held_index_of_item(I))]."
+			. += "[t_He] [t_is] hält [I.get_examine_string(user)] in [t_his] [get_held_index_name(get_held_index_of_item(I))]."
 
 	if (back)
-		. += "[t_He] [t_has] [back.get_examine_string(user)] on [t_his] back."
+		. += "[t_He] [t_has] [back.get_examine_string(user)] auf [t_his] Rücken."
 	var/appears_dead = 0
 	if (stat == DEAD)
 		appears_dead = 1
@@ -104,9 +104,9 @@
 			if(MOOD_LEVEL_SAD4 to MOOD_LEVEL_SAD3)
 				. += "[t_He] sieht sehr traurig aus."
 			if(MOOD_LEVEL_SAD3 to MOOD_LEVEL_SAD2)
-				. += "[t_He] look[p_s()] a bit down."
+				. += "[t_He] sieht ein wenig down au."
 			if(MOOD_LEVEL_HAPPY2 to MOOD_LEVEL_HAPPY3)
-				. += "[t_He] look[p_s()] quite happy."
+				. += "[t_He] sieht relativ fröhlich aus."
 			if(MOOD_LEVEL_HAPPY3 to MOOD_LEVEL_HAPPY4)
 				. += "[t_He] look[p_s()] very happy."
 			if(MOOD_LEVEL_HAPPY4 to INFINITY)
