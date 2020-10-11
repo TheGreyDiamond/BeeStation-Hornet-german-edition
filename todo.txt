@@ -1,5 +1,5 @@
 Good TODO:
-	code/controllers/subsystem/ticker.dm
+	
 
 Started but not done:
 	code/game/machinery/newscaster.dm
