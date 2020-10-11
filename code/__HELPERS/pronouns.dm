@@ -43,66 +43,66 @@
 /client/p_they(capitalized, temp_gender)
 	if(!temp_gender)
 		temp_gender = gender
-	. = "they"
+	. = "sie"
 	switch(temp_gender)
 		if(FEMALE)
-			. = "she"
+			. = "sie"
 		if(MALE)
-			. = "he"
+			. = "er"
 	if(capitalized)
 		. = capitalize(.)
 
 /client/p_their(capitalized, temp_gender)
 	if(!temp_gender)
 		temp_gender = gender
-	. = "their"
+	. = "ihre"
 	switch(temp_gender)
 		if(FEMALE)
-			. = "her"
+			. = "ihre"
 		if(MALE)
-			. = "his"
+			. = "seine"
 	if(capitalized)
 		. = capitalize(.)
 
 /client/p_them(capitalized, temp_gender)
 	if(!temp_gender)
 		temp_gender = gender
-	. = "them"
+	. = "sie"
 	switch(temp_gender)
 		if(FEMALE)
-			. = "her"
+			. = "ihre"
 		if(MALE)
-			. = "him"
+			. = "seine"
 	if(capitalized)
 		. = capitalize(.)
 
 /client/p_have(temp_gender)
 	if(!temp_gender)
 		temp_gender = gender
-	. = "has"
+	. = "hat"
 	if(temp_gender == PLURAL || temp_gender == NEUTER)
-		. = "have"
+		. = "haben"
 
 /client/p_are(temp_gender)
 	if(!temp_gender)
 		temp_gender = gender
-	. = "is"
+	. = "ist"
 	if(temp_gender == PLURAL || temp_gender == NEUTER)
-		. = "are"
+		. = "sind"
 
 /client/p_were(temp_gender)
 	if(!temp_gender)
 		temp_gender = gender
-	. = "was"
+	. = "war"
 	if(temp_gender == PLURAL || temp_gender == NEUTER)
-		. = "were"
+		. = "waren"
 
 /client/p_do(temp_gender)
 	if(!temp_gender)
 		temp_gender = gender
-	. = "does"
+	. = "tut"
 	if(temp_gender == PLURAL || temp_gender == NEUTER)
-		. = "do"
+		. = "tun"
 
 /client/p_s(temp_gender)
 	if(!temp_gender)
@@ -123,11 +123,11 @@
 	. = "it"
 	switch(temp_gender)
 		if(FEMALE)
-			. = "sie"
+			. = "er"
 		if(MALE)
-			. = "her"
+			. = "sie"
 		if(PLURAL)
-			. = "they"
+			. = "sie"
 	if(capitalized)
 		. = capitalize(.)
 
