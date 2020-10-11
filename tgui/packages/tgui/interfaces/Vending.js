@@ -111,16 +111,16 @@ export const Vending = (props, context) => {
           <Section title="User">
             {data.user && (
               <Box>
-                Welcome, <b>{data.user.name}</b>,
+                Willkommen, <b>{data.user.name}</b>,
                 {' '}
                 <b>{data.user.job || 'Unemployed'}</b>!
                 <br />
-                Your balance is <b>{data.user.cash} credits</b>.
+                Dein Kontostand sind <b>{data.user.cash} credits</b>.
               </Box>
             ) || (
               <Box color="light-gray">
-                No registered ID card!<br />
-                Please contact your local HoP!
+                Kein registrierter Ausweis!<br />
+                Bitte kontaktiere deinen lokalen HoP!
               </Box>
             )}
           </Section>
