@@ -137,9 +137,9 @@
 	. = "its"
 	switch(temp_gender)
 		if(FEMALE)
-			. = "seine"
-		if(MALE)
 			. = "ihre"
+		if(MALE)
+			. = "seine"
 		if(PLURAL)
 			. = "their"
 	if(capitalized)
