@@ -34,16 +34,16 @@ const AirAlarmStatus = (props, context) => {
     },
     1: {
       color: 'average',
-      localStatusText: 'Caution',
+      localStatusText: 'Achtung',
     },
     2: {
       color: 'bad',
-      localStatusText: 'Danger (Internals Required)',
+      localStatusText: 'Gefahr (Atemmasken werden ben&ouml;tigt)',
     },
   };
   const localStatus = dangerMap[data.danger_level] || dangerMap[0];
   return (
-    <Section title="Air Status">
+    <Section title="Luftzustand">
       <LabeledList>
         {entries.length > 0 && (
           <Fragment>
@@ -59,15 +59,15 @@ const AirAlarmStatus = (props, context) => {
               );
             })}
             <LabeledList.Item
-              label="Local status"
+              label="Lokaler Zustand"
               color={localStatus.color}>
               {localStatus.localStatusText}
             </LabeledList.Item>
             <LabeledList.Item
-              label="Area status"
-              color={data.atmos_alarm || data.fire_alarm ? 'bad' : 'good'}>
-              {data.atmos_alarm && 'Atmosphere Alarm'
-                || data.fire_alarm && 'Fire Alarm'
+              label="Status des Gebiets"
+              color={data.atmos_alarm || data.fire_alarm ? 'schlecht' : 'gut'}>
+              {data.atmos_alarm && 'Atmosph&auml;ren-Alarm'
+                || data.fire_alarm && 'Feueralarm'
                 || 'Nominal'}
             </LabeledList.Item>
           </Fragment>
@@ -75,14 +75,14 @@ const AirAlarmStatus = (props, context) => {
           <LabeledList.Item
             label="Warning"
             color="bad">
-            Cannot obtain air sample for analysis.
+            Kann keine Luftprobe zur Analyse erhalten.
           </LabeledList.Item>
         )}
         {!!data.emagged && (
           <LabeledList.Item
             label="Warning"
             color="bad">
-            Safety measures offline. Device may exhibit abnormal behavior.
+            Sicherheitsmaßnahmen offline. Das Gerät kann anormales Verhalten aufzeigen.
           </LabeledList.Item>
         )}
       </LabeledList>
@@ -92,23 +92,23 @@ const AirAlarmStatus = (props, context) => {
 
 const AIR_ALARM_ROUTES = {
   home: {
-    title: 'Air Controls',
+    title: 'Luftkontrollen',
     component: () => AirAlarmControlHome,
   },
   vents: {
-    title: 'Vent Controls',
+    title: 'Belüftungskontrollen',
     component: () => AirAlarmControlVents,
   },
   scrubbers: {
-    title: 'Scrubber Controls',
+    title: 'Scrubber-Steuerung',
     component: () => AirAlarmControlScrubbers,
   },
   modes: {
-    title: 'Operating Mode',
+    title: 'Betriebsmodus',
     component: () => AirAlarmControlModes,
   },
   thresholds: {
-    title: 'Alarm Thresholds',
+    title: 'Alarm-Schwellenwerte',
     component: () => AirAlarmControlThresholds,
   },
 };
