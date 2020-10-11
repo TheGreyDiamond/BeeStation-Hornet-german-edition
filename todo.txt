@@ -1,8 +1,8 @@
 Good TODO:
 	code/game/machinery/newscaster.dm
-	code/_onclich/hud/screen_objects.dm
+	code/_onclick/hud/screen_objects.dm
 	code/controllers/subsystem/ticker.dm
 	
 	
 Notes:
-	/code/modules/vending/
+	

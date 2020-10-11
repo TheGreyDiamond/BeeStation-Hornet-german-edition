@@ -612,7 +612,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 	else
 		display_parts(user)
 	if(moved)
-		to_chat(user, "<span class='notice'>[bewegte] Gegenstände aufgefüllt.</span>")
+		to_chat(user, "<span class='notice'>[moved] Gegenstände aufgefüllt.</span>")
 		W.play_rped_sound()
 	return TRUE
 
@@ -1091,7 +1091,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 
 /obj/item/price_tagger/attack_self(mob/user)
 	price = max(1, round(input(user,"set price","price") as num|null, 1))
-	to_chat(user, "<span class='notice'> Der [src] wird den Dingen nun ein [Preis] cr-Tag geben.</span>")
+	to_chat(user, "<span class='notice'> Der [src] wird den Dingen nun ein [price] cr-Tag geben.</span>")
 
 /obj/item/price_tagger/afterattack(atom/target, mob/user, proximity)
 	. = ..()
@@ -1100,4 +1100,4 @@ GLOBAL_LIST_EMPTY(vending_products)
 	if(isitem(target))
 		var/obj/item/I = target
 		I.custom_price = price
-		to_chat(user, "<span class='notice'>Du legst den Preis von [I] auf [Preis] cr fest.</span>")
+		to_chat(user, "<span class='notice'>Du legst den Preis von [I] auf [price] cr fest.</span>")
