@@ -2,14 +2,14 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 
 /obj/machinery/announcement_system
 	density = TRUE
-	name = "\improper Automated Announcement System"
-	desc = "An automated announcement system that handles minor announcements over the radio."
+	name = "\improper Automatisches Ankündigungssystem"
+	desc = "Ein automatisches Ansagesystem, das kleinere Durchsagen über das Radio bearbeitet."
 	icon = 'icons/obj/machines/telecomms.dmi'
 	icon_state = "AAS_On"
 
-	verb_say = "coldly states"
-	verb_ask = "queries"
-	verb_exclaim = "alarms"
+	verb_say = "teil kalt mit"
+	verb_ask = "fragt an"
+	verb_exclaim = "alamiert"
 
 	idle_power_usage = 20
 	active_power_usage = 50
@@ -17,9 +17,9 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 	circuit = /obj/item/circuitboard/machine/announcement_system
 
 	var/obj/item/radio/headset/radio
-	var/arrival = "%PERSON has signed up as %RANK"
+	var/arrival = "%PERSON hat sich als %RANK angemeldet"
 	var/arrivalToggle = 1
-	var/newhead = "%PERSON, %RANK, is the department head."
+	var/newhead = "%PERSON, %RANK, ist der Abteilungsleiter."
 	var/newheadToggle = 1
 
 	var/greenlight = "Light_Green"
@@ -89,11 +89,11 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 	else if(message_type == "NEWHEAD" && newheadToggle)
 		message = CompileText(newhead, user, rank)
 	else if(message_type == "AIWIPE" && newheadToggle)
-		message = CompileText("%PERSON has been moved to intelligence storage.", user, rank)
+		message = CompileText("%PERSON wurde in einen Geheimdienstspeicher verlegt.", user, rank)
 	else if(message_type == "CRYOSTORAGE")
-		message = CompileText("%PERSON, %RANK has been moved to cryo storage.", user, rank)
+		message = CompileText("%PERSON, %RANK wurde ins Kryo-Lager verlegt.", user, rank)
 	else if(message_type == "ARRIVALS_BROKEN")
-		message = "The arrivals shuttle has been damaged. Docking for repairs..."
+		message = "Das ankommende Shuttle wurde beschädigt. Andocken für Reparaturen..."
 
 	if(channels.len == 0)
 		radio.talk_into(src, message, null)
@@ -125,7 +125,7 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 	if(!usr.canUseTopic(src, !issilicon(usr)))
 		return
 	if(stat & BROKEN)
-		visible_message("<span class='warning'>[src] buzzes.</span>", "<span class='hear'>You hear a faint buzz.</span>")
+		visible_message("<span class='warning'>[src] summt.</span>", "<span class='hear'>Man hört ein schwaches Summen.</span>")
 		playsound(src.loc, 'sound/machines/buzz-two.ogg', 50, TRUE)
 		return
 	switch(action)
@@ -158,7 +158,7 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 	if(!user.canUseTopic(src, !issilicon(user)))
 		return
 	if(stat & BROKEN)
-		to_chat(user, "<span class='warning'>[src]'s firmware appears to be malfunctioning!</span>")
+		to_chat(user, "<span class='warning'>[src]s Firmware scheint nicht zu funktionieren!</span>")
 		return
 	interact(user)
 
