@@ -425,7 +425,7 @@ SUBSYSTEM_DEF(job)
 
 	if(living_mob.mind)
 		living_mob.mind.assigned_role = rank
-	to_chat(M, "<b>You are the [rank].</b>")
+	to_chat(M, "<b>Du bist der [rank].</b>")
 	if(job)
 		var/new_mob = job.equip(living_mob, null, null, joined_late , null, M.client)
 		if(ismob(new_mob))
