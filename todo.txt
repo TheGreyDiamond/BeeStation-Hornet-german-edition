@@ -1,8 +1,9 @@
 Good TODO:
+	code/controllers/subsystem/ticker.dm
+
+Started but not done:
 	code/game/machinery/newscaster.dm
 	code/_onclick/hud/screen_objects.dm
-	code/controllers/subsystem/ticker.dm
-	
 	
 Notes:
 	

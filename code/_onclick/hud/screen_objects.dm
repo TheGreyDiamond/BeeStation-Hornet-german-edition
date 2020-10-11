@@ -77,7 +77,7 @@
 		return TRUE
 	var/area/A = get_area(usr)
 	if(!A.outdoors)
-		to_chat(usr, "<span class='warning'>There is already a defined structure here.</span>")
+		to_chat(usr, "<span class='warning'>Hier gibt es bereits eine definierte Struktur.</span>")
 		return TRUE
 	create_area(usr)
 
@@ -307,7 +307,7 @@
 
 	if(C.internal)
 		C.internal = null
-		to_chat(C, "<span class='notice'>You are no longer running on internals.</span>")
+		to_chat(C, "<span class='notice'>Du benutzt keine Atemmaske mehr.</span>")
 		icon_state = "internal0"
 	else
 		if(!C.getorganslot(ORGAN_SLOT_BREATHING_TUBE))
@@ -324,7 +324,7 @@
 
 		var/obj/item/I = C.is_holding_item_of_type(/obj/item/tank)
 		if(I)
-			to_chat(C, "<span class='notice'>You are now running on internals from [I] in your [C.get_held_index_name(C.get_held_index_of_item(I))].</span>")
+			to_chat(C, "<span class='notice'>Du läufst jetzt auf Interna von [I] in deinem [C.get_held_index_name(C.get_held_index_of_item(I))].</span>")
 			C.internal = I
 		else if(ishuman(C))
 			var/mob/living/carbon/human/H = C
