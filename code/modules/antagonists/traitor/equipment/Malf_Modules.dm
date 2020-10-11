@@ -234,7 +234,7 @@ GLOBAL_LIST_INIT(blacklisted_malf_machines, typecacheof(list(
 /datum/action/innate/ai/nuke_station/Activate()
 	var/turf/T = get_turf(owner)
 	if(!istype(T) || !is_station_level(T.z))
-		to_chat(owner, "<span class='warning'>You cannot activate the doomsday device while off-station!</span>")
+		to_chat(owner, "<span class='warning'>Ihr könnt die Weltuntergangsmaschine nicht aktivieren, wenn ihr außerhalb der Station seid!</span>")
 		return
 	if(alert(owner, "Send arming signal? (true = arm, false = cancel)", "purge_all_life()", "confirm = TRUE;", "confirm = FALSE;") != "confirm = TRUE;")
 		return
@@ -260,7 +260,7 @@ GLOBAL_LIST_INIT(blacklisted_malf_machines, typecacheof(list(
 		sleep(20)
 		if(!owner || QDELETED(owner))
 			return
-		to_chat(owner, "<span class='boldannounce'>Sending security report to Central Command.....[rand(0, 9) + (rand(20, 30) * i)]%</span>")
+		to_chat(owner, "<span class='boldannounce'>Sicherheitsbericht an das Zentralkommando senden.....[rand(0, 9) + (rand(20, 30) * i)]%</span>")
 	sleep(3)
 	if(!owner || QDELETED(owner))
 		return

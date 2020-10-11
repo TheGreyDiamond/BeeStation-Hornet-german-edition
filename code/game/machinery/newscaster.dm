@@ -856,13 +856,13 @@ GLOBAL_LIST_EMPTY(allCasters)
 
 /obj/machinery/newscaster/proc/newsAlert(channel)
 	if(channel)
-		say("Breaking news from [channel]!")
+		say("Eilmeldung vom [channel]!")
 		alert = TRUE
 		update_icon()
 		addtimer(CALLBACK(src,.proc/remove_alert),alert_delay,TIMER_UNIQUE|TIMER_OVERRIDE)
 		playsound(loc, 'sound/machines/twobeep_high.ogg', 75, 1)
 	else
-		say("Attention! Wanted issue distributed!")
+		say("Achtung! Gesuchte Ausgabe verteilt!")
 		playsound(loc, 'sound/machines/warning-buzzer.ogg', 75, 1)
 
 
