@@ -5,7 +5,7 @@
 [![Build Status](https://travis-ci.com/BeeStation/BeeStation-Hornet.svg?branch=master)](https://travis-ci.com/BeeStation/BeeStation-Hornet) ![Open Issues](https://isitmaintained.com/badge/open/BeeStation/BeeStation-Hornet.svg)
 
 **Website:** https://bees.thegreydimond.de
-**Code:** https://github.com/beestation/beestation-hornet
+**Code:** https://github.com/BienenStation/BeeStation-Hornet-A-german-fork/
 **Wiki:** https://wiki.beestation13.com/view/Main_Page
 
 
