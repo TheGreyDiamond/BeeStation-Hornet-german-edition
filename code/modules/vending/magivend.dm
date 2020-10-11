@@ -2,7 +2,7 @@
 	name = "\improper MagiVend"
 	desc = "A magic vending machine."
 	icon_state = "MagiVend"
-	product_slogans = "Sling spells the proper way with MagiVend!;Be your own Houdini! Use MagiVend!"
+	product_slogans = "Schleuderzauber richtig anwenden mit MagiVend!;Sei dein eigener Houdini! Benutze MagiVend!"
 	vend_reply = "Have an enchanted evening!"
 	light_color = LIGHT_COLOR_PURPLE
 	product_ads = "FJKLFJSD;AJKFLBJAKL;1234 LOONIES LOL!;>MFW;Kill them fuckers!;GET DAT FUKKEN DISK;HONK!;EI NATH;Destroy the station!;Admin conspiracies since forever!;Space-time bending hardware!"

@@ -1,6 +1,6 @@
 /obj/machinery/vending/engivend
 	name = "\improper Engi-Vend"
-	desc = "Spare tool vending. What? Did you expect some witty description?"
+	desc = "Verkauf von Ersatzwerkzeug. Was ist das? Hast du eine geistreiche Beschreibung erwartet?"
 	icon_state = "engivend"
 	icon_deny = "engivend-deny"
 	light_color = LIGHT_COLOR_YELLOW

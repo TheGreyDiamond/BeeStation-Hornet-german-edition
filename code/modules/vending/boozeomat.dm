@@ -1,6 +1,6 @@
 /obj/machinery/vending/boozeomat
 	name = "\improper Booze-O-Mat"
-	desc = "A technological marvel, supposedly able to mix just the mixture you'd like to drink the moment you ask for one."
+	desc = "Ein technologisches Wunderwerk, das angeblich in der Lage ist, genau die Mischung zu mischen, die du trinken möchtest, sobald du darum bittest."
 	icon_state = "boozeomat"
 	icon_deny = "boozeomat-deny"
 	light_color = LIGHT_COLOR_BLUEGREEN
@@ -42,8 +42,8 @@
 				   /obj/item/reagent_containers/food/drinks/bottle/champagne = 5,
 				   /obj/item/reagent_containers/food/drinks/bottle/trappist = 5)
 
-	product_slogans = "I hope nobody asks me for a bloody cup o' tea...;Alcohol is humanity's friend. Would you abandon a friend?;Quite delighted to serve you!;Is nobody thirsty on this station?"
-	product_ads = "Drink up!;Booze is good for you!;Alcohol is humanity's best friend.;Quite delighted to serve you!;Care for a nice, cold beer?;Nothing cures you like booze!;Have a sip!;Have a drink!;Have a beer!;Beer is good for you!;Only the finest alcohol!;Best quality booze since 2053!;Award-winning wine!;Maximum alcohol!;Man loves beer.;A toast for progress!"
+	product_slogans = "Ich hoffe, niemand bittet mich um eine blutige Tasse Tee...;Alkohol ist der Freund der Menschheit. Würdest du einen Freund im Stich lassen?;Es ist mir ein Vergnügen, dir zu dienen!;Ist auf dieser Station niemand durstig?"
+	product_ads = "Trink aus!;Alkohol ist gut für dich!;Alkohol ist der beste Freund der Menschheit!;Es ist mir ein Vergnügen, dir zu dienen!;Lust auf ein schönes, kaltes Bier?;Nichts heilt dich so gut wie Alkohol!;Nimm einen Schluck!;Trink einen Schluck!;Trink ein Bier!;Bier ist gut für dich!;Nur der feinste Alkohol!;Die beste Qualität an Alkohol seit 2053!;Preisgekrönter Wein!;Maximaler Alkohol!;Der Mensch liebt Bier!;Ein Toast auf den Fortschritt!"
 	req_access = list(ACCESS_BAR)
 	refill_canister = /obj/item/vending_refill/boozeomat
 	default_price = 20
@@ -51,7 +51,7 @@
 	payment_department = ACCOUNT_SRV
 
 /obj/machinery/vending/boozeomat/all_access
-	desc = "A technological marvel, supposedly able to mix just the mixture you'd like to drink the moment you ask for one. This model appears to have no access restrictions."
+	desc = "Ein technologisches Wunderwerk, das angeblich in der Lage ist, genau die Mischung zu mischen, die du trinken möchtest, sobald du darum bittest. Dieses Modell scheint keine Zugangsbeschränkungen zu haben."
 	req_access = null
 
 /obj/machinery/vending/boozeomat/pubby_maint //abandoned bar on Pubbystation

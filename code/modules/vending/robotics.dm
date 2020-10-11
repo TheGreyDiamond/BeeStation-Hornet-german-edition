@@ -1,7 +1,7 @@
 //This one's from bay12
 /obj/machinery/vending/robotics
 	name = "\improper Robotech Deluxe"
-	desc = "All the tools you need to create your own robot army."
+	desc = "Alle Werkzeuge, die du brauchst, um deine eigene Roboterarmee zu erschaffen."
 	icon_state = "robotics"
 	icon_deny = "robotics-deny"
 	light_color = LIGHT_COLOR_WHITE

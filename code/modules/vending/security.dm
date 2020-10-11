@@ -1,7 +1,7 @@
 /obj/machinery/vending/security
 	name = "\improper SecTech"
-	desc = "A security equipment vendor."
-	product_ads = "Crack capitalist skulls!;Beat some heads in!;Don't forget - harm is good!;Your weapons are right here.;Handcuffs!;Freeze, scumbag!;Don't tase me bro!;Tase them, bro.;Why not have a donut?"
+	desc = "Ein Verkäufer von Sicherheitsausrüstung."
+	product_ads = "Schlagt kapitalistische Schädel ein!;Schlagt ein paar Schädel ein!;Vergesst nicht - Schaden ist gut!;Eure Waffen sind hier.;Handschellen!;Keine Bewegung, Drecksack!;Tasert mich nicht, Bruder!;Tasert sie, Bruder!;Warum nehmt ihr nicht einen Donut?"
 	icon_state = "sec"
 	icon_deny = "sec-deny"
 	light_color = LIGHT_COLOR_BLUE

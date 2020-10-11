@@ -1,10 +1,10 @@
 /obj/machinery/vending/toyliberationstation
 	name = "\improper Syndicate Donksoft Toy Vendor"
-	desc = "An ages 8 and up approved vendor that dispenses toys. If you were to find the right wires, you can unlock the adult mode setting!"
+	desc = "Ein ab 8 Jahren zugelassener Verkäufer, der Spielzeug ausgibt. Wenn du die richtigen Drähte findest, kannst du den Erwachsenenmodus freischalten!"
 	icon_state = "syndi"
-	product_slogans = "Get your cool toys today!;Trigger a valid hunter today!;Quality toy weapons for cheap prices!;Give them to HoPs for all access!;Give them to HoS to get permabrigged!"
-	product_ads = "Feel robust with your toys!;Express your inner child today!;Toy weapons don't kill people, but valid hunters do!;Who needs responsibilities when you have toy weapons?;Make your next murder FUN!"
-	vend_reply = "Come back for more!"
+	product_slogans = "Besorg dir noch heute deine coolen Spielzeuge!;Löse noch heute einen gültigen Jäger aus!;Qualitativ hochwertige Spielzeugwaffen zu günstigen Preisen!;Gib sie HoPs für alle Zugriffe!;Gib sie HoS zum Permabriggen!"
+	product_ads = "Fühle dich robust mit deinem Spielzeug!;Drücke dein inneres Kind heute aus!;Spielzeugwaffen töten keine Menschen, aber gültige Jäger schon!;Wer braucht Verantwortung, wenn du Spielzeugwaffen hast?;Mach deinen nächsten Mord zum Spaß!"
+	vend_reply = "Kommt zurück für mehr!"
 	light_color = LIGHT_COLOR_RED
 	circuit = /obj/item/circuitboard/machine/vending/syndicatedonksofttoyvendor
 	products = list(/obj/item/gun/ballistic/automatic/toy/unrestricted = 10,

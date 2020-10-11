@@ -1,9 +1,9 @@
 /obj/machinery/vending/modularpc
 	name = "\improper Deluxe Silicate Selections"
-	desc = "All the parts you need to build your own custom pc."
+	desc = "Alle Teile, die du brauchst, um deinen eigenen PC zu bauen."
 	icon_state = "modularpc"
 	icon_deny = "modularpc-deny"
-	product_ads = "Get your gamer gear!;The best GPUs for all of your space-crypto needs!;The most robust cooling!;The finest RGB in space!"
+	product_ads = "Holt euch eure Gamer-Ausrüstung!;Die besten GPUs für all eure Space-Crypto-Bedürfnisse!;Die robusteste Kühlung!;Das feinste RGB im Weltraum!"
 	vend_reply = "Game on!"
 	light_color = LIGHT_COLOR_WHITE
 	products = list(/obj/item/modular_computer/laptop = 4,

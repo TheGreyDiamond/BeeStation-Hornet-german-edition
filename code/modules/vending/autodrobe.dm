@@ -4,8 +4,8 @@
 	icon_state = "theater"
 	icon_deny = "theater-deny"
 	req_access = list(ACCESS_THEATRE)
-	product_slogans = "Dress for success!;Suited and booted!;It's show time!;Why leave style up to fate? Use AutoDrobe!"
-	vend_reply = "Thank you for using AutoDrobe!"
+	product_slogans = "Kleide dich für den Erfolg!;Anzug und Stiefel!;Es ist Showtime!;Warum den Stil dem Schicksal überlassen? Benutze AutoDrobe!"
+	vend_reply = "Danke, dass du AutoDrobe benutzt!"
 	light_color = LIGHT_COLOR_RED
 	products = list(/obj/item/clothing/suit/chickensuit = 1,
 					/obj/item/clothing/head/chicken = 1,
@@ -138,7 +138,7 @@
 	extra_price = 75
 	payment_department = ACCOUNT_SRV
 /obj/machinery/vending/autodrobe/all_access
-	desc = "A vending machine for costumes. This model appears to have no access restrictions."
+	desc = "Ein Verkaufsautomat für Kostüme. Dieses Modell scheint keine Zugangsbeschränkungen zu haben."
 	req_access = null
 
 /obj/item/vending_refill/autodrobe

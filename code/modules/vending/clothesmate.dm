@@ -1,11 +1,11 @@
 //DON'T FORGET TO CHANGE THE REFILL SIZE IF YOU CHANGE THE MACHINE'S CONTENTS!
 /obj/machinery/vending/clothing
 	name = "ClothesMate" //renamed to make the slogan rhyme
-	desc = "A vending machine for clothing."
+	desc = "Ein Verkaufsautomat für Kleidung."
 	icon_state = "clothes"
 	icon_deny = "clothes-deny"
-	product_slogans = "Dress for success!;Prepare to look swagalicious!;Look at all this swag!;Why leave style up to fate? Use the ClothesMate!"
-	vend_reply = "Thank you for using the ClothesMate!"
+	product_slogans = "Zieht euch für den Erfolg an!;Bereitet euch darauf vor, protzig auszusehen!;Seht euch all diese Protzerei an!;Warum den Stil dem Schicksal überlassen? Benutze den ClothesMate!"
+	vend_reply = "Danke, dass ihr den ClothesMate benutzt!"
 	light_color = LIGHT_COLOR_GREEN
 	products = list(/obj/item/clothing/head/beanie = 3,
 		            /obj/item/clothing/head/beanie/black = 3,
