@@ -78,9 +78,9 @@
 				qdel(query_get_new_polls)
 				return
 			if(query_get_new_polls.NextRow())
-				output += "<p><b><a href='byond://?src=[rs];showpoll=1'>Show Player Polls</A> (NEW!)</b></p>"
+				output += "<p><b><a href='byond://?src=[rs];showpoll=1'>Spieler-Umfragen anzeigen</A> (NEW!)</b></p>"
 			else
-				output += "<p><a href='byond://?src=[rs];showpoll=1'>Show Player Polls</A></p>"
+				output += "<p><a href='byond://?src=[rs];showpoll=1'>Spieler-Umfragen anzeigen</A></p>"
 			qdel(query_get_new_polls)
 			if(QDELETED(src))
 				return
