@@ -845,28 +845,28 @@
 				if(istype(C, /obj/item/stack/sheet/iron))
 					var/obj/item/stack/sheet/iron/S = C
 					if(S.get_amount() < 2)
-						to_chat(user, "<span class='warning'>You need at least 2 iron sheets to reinforce [src].</span>")
+						to_chat(user, "<span class='warning'>Ihr braucht mindestens 2 Eisenplatten zur Verstärkung von [src].</span>")
 						return
-					to_chat(user, "<span class='notice'>You start reinforcing [src].</span>")
+					to_chat(user, "<span class='notice'>Du fängst an [src] zu verstärken.</span>")
 					if(do_after(user, 20, TRUE, src))
 						if(!panel_open || !S.use(2))
 							return
-						user.visible_message("<span class='notice'>[user] reinforces \the [src] with iron.</span>",
-											"<span class='notice'>You reinforce \the [src] with iron.</span>")
+						user.visible_message("<span class='notice'>[user] verstärkt den [src] mit Eisen.</span>",
+											"<span class='notice'>Ihr verstärkt die [src] mit Eisen.</span>")
 						security_level = AIRLOCK_SECURITY_IRON
 						update_icon()
 					return
 				else if(istype(C, /obj/item/stack/sheet/plasteel))
 					var/obj/item/stack/sheet/plasteel/S = C
 					if(S.get_amount() < 2)
-						to_chat(user, "<span class='warning'>You need at least 2 plasteel sheets to reinforce [src].</span>")
+						to_chat(user, "<span class='warning'>Du brauchst mindestens 2 Plasteelblätter, um [src] zu verstärken.</span>")
 						return
-					to_chat(user, "<span class='notice'>You start reinforcing [src].</span>")
+					to_chat(user, "<span class='notice'>Du fängst an [src] zu verstärken.</span>")
 					if(do_after(user, 20, TRUE, src))
 						if(!panel_open || !S.use(2))
 							return
-						user.visible_message("<span class='notice'>[user] reinforces \the [src] with plasteel.</span>",
-											"<span class='notice'>You reinforce \the [src] with plasteel.</span>")
+						user.visible_message("<span class='notice'>[user] verstärkt den [src] mit Plasteel.</span>",
+											"<span class='notice'>Ihr verstärkt die [src] mit Plasteel.</span>")
 						security_level = AIRLOCK_SECURITY_PLASTEEL
 						modify_max_integrity(normal_integrity * AIRLOCK_INTEGRITY_MULTIPLIER)
 						damage_deflection = AIRLOCK_DAMAGE_DEFLECTION_R
@@ -876,13 +876,13 @@
 				if(C.tool_behaviour == TOOL_WELDER)
 					if(!C.tool_start_check(user, amount=2))
 						return
-					to_chat(user, "<span class='notice'>You begin cutting the panel's shielding...</span>")
+					to_chat(user, "<span class='notice'>Ihr fangt an, die Abschirmung des Paneels zu zerschneiden..</span>")
 					if(C.use_tool(src, user, 40, volume=50, amount = 2))
 						if(!panel_open)
 							return
-						user.visible_message("<span class='notice'>[user] cuts through \the [src]'s shielding.</span>",
-										"<span class='notice'>You cut through \the [src]'s shielding.</span>",
-										"<span class='italics'>You hear welding.</span>")
+						user.visible_message("<span class='notice'>[user] durchschneidet die Abschirmung des [src].</span>",
+										"<span class='notice'>Du hast die Schilde der [src] durchtrennt.</span>",
+										"<span class='italics'>Du hörtst Schweißen.</span>")
 						security_level = AIRLOCK_SECURITY_NONE
 						spawn_atom_to_turf(/obj/item/stack/sheet/iron, user.loc, 2)
 						update_icon()
@@ -890,7 +890,7 @@
 			if(AIRLOCK_SECURITY_PLASTEEL_I_S)
 				if(C.tool_behaviour == TOOL_CROWBAR)
 					var/obj/item/crowbar/W = C
-					to_chat(user, "<span class='notice'>You start removing the inner layer of shielding...</span>")
+					to_chat(user, "<span class='notice'>Du fängst an, die innere Schicht der Abschirmung zu entfernen..</span>")
 					if(W.use_tool(src, user, 40, volume=100))
 						if(!panel_open)
 							return
