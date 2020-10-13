@@ -293,7 +293,7 @@
 
 /obj/machinery/door/airlock/eminence_act(mob/living/simple_animal/eminence/eminence)
 	..()
-	to_chat(usr, "<span class='brass'>You begin manipulating [src]!</span>")
+	to_chat(usr, "<span class='brass'>Du fängst an, [src] zu manipulieren!</span>")
 	if(do_after(eminence, 20, target=get_turf(eminence)))
 		if(welded)
 			to_chat(eminence, text("Die Luftschleuse ist zugeschweißt worden!"))
@@ -656,43 +656,43 @@
 /obj/machinery/door/airlock/examine(mob/user)
 	. = ..()
 	if(obj_flags & EMAGGED)
-		. += "<span class='warning'>Its access panel is smoking slightly.</span>"
+		. += "<span class='warning'>Sein Zugangspaneel raucht leicht.</span>"
 	if(charge && !panel_open && in_range(user, src))
-		. += "<span class='warning'>The maintenance panel seems haphazardly fastened.</span>"
+		. += "<span class='warning'>Das Wartungspaneel scheint willkürlich befestigt zu sein.</span>"
 	if(charge && panel_open)
-		. += "<span class='warning'>Something is wired up to the airlock's electronics!</span>"
+		. += "<span class='warning'>Irgendetwas ist mit der Elektronik der Luftschleuse verdrahtet!</span>"
 	if(note)
 		if(!in_range(user, src))
-			. += "There's a [note.name] pinned to the front. You can't read it from here."
+			. += "An der Vorderseite ist ein [note.name] angeheftet. Du kannst ihn von hier aus nicht lesen."
 		else
-			. += "There's a [note.name] pinned to the front..."
+			. += "An der Vorderseite ist ein [note.name] angeheftet..."
 			. += note.examine(user)
 
 	if(panel_open)
 		switch(security_level)
 			if(AIRLOCK_SECURITY_NONE)
-				. += "Its wires are exposed!"
+				. += "Seine Drähte liegen frei!"
 			if(AIRLOCK_SECURITY_IRON)
-				. += "Its wires are hidden behind a welded metal cover."
+				. += "Seine Drähte sind hinter einer geschweißten Metallabdeckung verborgen."
 			if(AIRLOCK_SECURITY_PLASTEEL_I_S)
-				. += "There is some shredded plasteel inside."
+				. += "Da ist etwas zerfetztes Plasteel drin."
 			if(AIRLOCK_SECURITY_PLASTEEL_I)
-				. += "Its wires are behind an inner layer of plasteel."
+				. += "Seine Drähte befinden sich hinter einer inneren Schicht aus Plasteel."
 			if(AIRLOCK_SECURITY_PLASTEEL_O_S)
-				. += "There is some shredded plasteel inside."
+				. += "Da ist etwas zerfetztes Plasteel drin."
 			if(AIRLOCK_SECURITY_PLASTEEL_O)
-				. += "There is a welded plasteel cover hiding its wires."
+				. += "Eine geschweißte Plastikhülle verbirgt die Drähte."
 			if(AIRLOCK_SECURITY_PLASTEEL)
-				. += "There is a protective grille over its panel."
+				. += "Über seiner Platte befindet sich ein Schutzgitter."
 	else if(security_level)
 		if(security_level == AIRLOCK_SECURITY_IRON)
-			. += "It looks a bit stronger."
+			. += "Es sieht ein bisschen stärker aus."
 		else
-			. += "It looks very robust."
+			. += "Es sieht sehr robust aus."
 
 	if(issilicon(user) && (!stat & BROKEN))
-		. += "<span class='notice'>Shift-click [src] to [ density ? "open" : "close"] it.</span>"
-		. += "<span class='notice'>Ctrl-click [src] to [ locked ? "raise" : "drop"] its bolts.</span>"
+		. += "<span class='notice'>Shift-click [src] um es zu [ density ? "öffnen" : "schließen"].</span>"
+		. += "<span class='notice'>Ctrl-click [src] um [ locked ? "raise" : "drop"] its bolts.</span>"
 		. += "<span class='notice'>Alt-click [src] to [ secondsElectrified ? "un-electrify" : "permanently electrify"] it.</span>"
 		. += "<span class='notice'>Ctrl-Shift-click [src] to [ emergency ? "disable" : "enable"] emergency access.</span>"
 
@@ -702,12 +702,12 @@
 			hack(user)
 			return
 		else
-			to_chat(user, "<span class='warning'>Airlock AI control has been blocked with a firewall. Unable to hack.</span>")
+			to_chat(user, "<span class='warning'>Die KI-Kontrolle der Luftschleuse wurde mit einer Firewall blockiert. Es ist nicht möglich zu hacken.</span>")
 	if(obj_flags & EMAGGED)
-		to_chat(user, "<span class='warning'>Unable to interface: Airlock is unresponsive.</span>")
+		to_chat(user, "<span class='warning'>Interface nicht möglich: Luftschleuse reagiert nicht.</span>")
 		return
 	if(detonated)
-		to_chat(user, "<span class='warning'>Unable to interface. Airlock control panel damaged.</span>")
+		to_chat(user, "<span class='warning'>Interface nicht möglich. Steuerkonsole der Luftschleuse beschädigt.</span>")
 		return
 
 	ui_interact(user)
@@ -716,43 +716,43 @@
 	set waitfor = 0
 	if(!aiHacking)
 		aiHacking = TRUE
-		to_chat(user, "Airlock AI control has been blocked. Beginning fault-detection.")
+		to_chat(user, "Die KI-Kontrolle der Luftschleuse wurde blockiert. Beginn der Fehlererkennung.")
 		sleep(50)
 		if(canAIControl(user))
-			to_chat(user, "Alert cancelled. Airlock control has been restored without our assistance.")
+			to_chat(user, "Alarm aufgehoben. Die Kontrolle über die Luftschleuse wurde ohne unsere Hilfe wiederhergestellt.")
 			aiHacking = FALSE
 			return
 		else if(!canAIHack())
-			to_chat(user, "Connection lost! Unable to hack airlock.")
+			to_chat(user, "Verbindung verloren! Luftschleuse kann nicht gehackt werden.")
 			aiHacking = FALSE
 			return
-		to_chat(user, "Fault confirmed: airlock control wire disabled or cut.")
+		to_chat(user, "Fehler bestätigt: Luftschleusensteuerungsdraht deaktiviert oder durchtrennt.")
 		sleep(20)
-		to_chat(user, "Attempting to hack into airlock. This may take some time.")
+		to_chat(user, "Versuch, sich in die Luftschleuse zu hacken. Dies kann einige Zeit dauern.")
 		sleep(200)
 		if(canAIControl(user))
-			to_chat(user, "Alert cancelled. Airlock control has been restored without our assistance.")
+			to_chat(user, "Alarm aufgehoben. Die Kontrolle über die Luftschleuse wurde ohne unsere Hilfe wiederhergestellt.")
 			aiHacking = FALSE
 			return
 		else if(!canAIHack())
-			to_chat(user, "Connection lost! Unable to hack airlock.")
+			to_chat(user, "Verbindung verloren! Luftschleuse kann nicht gehackt werden.")
 			aiHacking = FALSE
 			return
-		to_chat(user, "Upload access confirmed. Loading control program into airlock software.")
+		to_chat(user, "Upload-Zugang bestätigt. Kontrollprogramm in die Schleusensoftware laden.")
 		sleep(170)
 		if(canAIControl(user))
-			to_chat(user, "Alert cancelled. Airlock control has been restored without our assistance.")
+			to_chat(user, "Alarm aufgehoben. Die Kontrolle über die Luftschleuse wurde ohne unsere Hilfe wiederhergestellt.")
 			aiHacking = FALSE
 			return
 		else if(!canAIHack())
-			to_chat(user, "Connection lost! Unable to hack airlock.")
+			to_chat(user, "Verbindung verloren! Luftschleuse kann nicht gehackt werden.")
 			aiHacking = FALSE
 			return
-		to_chat(user, "Transfer complete. Forcing airlock to execute program.")
+		to_chat(user, "Transfer abgeschlossen. Erzwinge Luftschleuse zur Ausführung des Programms.")
 		sleep(50)
 		//disable blocked control
 		aiControlDisabled = 2
-		to_chat(user, "Receiving control information from airlock.")
+		to_chat(user, "Empfange Kontrollinformationen von der Luftschleuse.")
 		sleep(10)
 		//bring up airlock dialog
 		aiHacking = FALSE
@@ -785,8 +785,8 @@
 		if((HAS_TRAIT(H, TRAIT_DUMB)) && Adjacent(user))
 			playsound(src, 'sound/effects/bang.ogg', 25, TRUE)
 			if(!istype(H.head, /obj/item/clothing/head/helmet))
-				H.visible_message("<span class='danger'>[user] headbutts the airlock.</span>", \
-									"<span class='userdanger'>You headbutt the airlock!</span>")
+				H.visible_message("<span class='danger'>[user] stößt mit dem Kopf gegen die Luftschleuse.</span>", \
+									"<span class='userdanger'>Du gibst der Luftschleuse einen Kopfstoß!</span>")
 				H.Paralyze(100)
 				H.apply_damage(10, BRUTE, BODY_ZONE_HEAD)
 			else
@@ -794,7 +794,7 @@
 
 /obj/machinery/door/airlock/attempt_wire_interaction(mob/user)
 	if(security_level)
-		to_chat(user, "<span class='warning'>Wires are protected!</span>")
+		to_chat(user, "<span class='warning'>Die Drähte sind geschützt!</span>")
 		return WIRE_INTERACTION_FAIL
 	return ..()
 
