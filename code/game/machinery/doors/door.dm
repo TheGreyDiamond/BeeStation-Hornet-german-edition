@@ -1,6 +1,6 @@
 /obj/machinery/door
 	name = "door"
-	desc = "It opens and closes."
+	desc = "Es öffnet und schließt sich."
 	icon = 'icons/obj/doors/Doorint.dmi'
 	icon_state = "door1"
 	opacity = 1
@@ -42,11 +42,11 @@
 	. = ..()
 	if(red_alert_access)
 		if(GLOB.security_level >= SEC_LEVEL_RED)
-			. += "<span class='notice'>Due to a security threat, its access requirements have been lifted!</span>"
+			. += "<span class='notice'>Aufgrund einer Sicherheitsbedrohung wurden die Zugangsvoraussetzungen aufgehoben!</span>"
 		else
-			. += "<span class='notice'>In the event of a red alert, its access requirements will automatically lift.</span>"
+			. += "<span class='notice'>Im Falle eines roten Alarms werden die Zugangsvoraussetzungen automatisch aufgehoben.</span>"
 	if(!poddoor)
-		. += "<span class='notice'>Its maintenance panel is <b>screwed</b> in place.</span>"
+		. += "<span class='notice'>Sein Wartungspaneel ist <b>geschraubt</b> an seinem Platz.</span>"
 
 /obj/machinery/door/check_access_list(list/access_list)
 	if(red_alert_access && GLOB.security_level >= SEC_LEVEL_RED)
@@ -346,7 +346,7 @@
 
 /obj/machinery/door/proc/crush()
 	for(var/mob/living/L in get_turf(src))
-		L.visible_message("<span class='warning'>[src] closes on [L], crushing [L.p_them()]!</span>", "<span class='userdanger'>[src] closes on you and crushes you!</span>")
+		L.visible_message("<span class='warning'>[src] nähert sich [L] und zermalmt [L.p_them()]!</span>", "<span class='userdanger'>[src] nähert sich dir und zerquetscht dich!</span>")
 		if(isalien(L))  //For xenos
 			L.adjustBruteLoss(DOOR_CRUSH_DAMAGE * 1.5) //Xenos go into crit after aproximately the same amount of crushes as humans.
 			L.emote("roar")
