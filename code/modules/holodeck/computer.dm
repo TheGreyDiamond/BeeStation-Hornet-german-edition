@@ -20,7 +20,7 @@
 
 /obj/machinery/computer/holodeck
 	name = "holodeck control console"
-	desc = "A computer used to control a nearby holodeck."
+	desc = "Ein Computer zur Steuerung eines nahe gelegenen Holodecks."
 	icon_screen = "holocontrol"
 	idle_power_usage = 10
 	active_power_usage = 50
@@ -139,7 +139,7 @@
 				emergency_shutdown()
 			nerf(obj_flags & EMAGGED)
 			obj_flags ^= EMAGGED
-			say("Safeties restored. Restarting...")
+			say("Sicherheiten wiederhergestellt. Neustart...")
 
 /obj/machinery/computer/holodeck/process()
 	if(damaged && prob(10))
@@ -155,7 +155,7 @@
 		emergency_shutdown()
 		damaged = TRUE
 		for(var/mob/M in urange(10,src))
-			M.show_message("The holodeck overloads!")
+			M.show_message("Das Holodeck wird überlastet!")
 
 		for(var/turf/T in linked)
 			if(prob(30))
@@ -177,12 +177,12 @@
 	if(obj_flags & EMAGGED)
 		return
 	if(!LAZYLEN(emag_programs))
-		to_chat(user, "[src] does not seem to have a card swipe port. It must be an inferior model.")
+		to_chat(user, "[src] scheint keinen Kartendurchzugs-Port zu haben. Es muss ein minderwertiges Modell sein.")
 		return
 	playsound(src, "sparks", 75, TRUE)
 	obj_flags |= EMAGGED
-	to_chat(user, "<span class='warning'>You vastly increase projector power and override the safety and security protocols.</span>")
-	say("Warning. Automatic shutoff and derezzing protocols have been corrupted. Please call Nanotrasen maintenance and do not use the simulator.")
+	to_chat(user, "<span class='warning'>Sie erhöhen die Projektorleistung erheblich und setzen die Sicherheitsprotokolle außer Kraft.</span>")
+	say("Warnung. Die automatischen Abschalt- und Derezzing-Protokolle wurden korrumpiert. Bitte rufen Sie die Nanotrasen-Wartung an und benutzen Sie den Simulator nicht.")
 	log_game("[key_name(user)] emagged the Holodeck Control Console")
 	nerf(!(obj_flags & EMAGGED))
 
@@ -252,7 +252,7 @@
 	if(program == A)
 		return
 	if(current_cd > world.time && !force)
-		say("ERROR. Recalibrating projection apparatus.")
+		say("FEHLER. Rekalibrierender Projektionsapparat.")
 		return
 	if(add_delay)
 		current_cd = world.time + HOLODECK_CD
@@ -312,7 +312,7 @@
 			silent = FALSE					// otherwise make sure they are dropped
 
 	if(!silent)
-		visible_message("<span class='notice'>[O] fades away!</span>")
+		visible_message("<span class='notice'>[O] verblasst!</span>")
 	qdel(O)
 
 #undef HOLODECK_CD
