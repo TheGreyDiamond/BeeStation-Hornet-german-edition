@@ -1,6 +1,6 @@
 /obj/machinery/computer/apc_control
 	name = "power flow control console"
-	desc = "Used to remotely control the flow of power to different parts of the station."
+	desc = "Wird zur Fernsteuerung des Stromflusses zu verschiedenen Teilen der Station verwendet."
 	icon_screen = "solar"
 	icon_keyboard = "power_key"
 	req_access = list(ACCESS_ENGINE)
@@ -23,7 +23,7 @@
 		operator = null
 		if(active_apc)
 			if(!active_apc.locked)
-				active_apc.say("Remote access canceled. Interface locked.")
+				active_apc.say("Fernzugriff abgebrochen. Schnittstelle gesperrt.")
 				playsound(active_apc, 'sound/machines/boltsdown.ogg', 25, 0)
 				playsound(active_apc, 'sound/machines/terminal_alert.ogg', 50, 0)
 			active_apc.locked = TRUE
@@ -33,7 +33,7 @@
 
 /obj/machinery/computer/apc_control/attack_ai(mob/user)
 	if(!IsAdminGhost(user))
-		to_chat(user,"<span class='warning'>[src] does not support AI control.</span>") //You already have APC access, cheater!
+		to_chat(user,"<span class='warning'>[src] unterstützt keine AI-Steuerung.</span>") //You already have APC access, cheater!
 		return
 	..(user)
 
@@ -45,43 +45,43 @@
 	var/dat
 	if(authenticated)
 		if(!checking_logs)
-			dat += "Logged in as [auth_id].<br><br>"
-			dat += "<i>Filters</i><br>"
-			dat += "<b>Name:</b> <a href='?src=[REF(src)];name_filter=1'>[result_filters["Name"] ? result_filters["Name"] : "None set"]</a><br>"
-			dat += "<b>Charge:</b> <a href='?src=[REF(src)];above_filter=1'>\>[result_filters["Charge Above"] ? result_filters["Charge Above"] : "NaN"]%</a> and <a href='?src=[REF(src)];below_filter=1'>\<[result_filters["Charge Below"] ? result_filters["Charge Below"] : "NaN"]%</a><br>"
-			dat += "<b>Accessible:</b> <a href='?src=[REF(src)];access_filter=1'>[result_filters["Responsive"] ? "Non-Responsive Only" : "All"]</a><br><br>"
+			dat += "Angemeldet als [auth_id].<br><br>"
+			dat += "<i>Filter</i><br>"
+			dat += "<b>Name:</b> <a href='?src=[REF(src)];name_filter=1'>[result_filters["Name"] ? result_filters["Name"] : "Nicht gesetzt"]</a><br>"
+			dat += "<b>Ladung:</b> <a href='?src=[REF(src)];above_filter=1'>\>[result_filters["Ladung über"] ? result_filters["Ladung über"] : "NaN"]%</a> and <a href='?src=[REF(src)];below_filter=1'>\<[result_filters["Ladung unter"] ? result_filters["Ladung unter"] : "NaN"]%</a><br>"
+			dat += "<b>Erreichbarkeit:</b> <a href='?src=[REF(src)];access_filter=1'>[result_filters["Responsive"] ? "Nur Nicht-Reaktionsfähige" : "Alle"]</a><br><br>"
 			for(var/A in GLOB.apcs_list)
 				if(check_apc(A))
 					var/obj/machinery/power/apc/APC = A
 					if(result_filters["Name"] && !findtext(APC.name, result_filters["Name"]) && !findtext(APC.area.name, result_filters["Name"]))
 						continue
-					if(result_filters["Charge Above"] && (!APC.cell || (APC.cell && (APC.cell.charge / APC.cell.maxcharge) < result_filters["Charge Above"] / 100)))
+					if(result_filters["Ladung über"] && (!APC.cell || (APC.cell && (APC.cell.charge / APC.cell.maxcharge) < result_filters["Ladung über"] / 100)))
 						continue
-					if(result_filters["Charge Below"] && APC.cell && (APC.cell.charge / APC.cell.maxcharge) > result_filters["Charge Below"] / 100)
+					if(result_filters["Ladung unter"] && APC.cell && (APC.cell.charge / APC.cell.maxcharge) > result_filters["adung unter"] / 100)
 						continue
 					if(result_filters["Responsive"] && !APC.aidisabled)
 						continue
 					dat += "<a href='?src=[REF(src)];access_apc=[REF(APC)]'>[A]</a><br>\
-					<b>Charge:</b> [APC.cell ? "[DisplayEnergy(APC.cell.charge)] / [DisplayEnergy(APC.cell.maxcharge)] ([round((APC.cell.charge / APC.cell.maxcharge) * 100)]%)" : "No Powercell Installed"]<br>\
-					<b>Area:</b> [APC.area]<br>\
-					[APC.aidisabled || APC.panel_open ? "<font color='#FF0000'>APC does not respond to interface query.</font>" : "<font color='#00FF00'>APC responds to interface query.</font>"]<br><br>"
-			dat += "<a href='?src=[REF(src)];check_logs=1'>Check Logs</a><br>"
-			dat += "<a href='?src=[REF(src)];log_out=1'>Log Out</a><br>"
+					<b>Ladung:</b> [APC.cell ? "[DisplayEnergy(APC.cell.charge)] / [DisplayEnergy(APC.cell.maxcharge)] ([round((APC.cell.charge / APC.cell.maxcharge) * 100)]%)" : "Keine Leistungszelle installiert"]<br>\
+					<b>Bereich:</b> [APC.area]<br>\
+					[APC.aidisabled || APC.panel_open ? "<font color='#FF0000'>APC antwortet nicht auf die Schnittstellenabfrage.</font>" : "<font color='#00FF00'>APC antwortet auf Schnittstellenanfrage.</font>"]<br><br>"
+			dat += "<a href='?src=[REF(src)];check_logs=1'>Logs öffnen</a><br>"
+			dat += "<a href='?src=[REF(src)];log_out=1'>Abmelden</a><br>"
 			if(obj_flags & EMAGGED)
-				dat += "<font color='#FF0000'>WARNING: Logging functionality partially disabled from outside source.</font><br>"
-				dat += "<a href='?src=[REF(src)];restore_logging=1'>Restore logging functionality?</a><br>"
+				dat += "<font color='#FF0000'>WARNUNG: Protokollierungsfunktionalität von außen teilweise deaktiviert.</font><br>"
+				dat += "<a href='?src=[REF(src)];restore_logging=1'>Logging-Funktionalität wiederherstellen?</a><br>"
 		else
 			if(logs.len)
 				for(var/entry in logs)
 					dat += "[entry]<br>"
 			else
-				dat += "<i>No activity has been recorded at this time.</i><br>"
+				dat += "<i>Bislang wurde keine Aktivität verzeichnet.</i><br>"
 			if(obj_flags & EMAGGED)
-				dat += "<a href='?src=[REF(src)];clear_logs=1'><font color='#FF0000'>@#%! CLEAR LOGS</a>"
-			dat += "<a href='?src=[REF(src)];check_apcs=1'>Return</a>"
+				dat += "<a href='?src=[REF(src)];clear_logs=1'><font color='#FF0000'>@#%! LOGS LÖSCHEN</a>"
+			dat += "<a href='?src=[REF(src)];check_apcs=1'>Zurück</a>"
 		operator = user
 	else
-		dat = "<a href='?src=[REF(src)];authenticate=1'>Please swipe a valid ID to log in...</a>"
+		dat = "<a href='?src=[REF(src)];authenticate=1'>Bitte einen gültigen Ausweis lesen.</a>"
 	var/datum/browser/popup = new(user, "apc_control", name, 600, 400)
 	popup.set_content(dat)
 	popup.set_title_image(user.browse_rsc_icon(icon, icon_state))
@@ -104,17 +104,17 @@
 		authenticated = FALSE
 		auth_id = "\[NULL\]"
 	if(href_list["restore_logging"])
-		to_chat(usr, "<span class='robot notice'>[icon2html(src, usr)] Logging functionality restored from backup data.</span>")
+		to_chat(usr, "<span class='robot notice'>[icon2html(src, usr)] Protokollierungsfunktionalität aus Sicherungsdaten wiederhergestellt.</span>")
 		obj_flags &= ~EMAGGED
 		LAZYADD(logs, "<b>-=- Logging restored to full functionality at this point -=-</b>")
 	if(href_list["access_apc"])
 		playsound(src, "terminal_type", 50, 0)
 		var/obj/machinery/power/apc/APC = locate(href_list["access_apc"]) in GLOB.apcs_list
 		if(!APC || APC.aidisabled || APC.panel_open || QDELETED(APC))
-			to_chat(usr, "<span class='robot danger'>[icon2html(src, usr)] APC does not return interface request. Remote access may be disabled.</span>")
+			to_chat(usr, "<span class='robot danger'>[icon2html(src, usr)] APC gibt keine Schnittstellenanforderung zurück. Der Fernzugriff kann deaktiviert werden.</span>")
 			return
 		if(active_apc)
-			to_chat(usr, "<span class='robot danger'>[icon2html(src, usr)] Disconnected from [active_apc].</span>")
+			to_chat(usr, "<span class='robot danger'>[icon2html(src, usr)] Getrennt von [active_apc].</span>")
 			active_apc.say("Remote access canceled. Interface locked.")
 			playsound(active_apc, 'sound/machines/boltsdown.ogg', 25, 0)
 			playsound(active_apc, 'sound/machines/terminal_alert.ogg', 50, 0)
@@ -122,7 +122,7 @@
 			active_apc.update_icon()
 			active_apc.remote_control = null
 			active_apc = null
-		to_chat(usr, "<span class='robot notice'>[icon2html(src, usr)] Connected to APC in [get_area_name(APC.area, TRUE)]. Interface request sent.</span>")
+		to_chat(usr, "<span class='robot notice'>[icon2html(src, usr)] Verbunden mit APC in [get_area_name(APC.area, TRUE)]. Schnittstellenanforderung gesendet.</span>")
 		log_activity("remotely accessed APC in [get_area_name(APC.area, TRUE)]")
 		APC.remote_control = src
 		APC.ui_interact(usr)
@@ -130,7 +130,7 @@
 		message_admins("[ADMIN_LOOKUPFLW(usr)] remotely accessed [APC] from [src] at [AREACOORD(src)].")
 		log_game("[key_name(usr)] remotely accessed [APC] from [src] at [AREACOORD(src)].")
 		if(APC.locked)
-			APC.say("Remote access detected. Interface unlocked.")
+			APC.say("Fernzugriff erkannt. Schnittstelle entsperrt.")
 			playsound(APC, 'sound/machines/boltsup.ogg', 25, 0)
 			playsound(APC, 'sound/machines/terminal_alert.ogg', 50, 0)
 		APC.locked = FALSE
@@ -146,7 +146,7 @@
 		result_filters["Name"] = new_filter
 	if(href_list["above_filter"])
 		playsound(src, 'sound/machines/terminal_prompt.ogg', 50, 0)
-		var/new_filter = input(usr, "Enter a percentage from 1-100 to sort by (greater than).", name) as null|num
+		var/new_filter = input(usr, "Geben Sie einen Prozentwert von 1-100 ein, nach dem sortiert werden soll (größer als).", name) as null|num
 		if(!src || !usr || !usr.canUseTopic(src, !issilicon(usr)) || stat || QDELETED(src))
 			return
 		log_activity("changed greater than charge filter to \"[new_filter]\"")
@@ -156,7 +156,7 @@
 		result_filters["Charge Above"] = new_filter
 	if(href_list["below_filter"])
 		playsound(src, 'sound/machines/terminal_prompt.ogg', 50, 0)
-		var/new_filter = input(usr, "Enter a percentage from 1-100 to sort by (lesser than).", name) as null|num
+		var/new_filter = input(usr, "Geben Sie einen Prozentwert von 1-100 ein, nach dem sortiert werden soll (kleiner als).", name) as null|num
 		if(!src || !usr || !usr.canUseTopic(src, !issilicon(usr)) || stat || QDELETED(src))
 			return
 		log_activity("changed lesser than charge filter to \"[new_filter]\"")
@@ -184,11 +184,11 @@
 
 /obj/machinery/computer/apc_control/emag_act(mob/user)
 	if(!authenticated)
-		to_chat(user, "<span class='warning'>You bypass [src]'s access requirements using your emag.</span>")
+		to_chat(user, "<span class='warning'>Sie umgehen die Zugriffsanforderungen von [src] mit Ihrem emag.</span>")
 		authenticated = TRUE
 		log_activity("logged in")
 	else if(!(obj_flags & EMAGGED))
-		user.visible_message("<span class='warning'>You emag [src], disabling precise logging and allowing you to clear logs.</span>")
+		user.visible_message("<span class='warning'>Sie emagieren [src], wodurch die präzise Protokollierung deaktiviert wird und Sie Protokolle löschen können.</span>")
 		log_game("[key_name(user)] emagged [src] at [AREACOORD(src)], disabling operator tracking.")
 		obj_flags |= EMAGGED
 	playsound(src, "sparks", 50, 1)
