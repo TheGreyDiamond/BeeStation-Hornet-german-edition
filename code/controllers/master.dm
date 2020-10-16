@@ -158,7 +158,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 		current_runlevel = Master.current_runlevel
 		StartProcessing(10)
 	else
-		to_chat(world, "<span class='boldannounce'>The Master Controller is having some issues, we will need to re-initialize EVERYTHING</span>")
+		to_chat(world, "<span class='boldannounce'>Der Master Controller hat einige Probleme, wir werden ALLES neu initialisieren müssen</span>")
 		Initialize(20, TRUE)
 
 
@@ -176,7 +176,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	if(init_sss)
 		init_subtypes(/datum/controller/subsystem, subsystems)
 
-	to_chat(world, "<span class='boldannounce'>Initializing subsystems...</span>")
+	to_chat(world, "<span class='boldannounce'>Initialisierung von Subsystemen...</span>")
 
 	// Sort subsystems by init_order, so they initialize in the correct order.
 	sortTim(subsystems, /proc/cmp_subsystem_init)
@@ -192,7 +192,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	current_ticklimit = TICK_LIMIT_RUNNING
 	var/time = (REALTIMEOFDAY - start_timeofday) / 10
 
-	var/msg = "Initializations complete within [time] second[time == 1 ? "" : "s"]!"
+	var/msg = "Vorbereitungen in [time] Sekund[time == 1 ? "" : "en"] abgeschlossen!"
 	to_chat(world, "<span class='boldannounce'>[msg]</span>")
 	log_world(msg)
 
