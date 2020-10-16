@@ -5,7 +5,7 @@
 	icon_state = "scrub_map-2"
 
 	name = "air scrubber"
-	desc = "Has a valve and pump attached to it."
+	desc = "Hat ein Ventil und eine daran angeschlossene Pumpe."
 	use_power = IDLE_POWER_USE
 	idle_power_usage = 10
 	active_power_usage = 60
@@ -116,7 +116,7 @@
 
 	var/area/A = get_area(src)
 	if(!A.air_scrub_names[id_tag])
-		name = "\improper [A.name] air scrubber #[A.air_scrub_names.len + 1]"
+		name = "\improper [A.name] Luftreiniger #[A.air_scrub_names.len + 1]"
 		A.air_scrub_names[id_tag] = name
 
 	A.air_scrub_info[id_tag] = signal.data

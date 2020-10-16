@@ -1,6 +1,7 @@
 Good TODO:
 	code/datums/mutations/speech.dm
 	code/game/machinery/computer/communications.dm
+	code/game/objects/items/card_ids.dm
 
 Started but not done:
 	code/game/machinery/newscaster.dm
