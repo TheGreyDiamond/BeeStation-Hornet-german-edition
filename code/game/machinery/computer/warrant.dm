@@ -14,7 +14,7 @@
 
 	var/list/dat = list("Angemeldet als: ")
 	if(authenticated)
-		dat += {"<a href='?src=[REF(src)];choice=Logout'>[authentifiziert]</a><hr>"}
+		dat += {"<a href='?src=[REF(src)];choice=Logout'>[authenticated]</a><hr>"}
 		if(current)
 			var/background
 			var/notice = ""
