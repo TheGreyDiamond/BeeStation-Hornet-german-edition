@@ -126,7 +126,7 @@
 	if(!Fact)
 		Fact = " SS13 ist jetzt [game_age] Jahre alt!"
 
-	return "Sagen Sie 'Happy Birthday' zur Raumstation 13, erstmals öffentlich spielbar am 16. Februar 2003![Fakt]"
+	return "Sagen Sie 'Happy Birthday' zur Raumstation 13, erstmals öffentlich spielbar am 16. Februar 2003![fact]"
 
 /datum/holiday/random_kindness
 	name = "Random Acts of Kindness Day"
