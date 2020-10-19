@@ -107,7 +107,7 @@ GLOBAL_LIST_EMPTY(allCasters)
 	var/redactedText = "\[REDACTED\]"
 
 /datum/newscaster/feed_network/New()
-	CreateFeedChannel("Station Announcements", "SS13", 1)
+	CreateFeedChannel("Stations Ankündigungen", "SS13", 1)
 	wanted_issue = new /datum/newscaster/wanted_message
 
 /datum/newscaster/feed_network/proc/CreateFeedChannel(channel_name, author, locked, adminChannel = 0)
@@ -172,7 +172,7 @@ GLOBAL_LIST_EMPTY(allCasters)
 
 /obj/item/wallframe/newscaster
 	name = "newscaster frame"
-	desc = "Used to build newscasters, just secure to the wall."
+	desc = "Wird benutzt, um Newscasters zu bauen, einfach an der Wand befestigen."
 	icon_state = "newscaster"
 	materials = list(/datum/material/iron=14000, /datum/material/glass=8000)
 	result_path = /obj/machinery/newscaster
@@ -517,7 +517,7 @@ GLOBAL_LIST_EMPTY(allCasters)
 		usr.set_machine(src)
 		scan_user(usr)
 		if(href_list["set_channel_name"])
-			channel_name = stripped_input(usr, "Provide a Feed Channel Name", "Network Channel Handler", "", MAX_NAME_LEN)
+			channel_name = stripped_input(usr, "Name eines Feed-Kanals angeben", "Network Channel Handler", "", MAX_NAME_LEN)
 			updateUsrDialog()
 		else if(href_list["set_channel_lock"])
 			c_locked = !c_locked
@@ -537,8 +537,8 @@ GLOBAL_LIST_EMPTY(allCasters)
 			if(channel_name == "" || channel_name == "\[REDACTED\]" || scanned_user == "Unknown" || check || (scanned_user in existing_authors) )
 				screen=7
 			else
-				var/choice = alert("Bitte bestätige die Feed-Channel-Erstellung","Network Channel Handler","Confirm","Abbrechen")
-				if(choice=="Confirm")
+				var/choice = alert("Bitte bestätige die Feed-Channel-Erstellung","Network Channel Handler","Bestätigen","Abbrechen")
+				if(choice=="Bestätigen")
 					scan_user(usr)
 					GLOB.news_network.CreateFeedChannel(channel_name, scanned_user, c_locked)
 					SSblackbox.record_feedback("text", "newscaster_channels", 1, "[channel_name]")
@@ -552,7 +552,7 @@ GLOBAL_LIST_EMPTY(allCasters)
 			channel_name = input(usr, "Feed-Kanal auswählen", "Network Channel Handler") in sortList(available_channels)
 			updateUsrDialog()
 		else if(href_list["set_new_message"])
-			var/temp_message = trim(stripped_multiline_input(usr, "Write your Feed story", "Network Channel Handler", msg))
+			var/temp_message = trim(stripped_multiline_input(usr, "Schreibe deine Feed-Story", "Network Channel Handler", msg))
 			if(temp_message)
 				msg = temp_message
 				updateUsrDialog()
@@ -600,17 +600,17 @@ GLOBAL_LIST_EMPTY(allCasters)
 			screen = 14
 			updateUsrDialog()
 		else if(href_list["set_wanted_name"])
-			channel_name = stripped_input(usr, "Provide the name of the Wanted person", "Network Security Handler")
+			channel_name = stripped_input(usr, "Gib den Namen der gesuchten Person an", "Network Security Handler")
 			updateUsrDialog()
 		else if(href_list["set_wanted_desc"])
-			msg = stripped_input(usr, "Provide a description of the Wanted person and any other details you deem important", "Network Security Handler")
+			msg = stripped_input(usr, "Gib eine Beschreibung der gesuchten Person und alle anderen Details an, die du für wichtig hältst.", "Network Security Handler")
 			updateUsrDialog()
 		else if(href_list["submit_wanted"])
 			var/input_param = text2num(href_list["submit_wanted"])
 			if(msg == "" || channel_name == "" || scanned_user == "Unknown")
 				screen = 16
 			else
-				var/choice = alert("Please confirm Wanted Issue [(input_param==1) ? ("creation.") : ("edit.")]","Network Security Handler","Confirm","Cancel")
+				var/choice = alert("Bitte bestätigen Sie Wanted Issue [(input_param==1) ? ("creation.") : ("edit.")]","Network Security Handler","Confirm","Cancel")
 				if(choice=="Confirm")
 					scan_user(usr)
 					if(input_param==1)          //If input_param == 1 we're submitting a new wanted issue. At 2 we're just editing an existing one.
@@ -618,16 +618,16 @@ GLOBAL_LIST_EMPTY(allCasters)
 						screen = 15
 					else
 						if(GLOB.news_network.wanted_issue.isAdminMsg)
-							alert("The wanted issue has been distributed by a Nanotrasen higherup. You cannot edit it.","Ok")
+							alert("Die gesuchte Ausgabe wurde von einem Nanotrasen Higherup verteilt. Du kannst sie nicht bearbeiten.","Ok")
 							return
 						GLOB.news_network.submitWanted(channel_name, msg, scanned_user, picture)
 						screen = 19
 			updateUsrDialog()
 		else if(href_list["cancel_wanted"])
 			if(GLOB.news_network.wanted_issue.isAdminMsg)
-				alert("The wanted issue has been distributed by a Nanotrasen higherup. You cannot take it down.","Ok")
+				alert("Die gesuchte Ausgabe wurde von einem Nanotrasen Higherup verteilt. Du kannst es nicht abhängen.","Ok")
 				return
-			var/choice = alert("Please confirm Wanted Issue removal","Network Security Handler","Confirm","Cancel")
+			var/choice = alert("Bitte bestätige die Entfernung des Wanted Issue","Network Security Handler","Confirm","Cancel")
 			if(choice=="Confirm")
 				GLOB.news_network.deleteWanted()
 				screen=17
@@ -638,21 +638,21 @@ GLOBAL_LIST_EMPTY(allCasters)
 		else if(href_list["censor_channel_author"])
 			var/datum/newscaster/feed_channel/FC = locate(href_list["censor_channel_author"]) in GLOB.news_network.network_channels
 			if(FC.is_admin_channel)
-				alert("This channel was erstellt von a Nanotrasen Officer. You cannot censor it.","Ok")
+				alert("Dieser Channel wurde von einem Nanotrasen Officer erstellt. Du kannst ihn nicht zensieren".,"Ok")
 				return
 			FC.toggleCensorAuthor()
 			updateUsrDialog()
 		else if(href_list["censor_channel_story_author"])
 			var/datum/newscaster/feed_message/MSG = locate(href_list["censor_channel_story_author"]) in viewing_channel.messages
 			if(MSG.is_admin_message)
-				alert("This message was erstellt von a Nanotrasen Officer. You cannot censor its author.","Ok")
+				alert("Diese Nachricht wurde von einem Nanotrasen Offizier erstellt. Du kannst ihren Autor nicht zensieren.","Ok")
 				return
 			MSG.toggleCensorAuthor()
 			updateUsrDialog()
 		else if(href_list["censor_channel_story_body"])
 			var/datum/newscaster/feed_message/MSG = locate(href_list["censor_channel_story_body"]) in viewing_channel.messages
 			if(MSG.is_admin_message)
-				alert("This channel was erstellt von a Nanotrasen Officer. You cannot censor it.","Ok")
+				alert("Dieser Channel wurde von einem Nanotrasen Officer erstellt. Du kannst ihn nicht zensieren.","Ok")
 				return
 			MSG.toggleCensorBody()
 			updateUsrDialog()
@@ -664,7 +664,7 @@ GLOBAL_LIST_EMPTY(allCasters)
 		else if(href_list["toggle_d_notice"])
 			var/datum/newscaster/feed_channel/FC = locate(href_list["toggle_d_notice"]) in GLOB.news_network.network_channels
 			if(FC.is_admin_channel)
-				alert("This channel was erstellt von a Nanotrasen Officer. You cannot place a D-Notice upon it.","Ok")
+				alert("Dieser Channel wurde von einem Nanotrasen Officer erstellt. Du kannst keine D-Notiz darauf platzieren.","Ok")
 				return
 			FC.toggleCensorDclass()
 			updateUsrDialog()
@@ -726,7 +726,7 @@ GLOBAL_LIST_EMPTY(allCasters)
 		if(I.use_tool(src, user, 60))
 			playsound(loc, 'sound/items/deconstruct.ogg', 50, 1)
 			if(stat & BROKEN)
-				to_chat(user, "<span class='warning'>The broken remains of [src] fall on the ground.</span>")
+				to_chat(user, "<span class='warning'>Die zerbrochenen Überreste von [src] fallen auf den Boden.</span>")
 				new /obj/item/stack/sheet/iron(loc, 5)
 				new /obj/item/shard(loc)
 				new /obj/item/shard(loc)
@@ -739,17 +739,17 @@ GLOBAL_LIST_EMPTY(allCasters)
 			if(!I.tool_start_check(user, amount=0))
 				return
 			user.visible_message("[user] is repairing [src].", \
-							"<span class='notice'>You begin repairing [src]...</span>", \
-							"<span class='italics'>You hear welding.</span>")
+							"<span class='notice'>Du beginnst mit der Reparatur von [src]...</span>", \
+							"<span class='italics'>Man hört Schweißen.</span>")
 			if(I.use_tool(src, user, 40, volume=50))
 				if(!(stat & BROKEN))
 					return
-				to_chat(user, "<span class='notice'>You repair [src].</span>")
+				to_chat(user, "<span class='notice'>Du reparierst [src].</span>")
 				obj_integrity = max_integrity
 				stat &= ~BROKEN
 				update_icon()
 		else
-			to_chat(user, "<span class='notice'>[src] does not need repairs.</span>")
+			to_chat(user, "<span class='notice'>[src] braucht keine Reparaturen.</span>")
 	else
 		return ..()
 
@@ -780,7 +780,7 @@ GLOBAL_LIST_EMPTY(allCasters)
 
 /obj/machinery/newscaster/attack_paw(mob/user)
 	if(user.a_intent != INTENT_HARM)
-		to_chat(user, "<span class='warning'>The newscaster controls are far too complicated for your tiny brain!</span>")
+		to_chat(user, "<span class='warning'>Die Steuerung des Nachrichtensprechers ist viel zu kompliziert für dein kleines Gehirn!</span>")
 	else
 		take_damage(5, BRUTE, "melee")
 
@@ -803,9 +803,9 @@ GLOBAL_LIST_EMPTY(allCasters)
 			else
 				targetcam = R.aicamera
 		else
-			to_chat(user, "<span class='warning'>You cannot interface with silicon photo uploading!</span>")
+			to_chat(user, "<span class='warning'>Du kannst nicht mit dem Siliconinterface interagieren.</span>")
 		if(!targetcam.stored.len)
-			to_chat(usr, "<span class='boldannounce'>No images saved</span>")
+			to_chat(usr, "<span class='boldannounce'>Keine Bilder gespeichert</span>")
 			return
 		var/datum/picture/selection = targetcam.selectpicture(user)
 		if(selection)
@@ -868,7 +868,7 @@ GLOBAL_LIST_EMPTY(allCasters)
 
 /obj/item/newspaper
 	name = "newspaper"
-	desc = "An issue of The Griffon, the newspaper circulating aboard Nanotrasen Space Stations."
+	desc = "Eine Ausgabe von The Griffon, der Zeitung, die an Bord der Nanotrasen-Raumstationen im Umlauf ist."
 	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "newspaper"
 	lefthand_file = 'icons/mob/inhands/misc/books_lefthand.dmi'
@@ -895,7 +895,7 @@ GLOBAL_LIST_EMPTY(allCasters)
 	var/obj/W = new /obj/item/reagent_containers/food/drinks/bottle/whiskey(H.loc)
 	playsound(H.loc, 'sound/items/drink.ogg', rand(10,50), 1)
 	W.reagents.trans_to(H, W.reagents.total_volume, transfered_by = user)
-	user.visible_message("<span class='suicide'>[user] downs the contents of [W.name] in one gulp! Shoulda stuck to sudoku!</span>")
+	user.visible_message("<span class='suicide'>[user] bringt den Inhalt von [W.name] auf einen Schluck herunter! Hättest beim Sudoku bleiben sollen!</span>")
 
 	return(TOXLOSS)
 
@@ -907,18 +907,18 @@ GLOBAL_LIST_EMPTY(allCasters)
 		switch(screen)
 			if(0) //Cover
 				dat+="<DIV ALIGN='center'><B><FONT SIZE=6>The Griffon</FONT></B></div>"
-				dat+="<DIV ALIGN='center'><FONT SIZE=2>Nanotrasen-standard newspaper, for use on Nanotrasen? Space Facilities</FONT></div><HR>"
+				dat+="<DIV ALIGN='center'><FONT SIZE=2>Nanotrasen-Standard-Zeitung, zur Verwendung auf Nanotrasen? Weltraum-Einrichtungen</FONT></div><HR>"
 				if(isemptylist(news_content))
 					if(wantedAuthor)
-						dat+="Contents:<BR><ul><B><FONT COLOR='red'>**</FONT>Important Security Announcement<FONT COLOR='red'>**</FONT></B> <FONT SIZE=2>\[page [pages+2]\]</FONT><BR></ul>"
+						dat+="Contents:<BR><ul><B><FONT COLOR='red'>**</FONT>Wichtige Sicherheitsankündigung<FONT COLOR='red'>**</FONT></B> <FONT SIZE=2>\[page [pages+2]\]</FONT><BR></ul>"
 					else
-						dat+="<I>Other than the title, the rest of the newspaper is unprinted...</I>"
+						dat+="<I>Bis auf den Titel ist der Rest der Zeitung ungedruckt...</I>"
 				else
 					dat+="Contents:<BR><ul>"
 					for(var/datum/newscaster/feed_channel/NP in news_content)
 						pages++
 					if(wantedAuthor)
-						dat+="<B><FONT COLOR='red'>**</FONT>Important Security Announcement<FONT COLOR='red'>**</FONT></B> <FONT SIZE=2>\[page [pages+2]\]</FONT><BR>"
+						dat+="<B><FONT COLOR='red'>**</FONT>Wichtige Ankündigung zur Sicherheit<FONT COLOR='red'>**</FONT></B> <FONT SIZE=2>\[page [pages+2]\]</FONT><BR>"
 					var/temp_page=0
 					for(var/datum/newscaster/feed_channel/NP in news_content)
 						temp_page++
