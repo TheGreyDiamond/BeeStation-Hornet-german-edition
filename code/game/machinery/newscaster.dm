@@ -638,7 +638,7 @@ GLOBAL_LIST_EMPTY(allCasters)
 		else if(href_list["censor_channel_author"])
 			var/datum/newscaster/feed_channel/FC = locate(href_list["censor_channel_author"]) in GLOB.news_network.network_channels
 			if(FC.is_admin_channel)
-				alert("Dieser Channel wurde von einem Nanotrasen Officer erstellt. Du kannst ihn nicht zensieren".,"Ok")
+				alert("Dieser Channel wurde von einem Nanotrasen Officer erstellt. Du kannst ihn nicht zensieren.","Ok")
 				return
 			FC.toggleCensorAuthor()
 			updateUsrDialog()
