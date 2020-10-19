@@ -5,6 +5,7 @@ Good TODO:
 
 Started but not done:
 	code/_onclick/hud/screen_objects.dm
+	code/modules/shuttle/computer.dm
 	
 Notes:
 	

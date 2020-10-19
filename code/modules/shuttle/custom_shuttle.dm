@@ -213,7 +213,7 @@
 	switch(SSshuttle.moveShuttle(shuttleId, targetLocation, 1))
 		if(0)
 			consumeFuel(dist)
-			say("Shuttle departing. Please stand away from the doors.")
+			say("Das Shuttle fährt ab. Bitte von den Türen wegbleiben.")
 		if(1)
 			to_chat(usr, "<span class='warning'>Invalid shuttle requested.</span>")
 		else
