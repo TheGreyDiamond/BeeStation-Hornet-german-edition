@@ -71,8 +71,8 @@
 
 //Hide/Show Action Buttons ... Button
 /obj/screen/movable/action_button/hide_toggle
-	name = "Hide Buttons"
-	desc = "Shift-click any button to reset its position, and Control-click it to lock it in place. Alt-click this button to reset all buttons to their default positions."
+	name = "Knöpfe verstecken"
+	desc = "Klicke mit der Umschalttaste auf eine beliebige Taste, um ihre Position zurückzusetzen, und klicke bei gedrückter Strg-Taste, um sie zu fixieren. Alt-Klicke auf diese Schaltfläche, um alle Schaltflächen auf ihre Standardposition zurückzusetzen."
 	icon = 'icons/mob/actions.dmi'
 	icon_state = "bg_default"
 	var/hidden = 0

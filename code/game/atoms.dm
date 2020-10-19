@@ -490,7 +490,7 @@
 /atom/proc/relaymove(mob/user)
 	if(buckle_message_cooldown <= world.time)
 		buckle_message_cooldown = world.time + 50
-		to_chat(user, "<span class='warning'>You can't move while buckled to [src]!</span>")
+		to_chat(user, "<span class='warning'>Du kannst dich nicht bewegen, wenn du dich an [src] festgeschnallt hast!</span>")
 	return
 
 /// Return true if this atoms contents should not have ex_act called on ex_act
