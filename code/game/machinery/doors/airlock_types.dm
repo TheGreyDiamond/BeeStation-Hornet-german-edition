@@ -6,6 +6,7 @@
 	icon = 'icons/obj/doors/airlocks/station/command.dmi'
 	assemblytype = /obj/structure/door_assembly/door_assembly_com
 	normal_integrity = 450
+	security_level = 6
 
 /obj/machinery/door/airlock/security
 	icon = 'icons/obj/doors/airlocks/station/security.dmi'
@@ -85,6 +86,7 @@
 	opacity = 0
 	glass = TRUE
 	normal_integrity = 400
+	security_level =  6
 
 /obj/machinery/door/airlock/engineering/glass
 	opacity = 0
@@ -501,7 +503,7 @@
 	icon = 'icons/obj/doors/airlocks/station/maintenance.dmi'
 	overlays_file = 'icons/obj/doors/airlocks/station/overlays.dmi'
 	name = "airlock"
-	desc = "It opens and closes."
+	desc = "Es öffnet und schließt sich."
 	stealthy = TRUE
 	update_icon()
 
@@ -547,7 +549,7 @@
 
 /obj/machinery/door/airlock/cult/weak
 	name = "brittle cult airlock"
-	desc = "An airlock hastily corrupted by blood magic, it is unusually brittle in this state."
+	desc = "Eine Luftschleuse, die in aller Eile durch Blutmagie korrumpiert wurde, ist in diesem Zustand ungewöhnlich spröde."
 	normal_integrity = 150
 	damage_deflection = 5
 	armor = list("melee" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)

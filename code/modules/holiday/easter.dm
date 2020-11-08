@@ -7,7 +7,7 @@
 	earliest_start = 0 MINUTES
 
 /datum/round_event/easter/announce(fake)
-	priority_announce(pick("Hip-hop into Easter!","Find some Bunny's stash!","Today is National 'Hunt a Wabbit' Day.","Be kind, give Chocolate Eggs!"))
+	priority_announce(pick("Mit Hip-Hop in die Osterzeit!","Finden Sie das Versteck von Bunny!","Today is National 'Hunt a Wabbit' Day.","Seien Sie nett, geben Sie Schoko-Eier!"))
 
 
 /datum/round_event_control/rabbitrelease
@@ -18,7 +18,7 @@
 	max_occurrences = 10
 
 /datum/round_event/rabbitrelease/announce(fake)
-	priority_announce("Unidentified furry objects detected coming aboard [station_name()]. Beware of Adorable-ness.", "Fluffy Alert", 'sound/ai/aliens.ogg')
+	priority_announce("Unidentifizierte pelzige Objekte, die bei der Ankunft an Bord entdeckt wurden [station_name()]. Vorsicht vor Anbetungswürdigkeiten.", "Fluffy Alert", 'sound/ai/aliens.ogg')
 
 
 /datum/round_event/rabbitrelease/start()
@@ -32,7 +32,7 @@
 
 /mob/living/simple_animal/chicken/rabbit
 	name = "\improper rabbit"
-	desc = "The hippiest hop around."
+	desc = "Der hippste Hüpfer überhaupt."
 	icon = 'icons/mob/easter.dmi'
 	icon_state = "rabbit_white"
 	icon_living = "rabbit_white"
@@ -135,7 +135,7 @@
 /obj/item/reagent_containers/food/snacks/egg/attack_self(mob/user)
 	..()
 	if(containsPrize)
-		to_chat(user, "<span class='notice'>You unwrap [src] and find a prize inside!</span>")
+		to_chat(user, "<span class='notice'>Sie packen [src] aus und finden darin einen Preis!</span>")
 		dispensePrize(get_turf(user))
 		containsPrize = FALSE
 		qdel(src)
@@ -154,7 +154,7 @@
 		/datum/reagent/consumable/sugar = 1
 	)
 	result = /obj/item/reagent_containers/food/snacks/hotcrossbun
-	category = CAT_MISCFOOD
+	subcategory = CAT_MISCFOOD
 
 
 /obj/item/reagent_containers/food/snacks/store/cake/brioche
@@ -178,7 +178,7 @@
 		/datum/reagent/consumable/sugar = 2
 	)
 	result = /obj/item/reagent_containers/food/snacks/store/cake/brioche
-	category = CAT_MISCFOOD
+	subcategory = CAT_MISCFOOD
 
 /obj/item/reagent_containers/food/snacks/scotchegg
 	name = "scotch egg"
@@ -198,7 +198,7 @@
 		/obj/item/reagent_containers/food/snacks/meatball = 1
 	)
 	result = /obj/item/reagent_containers/food/snacks/scotchegg
-	category = CAT_MISCFOOD
+	subcategory = CAT_MISCFOOD
 
 /obj/item/reagent_containers/food/snacks/soup/mammi
 	name = "Mammi"
@@ -215,14 +215,14 @@
 		/datum/reagent/consumable/milk = 5
 	)
 	result = /obj/item/reagent_containers/food/snacks/soup/mammi
-	category = CAT_MISCFOOD
+	subcategory = CAT_MISCFOOD
 
 /obj/item/reagent_containers/food/snacks/chocolatebunny
 	name = "chocolate bunny"
 	desc = "Contains less than 10% real rabbit!"
 	icon_state = "chocolatebunny"
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = 1, /datum/reagent/consumable/nutriment/vitamin = 1)
-	list_reagents = list(/datum/reagent/consumable/nutriment = 4, /datum/reagent/consumable/sugar = 2, /datum/reagent/consumable/coco = 2)
+	list_reagents = list(/datum/reagent/consumable/nutriment = 4, /datum/reagent/consumable/sugar = 2, /datum/reagent/consumable/cocoa = 2)
 	filling_color = "#A0522D"
 
 /datum/crafting_recipe/food/chocolatebunny
@@ -232,4 +232,4 @@
 		/obj/item/reagent_containers/food/snacks/chocolatebar = 1
 	)
 	result = /obj/item/reagent_containers/food/snacks/chocolatebunny
-	category = CAT_MISCFOOD
+	subcategory = CAT_MISCFOOD

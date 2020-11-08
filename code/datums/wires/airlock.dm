@@ -26,13 +26,13 @@
 /datum/wires/airlock/get_status()
 	var/obj/machinery/door/airlock/A = holder
 	var/list/status = list()
-	status += "The door bolts [A.locked ? "have fallen!" : "look up."]"
-	status += "The test light is [A.hasPower() ? "on" : "off"]."
-	status += "The AI connection light is [A.aiControlDisabled || (A.obj_flags & EMAGGED) ? "off" : "on"]."
-	status += "The check wiring light is [A.safe ? "off" : "on"]."
-	status += "The timer is powered [A.autoclose ? "on" : "off"]."
-	status += "The speed light is [A.normalspeed ? "on" : "off"]."
-	status += "The emergency light is [A.emergency ? "on" : "off"]."
+	status += "Die Türriegel  [A.locked ? "sind gefallen!" : "sehen offen aus"]"
+	status += "Das Testlicht ist [A.hasPower() ? "an" : "aus"]."
+	status += "Das Licht der KI-Verbindung ist [A.aiControlDisabled || (A.obj_flags & EMAGGED) ? "aus" : "an"]."
+	status += "Die Kontrollleuchte für die Verkabelung ist [A.safe ? "aus" : "an"]."
+	status += "Der Timer ist [A.autoclose ? "eingeschaltet" : "ausgeschaltet"]."
+	status += "Das Geschwindigkeitslicht ist [A.normalspeed ? "an" : "aus"]."
+	status += "Das Notlicht ist [A.emergency ? "an" : "aus"]."
 	return status
 
 /datum/wires/airlock/on_pulse(wire)

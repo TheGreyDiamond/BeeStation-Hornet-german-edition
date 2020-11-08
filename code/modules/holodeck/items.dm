@@ -12,7 +12,7 @@
 
 /obj/item/holo/esword
 	name = "holographic energy sword"
-	desc = "May the force be with you. Sorta."
+	desc = "Möge die Macht mit Ihnen sein. Irgendwie."
 	icon = 'icons/obj/transforming_energy.dmi'
 	icon_state = "sword0"
 	lefthand_file = 'icons/mob/inhands/weapons/swords_lefthand.dmi'
@@ -55,14 +55,14 @@
 		w_class = WEIGHT_CLASS_BULKY
 		hitsound = 'sound/weapons/blade1.ogg'
 		playsound(user, 'sound/weapons/saberon.ogg', 20, 1)
-		to_chat(user, "<span class='warning'>[src] is now active.</span>")
+		to_chat(user, "<span class='warning'>[src] ist jetzt aktiv.</span>")
 	else
 		force = 3
 		icon_state = "sword0"
 		w_class = WEIGHT_CLASS_SMALL
 		hitsound = "swing_hit"
 		playsound(user, 'sound/weapons/saberoff.ogg', 20, 1)
-		to_chat(user, "<span class='warning'>[src] can now be concealed.</span>")
+		to_chat(user, "<span class='warning'>[src] kann jetzt verdeckt werden.</span>")
 	return
 
 //BASKETBALL OBJECTS
@@ -72,14 +72,14 @@
 	icon = 'icons/obj/items_and_weapons.dmi'
 	icon_state = "basketball"
 	item_state = "basketball"
-	desc = "Here's your chance, do your dance at the Space Jam."
+	desc = "Hier ist Ihre Chance, tanzen Sie Ihren Tanz beim Space Jam."
 	w_class = WEIGHT_CLASS_BULKY //Stops people from hiding it in their bags/pockets
 
 /obj/item/toy/beach_ball/holoball/dodgeball
 	name = "dodgeball"
 	icon_state = "dodgeball"
 	item_state = "dodgeball"
-	desc = "Used for playing the most violent and degrading of childhood games."
+	desc = "Wird zum Spielen der gewalttätigsten und erniedrigendsten Spiele der Kindheit verwendet."
 
 /obj/item/toy/beach_ball/holoball/dodgeball/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
 	..()
@@ -106,7 +106,7 @@
 /obj/structure/holohoop/attackby(obj/item/W as obj, mob/user as mob, params)
 	if(get_dist(src,user)<2)
 		if(user.transferItemToLoc(W, drop_location()))
-			visible_message("<span class='warning'> [user] dunks [W] into \the [src]!</span>")
+			visible_message("<span class='warning'> [user] drückt [W] in die [src]!</span>")
 
 /obj/structure/holohoop/attack_hand(mob/user)
 	. = ..()
@@ -115,7 +115,7 @@
 	if(user.pulling && user.a_intent == INTENT_GRAB && isliving(user.pulling))
 		var/mob/living/L = user.pulling
 		if(user.grab_state < GRAB_AGGRESSIVE)
-			to_chat(user, "<span class='warning'>You need a better grip to do that!</span>")
+			to_chat(user, "<span class='warning'>Dazu brauchen Sie einen besseren Griff!</span>")
 			return
 		L.forceMove(loc)
 		L.Paralyze(100)
@@ -128,10 +128,10 @@
 	if (isitem(AM) && !istype(AM,/obj/item/projectile))
 		if(prob(50))
 			AM.forceMove(get_turf(src))
-			visible_message("<span class='warning'>Swish! [AM] lands in [src].</span>")
+			visible_message("<span class='warning'>Zack! [AM] landet in [src].</span>")
 			return
 		else
-			visible_message("<span class='danger'>[AM] bounces off of [src]'s rim!</span>")
+			visible_message("<span class='danger'>[AM] prallt von [src]'s Rand ab!</span>")
 			return ..()
 	else
 		return ..()
@@ -144,7 +144,7 @@
 
 /obj/machinery/readybutton
 	name = "ready declaration device"
-	desc = "This device is used to declare ready. If all devices in an area are ready, the event will begin!"
+	desc = "Dieses Gerät wird verwendet, um Bereitschaft zu erklären. Wenn alle Geräte in einem Gebiet bereit sind, beginnt das Ereignis!"
 	icon = 'icons/obj/monitors.dmi'
 	icon_state = "auth_off"
 	var/ready = 0
@@ -157,22 +157,22 @@
 	power_channel = AREA_USAGE_ENVIRON
 
 /obj/machinery/readybutton/attack_ai(mob/user as mob)
-	to_chat(user, "The station AI is not to interact with these devices.")
+	to_chat(user, "Die Station AI darf nicht mit diesen Geräten interagieren.")
 	return
 
 /obj/machinery/readybutton/attack_paw(mob/user as mob)
-	to_chat(user, "<span class='warning'>You are too primitive to use this device!</span>")
+	to_chat(user, "<span class='warning'>Sie sind zu primitiv, um dieses Gerät zu benutzen!</span>")
 	return
 
 /obj/machinery/readybutton/attackby(obj/item/W as obj, mob/user as mob, params)
-	to_chat(user, "The device is a solid button, there's nothing you can do with it!")
+	to_chat(user, "Das Gerät ist ein solider Knopf, damit kann man nichts anfangen!")
 
 /obj/machinery/readybutton/attack_hand(mob/user as mob)
 	. = ..()
 	if(.)
 		return
 	if(user.stat || stat & (NOPOWER|BROKEN))
-		to_chat(user, "<span class='warning'>This device is not powered!</span>")
+		to_chat(user, "<span class='warning'>Dieses Gerät wird nicht mit Strom versorgt!</span>")
 		return
 
 	currentarea = get_area(src.loc)
@@ -180,7 +180,7 @@
 		qdel(src)
 
 	if(eventstarted)
-		to_chat(usr, "<span class='warning'>The event has already begun!</span>")
+		to_chat(usr, "<span class='warning'>Die Veranstaltung hat bereits begonnen!</span>")
 		return
 
 	ready = !ready
@@ -226,4 +226,4 @@
 
 /obj/item/paper/fluff/holodeck/disclaimer
 	name = "Holodeck Disclaimer"
-	info = "Bruises sustained in the holodeck can be healed simply by sleeping."
+	info = "Auf dem Holodeck erlittene Prellungen können einfach durch Schlafen geheilt werden."

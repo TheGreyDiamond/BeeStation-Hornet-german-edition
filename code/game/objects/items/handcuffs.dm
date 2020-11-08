@@ -22,7 +22,7 @@
 
 /obj/item/restraints/handcuffs
 	name = "handcuffs"
-	desc = "Use this to keep prisoners in line."
+	desc = "Nutzen Sie dies, um Gefangene in Schach zu halten."
 	gender = PLURAL
 	icon = 'icons/obj/items_and_weapons.dmi'
 	icon_state = "handcuff"
@@ -45,7 +45,7 @@
 		return
 
 	if(iscarbon(user) && (HAS_TRAIT(user, TRAIT_CLUMSY) && prob(50)))
-		to_chat(user, "<span class='warning'>Uh... how do those things work?!</span>")
+		to_chat(user, "<span class='warning'>Äh... wie funktionieren diese Dinger?!</span>")
 		apply_cuffs(user,user)
 		return
 
@@ -57,8 +57,8 @@
 
 	if(!C.handcuffed)
 		if(C.get_num_arms(FALSE) >= 2 || C.get_arm_ignore())
-			C.visible_message("<span class='danger'>[user] is trying to put [src.name] on [C]!</span>", \
-								"<span class='userdanger'>[user] is trying to put [src.name] on you!</span>")
+			C.visible_message("<span class='danger'>[user] versucht,[C] [src.name] anzulegen!</span>", \
+								"<span class='userdanger'>[user] versucht dir [src.name] anzulegen!</span>")
 
 			playsound(loc, cuffsound, 30, 1, -2)
 			if(do_mob(user, C, 30) && (C.get_num_arms(FALSE) >= 2 || C.get_arm_ignore()))
@@ -66,15 +66,15 @@
 					apply_cuffs(C, user, TRUE)
 				else
 					apply_cuffs(C, user)
-				C.visible_message("<span class='notice'>[user] handcuffs [C].</span>", \
-									"<span class='userdanger'>[user] handcuffs you.</span>")
+				C.visible_message("<span class='notice'>[user] legt [C] Handschellen an. </span>", \
+									"<span class='userdanger'>[user] legt dir Handschellen an.</span>")
 				SSblackbox.record_feedback("tally", "handcuffs", 1, type)
 
 				log_combat(user, C, "handcuffed")
 			else
-				to_chat(user, "<span class='warning'>You fail to handcuff [C]!</span>")
+				to_chat(user, "<span class='warning'>Sie scheitern daran, [C] Handschellen anzulegen!</span>")
 		else
-			to_chat(user, "<span class='warning'>[C] doesn't have two hands...</span>")
+			to_chat(user, "<span class='warning'>[C] hat keine zwei Hände...</span>")
 
 /obj/item/restraints/handcuffs/proc/apply_cuffs(mob/living/carbon/target, mob/user, var/dispense = 0)
 	if(target.handcuffed)
@@ -99,7 +99,7 @@
 
 /obj/item/restraints/handcuffs/cable/sinew
 	name = "sinew restraints"
-	desc = "A pair of restraints fashioned from long strands of flesh."
+	desc = "Ein Paar Fesseln, die aus langen Fleischsträngen gefertigt sind."
 	icon = 'icons/obj/mining.dmi'
 	icon_state = "sinewcuff"
 	item_state = "sinewcuff"
@@ -109,7 +109,7 @@
 
 /obj/item/restraints/handcuffs/cable
 	name = "cable restraints"
-	desc = "Looks like some cables tied together. Could be used to tie something up."
+	desc = "Sieht aus wie zusammengebundene Kabel. Könnte benutzt werden, um etwas zu verknoten."
 	icon_state = "cuff"
 	item_state = "coil"
 	item_color = "red"
@@ -169,7 +169,7 @@
 
 /obj/item/restraints/handcuffs/fake
 	name = "fake handcuffs"
-	desc = "Fake handcuffs meant for gag purposes."
+	desc = "Gefälschte Handschellen, die als Witz gedacht sind."
 	breakouttime = 10 //Deciseconds = 1s
 
 /obj/item/restraints/handcuffs/cable/attackby(obj/item/I, mob/user, params)
@@ -183,7 +183,7 @@
 			to_chat(user, "<span class='notice'>You wrap [src] around the top of [I].</span>")
 			qdel(src)
 		else
-			to_chat(user, "<span class='warning'>You need one rod to make a wired rod!</span>")
+			to_chat(user, "<span class='warning'>Man braucht eine Stange, um eine verdrahtete Stange herzustellen!</span>")
 			return
 	else if(istype(I, /obj/item/stack/sheet/iron))
 		var/obj/item/stack/sheet/iron/M = I
@@ -205,7 +205,7 @@
 
 /obj/item/restraints/handcuffs/cable/zipties
 	name = "zipties"
-	desc = "Plastic, disposable zipties that can be used to restrain temporarily but are destroyed after use."
+	desc = "Kabelbinder aus Plastik, die zur vorübergehenden Fixierung verwendet werden können, aber nach Gebrauch zerstört werden."
 	icon_state = "cuff"
 	lefthand_file = 'icons/mob/inhands/equipment/security_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/security_righthand.dmi'
@@ -215,7 +215,7 @@
 	item_color = "white"
 
 /obj/item/restraints/handcuffs/cable/zipties/used
-	desc = "A pair of broken zipties."
+	desc = "Ein paar kaputter Kabelbinder."
 	icon_state = "cuff_used"
 	item_state = "cuff"
 
@@ -226,7 +226,7 @@
 
 /obj/item/restraints/legcuffs
 	name = "leg cuffs"
-	desc = "Use this to keep prisoners in line."
+	desc = "Nutzen Sie dies, um Gefangene in Schach zu halten."
 	gender = PLURAL
 	icon = 'icons/obj/items_and_weapons.dmi'
 	icon_state = "handcuff"
@@ -243,7 +243,7 @@
 	throw_speed = 1
 	throw_range = 1
 	icon_state = "beartrap"
-	desc = "A trap used to catch bears and other legged creatures."
+	desc = "Eine Falle, mit der Bären und andere langbeinige Kreaturen gefangen werden."
 	var/armed = 0
 	var/trap_damage = 20
 
@@ -304,7 +304,7 @@
 			if(snap)
 				close_trap()
 				L.visible_message("<span class='danger'>[L] triggers \the [src].</span>", \
-						"<span class='userdanger'>You trigger \the [src]!</span>")
+						"<span class='userdanger'>Du löst die [src] aus!</span>")
 				L.apply_damage(trap_damage, BRUTE, def_zone)
 	..()
 
@@ -335,7 +335,7 @@
 
 /obj/item/restraints/legcuffs/bola
 	name = "bola"
-	desc = "A restraining device designed to be thrown at the target. Upon connecting with said target, it will wrap around their legs, making it difficult for them to move quickly."
+	desc = "Eine Haltevorrichtung, die dazu bestimmt ist, auf das Ziel geworfen zu werden. Wenn sie mit dem Ziel verbunden wird, wickelt sie sich um ihre Beine und erschwert es ihnen, sich schnell zu bewegen."
 	icon_state = "bola"
 	item_state = "bola"
 	lefthand_file = 'icons/mob/inhands/weapons/thrown_lefthand.dmi'

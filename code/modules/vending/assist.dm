@@ -11,7 +11,7 @@
 				   /obj/item/vending_refill/custom = 3,
 				   /obj/item/circuitboard/machine/vendor = 3)
 	refill_canister = /obj/item/vending_refill/assist
-	product_ads = "Only the finest!;Have some tools.;The most robust equipment.;The finest gear in space!"
+	product_ads = "Nur das Feinste!;Habt einige Werkzeuge;Die robusteste Ausrüstung;Die feinste Ausrüstung im Weltraum!"
 	default_price = 10
 	extra_price = 50
 	payment_department = NO_FREEBIES

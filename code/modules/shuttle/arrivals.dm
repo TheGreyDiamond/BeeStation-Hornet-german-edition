@@ -177,7 +177,7 @@
 		force_depart = TRUE
 	if(mode == SHUTTLE_IDLE)
 		if(console)
-			console.say(pickingup ? "Departing immediately for new employee pickup." : "Shuttle departing.")
+			console.say(pickingup ? "Departing immediately for new employee pickup." : "Das Shuttle fährt ab.")
 		var/obj/docking_port/stationary/target = target_dock
 		if(QDELETED(target))
 			target = SSshuttle.getDock("arrivals_stationary")

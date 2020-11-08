@@ -3,7 +3,7 @@
 	icon = 'icons/obj/janitor.dmi'
 	lefthand_file = 'icons/mob/inhands/misc/food_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/misc/food_righthand.dmi'
-	desc = "This is rubbish."
+	desc = "Das ist Müll."
 	w_class = WEIGHT_CLASS_TINY
 	resistance_flags = FLAMMABLE
 
@@ -12,7 +12,7 @@
 	icon_state= "4no_raisins"
 
 /obj/item/trash/candy
-	name = "candy"
+	name = "Süßigkeiten"
 	icon_state= "candy"
 
 /obj/item/trash/cheesie
@@ -49,7 +49,7 @@
 	icon_state = "waffles"
 
 /obj/item/trash/plate
-	name = "plate"
+	name = "teller"
 	icon_state = "plate"
 	resistance_flags = NONE
 
@@ -62,12 +62,12 @@
 	icon_state = "semki_pack"
 
 /obj/item/trash/tray
-	name = "tray"
+	name = "tablett"
 	icon_state = "tray"
 	resistance_flags = NONE
 
 /obj/item/trash/candle
-	name = "candle"
+	name = "kerze"
 	icon = 'icons/obj/candle.dmi'
 	icon_state = "candle4"
 
@@ -103,10 +103,10 @@
 	name = "lump of coal"
 	icon = 'icons/obj/mining.dmi'
 	icon_state = "slag"
-	desc = "Someone's gotten on the naughty list."
+	desc = "Jemand ist auf die Ungezogenenliste gekommen."
 	grind_results = list(/datum/reagent/carbon = 20)
 
 /obj/item/trash/coal/burn()
-	visible_message("[src] fuses into a diamond! Someone wasn't so naughty after all...")
+	visible_message("[src] verschmilzt zu einem Diamanten! Da war aber jemand doch nicht so ungezogen...")
 	new /obj/item/stack/ore/diamond(loc)
 	qdel(src)

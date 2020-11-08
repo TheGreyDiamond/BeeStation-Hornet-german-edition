@@ -1,0 +1,11 @@
+Good TODO:
+	code/datums/mutations/speech.dm
+	code/game/machinery/computer/communications.dm
+	code/game/objects/items/card_ids.dm
+
+Started but not done:
+	code/_onclick/hud/screen_objects.dm
+	code/modules/shuttle/computer.dm
+	
+Notes:
+	

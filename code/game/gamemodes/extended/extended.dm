@@ -6,7 +6,7 @@
 	required_players = 0
 
 	announce_span = "notice"
-	announce_text = "Just have fun and enjoy the game!"
+	announce_text = "Habe spaß!"
 
 	title_icon = "extended_white"
 
@@ -35,4 +35,4 @@
 /datum/game_mode/extended/send_intercept(report = 0)
 	if(secret)
 		return ..()
-	priority_announce("Thanks to the tireless efforts of our security and intelligence divisions, there are currently no credible threats to [station_name()]. All station construction projects have been authorized. Have a secure shift!", "Security Report", 'sound/ai/commandreport.ogg')
+	priority_announce("Dank der unermüdlichen Bemühungen unserer Sicherheits- und Geheimdienstabteilungen gibt es derzeit keine glaubwürdigen Bedrohungen für [station_name()]. Alle Stationsbauvorhaben sind genehmigt worden. Ich wünsche Ihnen eine sichere Schicht!", "Sicherheitsbericht", 'sound/ai/commandreport.ogg')

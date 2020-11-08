@@ -1,7 +1,7 @@
 /obj/machinery/vending/dinnerware
 	name = "\improper Plasteel Chef's Dinnerware Vendor"
-	desc = "A kitchen and restaurant equipment vendor."
-	product_ads = "Mm, food stuffs!;Food and food accessories.;Get your plates!;You like forks?;I like forks.;Woo, utensils.;You don't really need these..."
+	desc = "Ein Verkäufer von Küchen- und Restaurantausrüstung."
+	product_ads = "Mm, Lebensmittel!;Lebensmittel und Lebensmittelzubehör;Holt eure Teller!;Magst du Gabeln?;Ich mag Gabeln.;Woo, Utensilien.;Die brauchst du eigentlich nicht..."
 	icon_state = "dinnerware"
 	light_color = LIGHT_COLOR_BLUEGREEN
 	products = list(/obj/item/storage/bag/tray = 8,

@@ -1,6 +1,6 @@
 /obj/item/banhammer
-	desc = "A banhammer."
-	name = "banhammer"
+	desc = "Ein Ban hammer"
+	name = "Bannhammer"
 	icon = 'icons/obj/items_and_weapons.dmi'
 	icon_state = "toyhammer"
 	slot_flags = ITEM_SLOT_BELT
@@ -15,7 +15,7 @@
 	resistance_flags = FIRE_PROOF
 
 /obj/item/banhammer/suicide_act(mob/user)
-		user.visible_message("<span class='suicide'>[user] is hitting [user.p_them()]self with [src]! It looks like [user.p_theyre()] trying to ban [user.p_them()]self from life.</span>")
+		user.visible_message("<span class='suicide'>[user] schlägt [user.p_them()]self mit [src]! Es sieht so aus als ob [user.p_theyre()] trying to ban [user.p_them()]self from life.</span>")
 		return (BRUTELOSS|FIRELOSS|TOXLOSS|OXYLOSS)
 /*
 oranges says: This is a meme relating to the english translation of the ss13 russian wiki page on lurkmore.
@@ -33,7 +33,7 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 
 /obj/item/sord
 	name = "\improper SORD"
-	desc = "This thing is so unspeakably shitty you are having a hard time even holding it."
+	desc = "Diese Sache ist so unsagbar beschissen, dass es Ihnen schwer fällt, sie überhaupt zu halten."
 	icon_state = "sord"
 	item_state = "sord"
 	lefthand_file = 'icons/mob/inhands/weapons/swords_lefthand.dmi'
@@ -62,7 +62,7 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 
 /obj/item/claymore
 	name = "claymore"
-	desc = "What are you standing around staring at this for? Get to killing!"
+	desc = "Was stehen Sie herum und starren das an? Fangen Sie an zu töten!"
 	icon_state = "claymore"
 	item_state = "claymore"
 	lefthand_file = 'icons/mob/inhands/weapons/swords_lefthand.dmi'
@@ -93,12 +93,12 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	return(BRUTELOSS)
 
 /obj/item/claymore/highlander //ALL COMMENTS MADE REGARDING THIS SWORD MUST BE MADE IN ALL CAPS
-	desc = "<b><i>THERE CAN BE ONLY ONE, AND IT WILL BE YOU!!!</i></b>\nActivate it in your hand to point to the nearest victim."
+	desc = "<b><i>THERE CAN BE ONLY ONE, AND IT WILL BE YOU!!!</i></b>\nAktivieren Sie es in Ihrer Hand, um auf das nächste Opfer zu zeigen."
 	flags_1 = CONDUCT_1
 	item_flags = DROPDEL
 	slot_flags = null
 	light_range = 3
-	attack_verb = list("brutalized", "eviscerated", "disemboweled", "hacked", "carved", "cleaved") //ONLY THE MOST VISCERAL ATTACK VERBS
+	attack_verb = list("brutalisiert", "eviscerated", "disemboweled", "hacked", "carved", "cleaved") //ONLY THE MOST VISCERAL ATTACK VERBS
 	var/notches = 0 //HOW MANY PEOPLE HAVE BEEN SLAIN WITH THIS BLADE
 	var/obj/item/disk/nuclear/nuke_disk //OUR STORED NUKE DISK
 
@@ -110,7 +110,7 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 /obj/item/claymore/highlander/Destroy()
 	if(nuke_disk)
 		nuke_disk.forceMove(get_turf(src))
-		nuke_disk.visible_message("<span class='warning'>The nuke disk is vulnerable!</span>")
+		nuke_disk.visible_message("<span class='warning'>Die nuke disk ist angreifbar!</span>")
 		nuke_disk = null
 	STOP_PROCESSING(SSobj, src)
 	return ..()

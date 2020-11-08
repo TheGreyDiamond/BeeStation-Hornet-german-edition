@@ -1,8 +1,8 @@
 /obj/machinery/vending/snack
 	name = "\improper Getmore Chocolate Corp"
-	desc = "A snack machine courtesy of the Getmore Chocolate Corporation, based out of Mars."
-	product_slogans = "Try our new nougat bar!;Twice the calories for half the price!"
-	product_ads = "The healthiest!;Award-winning chocolate bars!;Mmm! So good!;Oh my god it's so juicy!;Have a snack.;Snacks are good for you!;Have some more Getmore!;Best quality snacks straight from mars.;We love chocolate!;Try our new jerky!"
+	desc = "Ein Snackautomat mit freundlicher Genehmigung der Getmore Chocolate Corporation, die ihren Sitz auf dem Mars hat."
+	product_slogans = "Probier unseren neuen Nougatriegel aus!;Doppelte Kalorien zum halben Preis!"
+	product_ads = "Die gesündesten!;Preisgekrönte Schokoriegel!;Mmm! So gut!;Oh mein Gott, er ist so saftig!;Nimm einen Snack!;Snacks sind gut für dich!;Nimm noch mehr Getmore!;Snacks bester Qualität direkt vom Mars.;Wir lieben Schokolade!;Probier unser neues Dörrfleisch!"
 	icon_state = "snack"
 	products = list(/obj/item/reagent_containers/food/snacks/spacetwinkie = 6,
 					/obj/item/reagent_containers/food/snacks/cheesiehonkers = 6,
@@ -32,9 +32,9 @@
 				if(!user.transferItemToLoc(W, src))
 					return
 				food_load(W)
-				to_chat(user, "<span class='notice'>You insert [W] into [src]'s chef compartment.</span>")
+				to_chat(user, "<span class='notice'>Ihr schiebt [W] in das Kochfach von [src].</span>")
 		else
-			to_chat(user, "<span class='notice'>[src]'s chef compartment does not accept junk food.</span>")
+			to_chat(user, "<span class='notice'>[src]'s Kochabteil akzeptiert kein Junkfood.</span>")
 
 	else if(istype(W, /obj/item/storage/bag/tray))
 		if(!compartment_access_check(user))
@@ -52,9 +52,9 @@
 			else
 				denied_items++
 		if(denied_items)
-			to_chat(user, "<span class='notice'>[src] refuses some items.</span>")
+			to_chat(user, "<span class='notice'>[src] lehnt einige Items ab.</span>")
 		if(loaded)
-			to_chat(user, "<span class='notice'>You insert [loaded] dishes into [src]'s chef compartment.</span>")
+			to_chat(user, "<span class='notice'>Du legst [loaded] Gerichte in das Kochfach von [src] ein.</span>")
 		updateUsrDialog()
 		return
 
@@ -69,7 +69,7 @@
 /obj/machinery/vending/snack/proc/compartment_access_check(user)
 	req_access_txt = chef_compartment_access
 	if(!allowed(user) && !(obj_flags & EMAGGED) && scan_id)
-		to_chat(user, "<span class='warning'>[src]'s chef compartment blinks red: Access denied.</span>")
+		to_chat(user, "<span class='warning'>[src]'s Kochfach blinkt rot: Zugang verweigert.</span>")
 		req_access_txt = "0"
 		return 0
 	req_access_txt = "0"
@@ -77,7 +77,7 @@
 
 /obj/machinery/vending/snack/proc/iscompartmentfull(mob/user)
 	if(contents.len >= 30) // no more than 30 dishes can fit inside
-		to_chat(user, "<span class='warning'>[src]'s chef compartment is full.</span>")
+		to_chat(user, "<span class='warning'>[src]'s Kochfach ist voll.</span>")
 		return 1
 	return 0
 

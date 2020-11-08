@@ -3,9 +3,9 @@
 
 /datum/mutation/human/nervousness
 	name = "Nervousness"
-	desc = "Causes the holder to stutter."
+	desc = "Verursacht ein Stottern des Inhabers."
 	quality = MINOR_NEGATIVE
-	text_gain_indication = "<span class='danger'>You feel nervous.</span>"
+	text_gain_indication = "<span class='danger'>Sie fühlen sich angespannt.</span>"
 
 /datum/mutation/human/nervousness/on_life()
 	if(prob(10))
@@ -14,9 +14,9 @@
 
 /datum/mutation/human/wacky
 	name = "Wacky"
-	desc = "<span class='sans'>Unknown.</span>"
+	desc = "<span class='sans'>Unbekannt.</span>"
 	quality = MINOR_NEGATIVE
-	text_gain_indication = "<span class='sans'>You feel an off sensation in your voicebox.</span>"
+	text_gain_indication = "<span class='sans'>Sie fühlen sich in Ihrer Stimmbox nicht wohl.</span>"
 	text_lose_indication = "<span class='notice'>The off sensation passes.</span>"
 
 /datum/mutation/human/wacky/on_acquiring(mob/living/carbon/human/owner)
@@ -34,7 +34,7 @@
 
 /datum/mutation/human/mute
 	name = "Mute"
-	desc = "Completely inhibits the vocal section of the brain."
+	desc = "Vollständige Hemmung der Vokalsektion des Gehirns."
 	quality = NEGATIVE
 	text_gain_indication = "<span class='danger'>You feel unable to express yourself at all.</span>"
 	text_lose_indication = "<span class='danger'>You feel able to speak freely again.</span>"

@@ -37,7 +37,6 @@
 
 	var/datum/browser/popup = new(user, "computer", M ? M.name : "shuttle", 300, 200)
 	popup.set_content("<center>[dat]</center>")
-	popup.set_title_image(usr.browse_rsc_icon(src.icon, src.icon_state))
 	popup.open()
 
 /obj/machinery/computer/shuttle/Topic(href, href_list)
@@ -52,7 +51,7 @@
 	if(href_list["move"])
 		var/obj/docking_port/mobile/M = SSshuttle.getShuttle(shuttleId)
 		if(M.launch_status == ENDGAME_LAUNCHED)
-			to_chat(usr, "<span class='warning'>You've already escaped. Never going back to that place again!</span>")
+			to_chat(usr, "<span class='warning'>Du bist bereits geflohen. Du wirst nie wieder dorthin zurückkehren!</span>")
 			return
 		if(no_destination_swap)
 			if(M.mode == SHUTTLE_RECHARGING)
@@ -67,11 +66,11 @@
 			return
 		switch(SSshuttle.moveShuttle(shuttleId, href_list["move"], 1))
 			if(0)
-				say("Shuttle departing. Please stand away from the doors.")
+				say("Das Shuttle fährt ab. Bitte von den Türen wegbleiben.")
 			if(1)
-				to_chat(usr, "<span class='warning'>Invalid shuttle requested.</span>")
+				to_chat(usr, "<span class='warning'>Ungültiges Shuttle angefordert.</span>")
 			else
-				to_chat(usr, "<span class='notice'>Unable to comply.</span>")
+				to_chat(usr, "<span class='notice'>Unfähig, dem nachzukommen.</span>")
 
 /obj/machinery/computer/shuttle/emag_act(mob/user)
 	if(obj_flags & EMAGGED)

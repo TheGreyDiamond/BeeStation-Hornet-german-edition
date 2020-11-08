@@ -7,7 +7,7 @@
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "Nanotrasen officials and Space law"
+	supervisors = "Nanotrasen-Beamte und Weltraumrecht"
 	selection_color = "#ccccff"
 	chat_color = "#FFDC9B"
 	req_admin_notify = 1
@@ -32,7 +32,7 @@
 
 /datum/job/captain/announce(mob/living/carbon/human/H)
 	..()
-	SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, .proc/minor_announce, "Captain [H.real_name] on deck!"))
+	SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, .proc/minor_announce, "Kapitän [H.real_name] an deck!"))
 
 /datum/outfit/job/captain
 	name = "Captain"

@@ -4,7 +4,7 @@
 	default_cartridge = /obj/item/cartridge/virus/clown
 	inserted_item = /obj/item/toy/crayon/rainbow
 	icon_state = "pda-clown"
-	desc = "A portable microcomputer by Thinktronic Systems, LTD. The surface is coated with polytetrafluoroethylene and banana drippings."
+	desc = "Ein tragbarer Mikrocomputer von Thinktronic Systems, LTD. Die Oberfläche ist mit Polytetrafluorethylen und Bananentropfen beschichtet."
 	ttone = "honk"
 	var/slipvictims = list() //Track slipped people
 
@@ -25,7 +25,7 @@
 	default_cartridge = /obj/item/cartridge/virus/mime
 	inserted_item = /obj/item/toy/crayon/mime
 	icon_state = "pda-mime"
-	desc = "A portable microcomputer by Thinktronic Systems, LTD. The hardware has been modified for compliance with the vows of silence."
+	desc = "Ein tragbarer Mikrocomputer von Thinktronic Systems, LTD. Die Hardware wurde modifiziert, um den Schweigegelübden zu entsprechen."
 	allow_emojis = TRUE
 	silent = TRUE
 	ttone = "silence"
@@ -33,7 +33,7 @@
 /obj/item/pda/mime/msg_input(mob/living/U = usr)
 	if(emped || toff)
 		return
-	var/emojis = emoji_sanitize(stripped_input(U, "Please enter emojis", name))
+	var/emojis = emoji_sanitize(stripped_input(U, "Bitte emojis eingeben", name))
 	if(!emojis)
 		return
 	if(!U.canUseTopic(src, BE_CLOSE))
@@ -188,16 +188,16 @@
 	icon_alert = "pda-r-library"
 	default_cartridge = /obj/item/cartridge/curator
 	inserted_item = /obj/item/pen/fountain
-	desc = "A portable microcomputer by Thinktronic Systems, LTD. This model is a WGW-11 series e-reader."
-	note = "Congratulations, your station has chosen the Thinktronic 5290 WGW-11 Series E-reader and Personal Data Assistant!"
+	desc = "Ein tragbarer Mikrocomputer von Thinktronic Systems, LTD. Dieses Modell ist ein E-Reader der Serie WGW-11."
+	note = "Herzlichen Glückwunsch, Ihre Station hat sich für den Thinktronic 5290 WGW-11 Serie E-Reader und Assistenten für persönliche Daten entschieden!"
 	silent = TRUE //Quiet in the library!
 	overlays_x_offset = -3
 
 /obj/item/pda/clear
 	name = "clear PDA"
 	icon_state = "pda-clear"
-	desc = "A portable microcomputer by Thinktronic Systems, LTD. This model is a special edition with a transparent case."
-	note = "Congratulations, you have chosen the Thinktronic 5230 Personal Data Assistant Deluxe Special Max Turbo Limited Edition!"
+	desc = "Ein tragbarer Mikrocomputer von Thinktronic Systems, LTD. Bei diesem Modell handelt es sich um eine Sonderedition mit einem transparenten Gehäuse."
+	note = "Herzlichen Glückwunsch, Sie haben sich für den Thinktronic 5230 Personal Data Assistant Deluxe Special Max Turbo Limited Edition entschieden!"
 
 /obj/item/pda/cook
 	name = "cook PDA"
@@ -225,14 +225,14 @@
 
 /obj/item/pda/unlicensed
 	name = "unlicensed PDA"
-	desc = "A shitty knockoff of a portable microcomputer by Thinktronic Systems, LTD. Complete with a cracked operating system."
-	note = "Error: Unlicensed OS. Please contact your supervisor."
+	desc = "Eine beschissene Imitation eines tragbaren Mikrocomputers von Thinktronic Systems, LTD. Komplett mit einem geknackten Betriebssystem."
+	note = "Fehler: Nicht lizenziertes Betriebssystem. Bitte kontaktieren Sie Ihren Vorgesetzten."
 	icon_state = "pda-knockoff"
 
 /obj/item/pda/celebrity
 	name = "fancy PDA"
 	default_cartridge = /obj/item/cartridge/annoyance //so they can send messages to everyone and be generally obnoxious
 	inserted_item = /obj/item/pen/fountain
-	desc = "A portable microcomputer by Thinktronic Systems, LTD. This model is gold-plated, and probably quite expensive."
+	desc = "Ein tragbarer Mikrocomputer von Thinktronic Systems, LTD. Dieses Modell ist vergoldet und wahrscheinlich ziemlich teuer."
 	icon_state = "pda-gold"
 	ttone = "ch-CHING"

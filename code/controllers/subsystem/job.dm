@@ -44,7 +44,7 @@ SUBSYSTEM_DEF(job)
 	occupations = list()
 	var/list/all_jobs = subtypesof(/datum/job)
 	if(!all_jobs.len)
-		to_chat(world, "<span class='boldannounce'>Error setting up jobs, no job datums found</span>")
+		to_chat(world, "<span class='boldannounce'>Error setting up jobs, no job datums found.</span>")
 		return 0
 
 	for(var/J in all_jobs)
@@ -425,7 +425,7 @@ SUBSYSTEM_DEF(job)
 
 	if(living_mob.mind)
 		living_mob.mind.assigned_role = rank
-	to_chat(M, "<b>You are the [rank].</b>")
+	to_chat(M, "<b>Du bist der [rank].</b>")
 	if(job)
 		var/new_mob = job.equip(living_mob, null, null, joined_late , null, M.client)
 		if(ismob(new_mob))
@@ -442,15 +442,15 @@ SUBSYSTEM_DEF(job)
 				M.client.holder.auto_deadmin()
 			else
 				handle_auto_deadmin_roles(M.client, rank)
-		to_chat(M, "<b>As the [rank] you answer directly to [job.supervisors]. Special circumstances may change this.</b>")
+		to_chat(M, "<b>Als [rank] antworten Sie direkt an [job.supervisors]. Besondere Umstände können dies ändern.</b>")
 		job.radio_help_message(M)
 		if(job.req_admin_notify)
-			to_chat(M, "<b>You are playing a job that is important for Game Progression. If you have to disconnect, please notify the admins via adminhelp.</b>")
+			to_chat(M, "<b>Sie spielen eine Arbeit, die für den Spielverlauf wichtig ist. Wenn Sie die Verbindung trennen müssen, benachrichtigen Sie bitte die Admins über adminhelp.</b>")
 		if(CONFIG_GET(number/minimal_access_threshold))
 			to_chat(M, "<span class='notice'><B>As this station was initially staffed with a [CONFIG_GET(flag/jobs_have_minimal_access) ? "full crew, only your job's necessities" : "skeleton crew, additional access may"] have been added to your ID card.</B></span>")
 	if(ishuman(living_mob))
 		var/mob/living/carbon/human/wageslave = living_mob
-		living_mob.add_memory("Your account ID is [wageslave.account_id].")
+		living_mob.add_memory("Ihre Konto-ID lautet [wageslave.account_id].")
 	if(job && living_mob)
 		job.after_spawn(living_mob, M, joined_late) // note: this happens before the mob has a key! M will always have a client, H might not.
 

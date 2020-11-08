@@ -1,8 +1,8 @@
 /obj/machinery/vending/cigarette
 	name = "\improper ShadyCigs Deluxe"
-	desc = "If you want to get cancer, might as well do it in style."
-	product_slogans = "Space cigs taste good like a cigarette should.;I'd rather toolbox than switch.;Smoke!;Don't believe the reports - smoke today!"
-	product_ads = "Probably not bad for you!;Don't believe the scientists!;It's good for you!;Don't quit, buy more!;Smoke!;Nicotine heaven.;Best cigarettes since 2150.;Award-winning cigs."
+	desc = "Wenn du Krebs bekommen willst, kannst du das auch mit Stil tun."
+	product_slogans = "Weltraum-Zigaretten schmecken so gut, wie eine Zigarette schmecken sollte;Lieber Werkzeugkiste als Schalter;Rauchen!;Glaubt den Berichten nicht - raucht heute!"
+	product_ads = "Wahrscheinlich nicht schlecht für dich!;Glaube den Wissenschaftlern nicht!;Es ist gut für dich!;Gib nicht auf, kauf mehr!;Rauch!;Nikotinhimmel.;Die besten Zigaretten seit 2150;Preisgekrönte Zigaretten."
 	icon_state = "cigs"
 	light_color = LIGHT_COLOR_CYAN
 	products = list(/obj/item/storage/fancy/cigarettes = 5,
@@ -36,9 +36,9 @@
 
 /obj/machinery/vending/cigarette/beach //Used in the lavaland_biodome_beach.dmm ruin
 	name = "\improper ShadyCigs Ultra"
-	desc = "Now with extra premium products!"
-	product_ads = "Probably not bad for you!;Dope will get you through times of no money better than money will get you through times of no dope!;It's good for you!"
-	product_slogans = "Turn on, tune in, drop out!;Better living through chemistry!;Toke!;Don't forget to keep a smile on your lips and a song in your heart!"
+	desc = "Jetzt mit extra Premium-Produkten!"
+	product_ads = "Wahrscheinlich nicht schlecht für dich!;Dope wird dich besser durch Zeiten ohne Geld bringen, als Geld dich durch Zeiten ohne Dope!"
+	product_slogans = "Einschalten, einstimmen, aussteigen!;Besser leben durch Chemie!;Toke!;Vergiss nicht, ein Lächeln auf den Lippen und ein Lied im Herzen zu behalten!"
 	products = list(/obj/item/storage/fancy/cigarettes = 5,
 					/obj/item/storage/fancy/cigarettes/cigpack_uplift = 3,
 					/obj/item/storage/fancy/cigarettes/cigpack_robust = 3,

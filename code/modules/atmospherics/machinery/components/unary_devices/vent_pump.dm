@@ -9,7 +9,7 @@
 	icon_state = "vent_map-2"
 
 	name = "air vent"
-	desc = "Has a valve and pump attached to it."
+	desc = "Hat ein Ventil und eine daran angeschlossene Pumpe."
 
 	use_power = IDLE_POWER_USE
 	can_unwrench = TRUE

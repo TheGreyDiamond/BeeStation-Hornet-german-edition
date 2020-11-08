@@ -73,7 +73,7 @@
 				var/lkey = query_memolist.item[1]
 				memolist += "[lkey]"
 			if(!memolist.len)
-				to_chat(src, "No memos found in database.")
+				to_chat(src, "Keine Memos in der Datenbank gefunden.")
 				qdel(query_memolist)
 				return
 			var/target_ckey = input(src, "Select whose memo to edit", "Select memo") as null|anything in memolist
@@ -82,7 +82,7 @@
 				return
 			var/datum/DBQuery/query_memofind = SSdbcore.NewQuery(
 				"SELECT memotext FROM [format_table_name("mentor_memo")] WHERE ckey = :target_ckey",
-				list("target_ckey" = target_ckey)	
+				list("target_ckey" = target_ckey)
 			)
 			if(!query_memofind.Execute())
 				var/err = query_memofind.ErrorMsg()
@@ -136,7 +136,7 @@
 					output += "<br><span class='memoedit'>Last edit by [last_editor] <A href='?_src_=holder;mentormemoeditlist=[ckey];[HrefToken(TRUE)]'>(Click here to see edit log)</A></span>"
 				output += "<br>[memotext]</span><br>"
 			if(!output)
-				to_chat(src, "No memos found in database.")
+				to_chat(src, "Keine Memos in der Datenbank gefunden.")
 				qdel(query_memoshow)
 				return
 			to_chat(src, output)
@@ -153,7 +153,7 @@
 				var/ckey = query_memodellist.item[1]
 				memolist += "[ckey]"
 			if(!memolist.len)
-				to_chat(src, "No memos found in database.")
+				to_chat(src, "Keine Memos in der Datenbank gefunden.")
 				qdel(query_memodellist)
 				return
 			var/target_ckey = input(src, "Select whose mentor memo to delete", "Select mentor memo") as null|anything in memolist
@@ -162,7 +162,7 @@
 				return
 			var/datum/DBQuery/query_memodel = SSdbcore.NewQuery(
 				"DELETE FROM [format_table_name("mentor_memo")] WHERE ckey = :target_ckey",
-				list("target_ckey" = target_ckey)	
+				list("target_ckey" = target_ckey)
 			)
 			if(!query_memodel.Execute())
 				var/err = query_memodel.ErrorMsg()

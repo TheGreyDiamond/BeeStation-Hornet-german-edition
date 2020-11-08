@@ -1,10 +1,10 @@
 /obj/machinery/vending/medical
 	name = "\improper NanoMed Plus"
-	desc = "Medical drug dispenser."
+	desc = "Medikamentenspender."
 	icon_state = "med"
 	icon_deny = "med-deny"
 	light_color = LIGHT_COLOR_WHITE
-	product_ads = "Go save some lives!;The best stuff for your medbay.;Only the finest tools.;Natural chemicals!;This stuff saves lives.;Don't you want some?;Ping!"
+	product_ads = "Geh und rette ein paar Leben!;Das beste Zeug für dein Medbay;Nur die besten Werkzeuge;Natürliche Chemikalien!;Dieses Zeug rettet Leben;Willst du nicht ein paar?;Ping!"
 	req_access = list(ACCESS_MEDICAL)
 	products = list(/obj/item/stack/medical/gauze = 8,
 					/obj/item/reagent_containers/syringe = 12,

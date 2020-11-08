@@ -21,10 +21,10 @@
 		return
 	newObjective.owner = crewMind
 	crewMind.crew_objectives += newObjective
-	to_chat(crewMind, "<B>As a part of Nanotrasen's anti-tide efforts, you have been assigned an optional objective. It will be checked at the end of the shift. <span class='warning'>Performing traitorous acts in pursuit of your objective may result in termination of your employment.</span></B>")
-	to_chat(crewMind, "<B>Your objective:</B> [newObjective.explanation_text]")
-	crewMind.memory += "<br><B>Your Optional Objective:</B> [newObjective.explanation_text]"
+	to_chat(crewMind, "<B>Als Teil von Nanotrasen's Anti-tide-Bemühungen wurde dir ein optionales Ziel zugewiesen. Es wird am Ende der Schicht überprüft. <span class='warning'>Das Ausführen verräterischer Handlungen zur Verfolgung deines Ziels kann zur Beendigung deines Arbeitsverhältnisses führen.</span></B>")
+	to_chat(crewMind, "<B>Dein Ziel:</B> [newObjective.explanation_text]")
+	crewMind.memory += "<br><B>Your Optional Objective:Euer optionales Ziel:</B> [newObjective.explanation_text]"
 
 /datum/objective/crew
 	var/jobs = ""
-	explanation_text = "Yell at people on github if this ever shows up. Something involving crew objectives is broken."
+	explanation_text = "Schrei die Leute auf Github an, wenn das jemals auftaucht. Irgendwas mit den Zielen der Crew ist kaputt."

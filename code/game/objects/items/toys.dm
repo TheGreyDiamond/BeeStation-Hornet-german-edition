@@ -22,6 +22,7 @@
  *		Snowballs
  *		Clockwork Watches
  *		Toy Daggers
+ *		Eldrich stuff
  */
 
 
@@ -36,8 +37,8 @@
  * Balloons
  */
 /obj/item/toy/balloon
-	name = "water balloon"
-	desc = "A translucent balloon. There's nothing in it."
+	name = "wasser ballon"
+	desc = "Ein durchsichtiger Ballon. Es ist nichts drin."
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "waterballoon-e"
 	item_state = "balloon-empty"
@@ -57,25 +58,25 @@
 	if (istype(A, /obj/structure/reagent_dispensers))
 		var/obj/structure/reagent_dispensers/RD = A
 		if(RD.reagents.total_volume <= 0)
-			to_chat(user, "<span class='warning'>[RD] is empty.</span>")
+			to_chat(user, "<span class='warning'>[RD] ist leer.</span>")
 		else if(reagents.total_volume >= 10)
-			to_chat(user, "<span class='warning'>[src] is full.</span>")
+			to_chat(user, "<span class='warning'>[src] ist voll.</span>")
 		else
 			A.reagents.trans_to(src, 10, transfered_by = user)
-			to_chat(user, "<span class='notice'>You fill the balloon with the contents of [A].</span>")
-			desc = "A translucent balloon with some form of liquid sloshing around in it."
+			to_chat(user, "<span class='notice'>Du befüllst den Ballon mit dem Inhalt von [A].</span>")
+			desc = "Ein durchsichtiger Ballon, in dem irgendeine Flüssigkeit herumschwappt."
 			update_icon()
 
 /obj/item/toy/balloon/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/reagent_containers/glass))
 		if(I.reagents)
 			if(I.reagents.total_volume <= 0)
-				to_chat(user, "<span class='warning'>[I] is empty.</span>")
+				to_chat(user, "<span class='warning'>[I] ist leer.</span>")
 			else if(reagents.total_volume >= 10)
-				to_chat(user, "<span class='warning'>[src] is full.</span>")
+				to_chat(user, "<span class='warning'>[src] ist voll.</span>")
 			else
-				desc = "A translucent balloon with some form of liquid sloshing around in it."
-				to_chat(user, "<span class='notice'>You fill the balloon with the contents of [I].</span>")
+				desc = "Ein durchsichtiger Ballon, in dem irgendeine Flüssigkeit herumschwappt."
+				to_chat(user, "<span class='notice'>Du befüllst den Ballon mit dem Inhalt von [I].</span>")
 				I.reagents.trans_to(src, 10, transfered_by = user)
 				update_icon()
 	else if(I.is_sharp())
@@ -94,7 +95,7 @@
 			T = get_turf(AT)
 		else
 			T = get_turf(src)
-		T.visible_message("<span class='danger'>[src] bursts!</span>","<span class='italics'>You hear a pop and a splash.</span>")
+		T.visible_message("<span class='danger'>[src] platzt!</span>","<span class='italics'>Du hörst ein Knallen und ein Platschen.</span>")
 		reagents.reaction(T)
 		for(var/atom/A in T)
 			reagents.reaction(A)
@@ -382,7 +383,7 @@
 /obj/item/twohanded/dualsaber/toy/impale(mob/living/user)//Stops Toy Dualsabers from injuring clowns
 	to_chat(user, "<span class='warning'>You twirl around a bit before losing your balance and impaling yourself on [src].</span>")
 	user.adjustStaminaLoss(25)
-	
+
 /obj/item/toy/katana
 	name = "replica katana"
 	desc = "Woefully underpowered in D20."
@@ -826,7 +827,6 @@
 		dat += "<A href='?src=[REF(src)];pick=[t]'>A [t].</A><BR>"
 	dat += "Which card will you remove next?"
 	var/datum/browser/popup = new(user, "cardhand", "Hand of Cards", 400, 240)
-	popup.set_title_image(user.browse_rsc_icon(src.icon, src.icon_state))
 	popup.set_content(dat)
 	popup.open()
 
@@ -1439,3 +1439,41 @@
 
 /obj/item/toy/dummy/GetVoice()
 	return doll_name
+	
+/*
+ * Eldrich Toys
+ */
+
+/obj/item/toy/eldrich_book
+	name = "Codex Cicatrix"
+	desc = "A toy book that closely resembles the Codex Cicatrix. Covered in fake polyester human flesh and has a huge goggly eye attached to the cover. The runes are gibberish and cannot be used to summon demons... Hopefully?"
+	icon = 'icons/obj/eldritch.dmi'
+	icon_state = "book"
+	w_class = WEIGHT_CLASS_SMALL
+	attack_verb = list("sacrificed", "transmuted", "grasped", "cursed")
+	var/open = FALSE
+	
+/obj/item/toy/eldrich_book/attack_self(mob/user)
+	open = !open
+	update_icon()
+
+/obj/item/toy/eldrich_book/update_icon()
+	icon_state = open ? "book_open" : "book"
+	
+/*
+ * Fake tear
+ */
+ 
+/obj/item/toy/reality_pierce
+	name = "Pierced reality"
+	desc = "Hah. You thought it was the real deal!"
+	icon = 'icons/effects/eldritch.dmi'
+	icon_state = "pierced_illusion"
+
+/obj/item/storage/box/heretic_asshole
+	name = "box of pierced realities"
+	desc = "A box containing toys resembling pierced realities."
+
+/obj/item/storage/box/heretic_asshole/PopulateContents()
+	for(var/i in 1 to rand(1,4))
+		new /obj/item/toy/reality_pierce(src)

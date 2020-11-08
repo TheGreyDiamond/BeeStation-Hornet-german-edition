@@ -29,7 +29,7 @@
 
 /client/verb/rules()
 	set name = "rules"
-	set desc = "Show Server Rules."
+	set desc = "Server Regeln anzeigen"
 	set hidden = 1
 	var/rulesurl = CONFIG_GET(string/rulesurl)
 	if(rulesurl)
@@ -42,7 +42,7 @@
 
 /client/verb/github()
 	set name = "github"
-	set desc = "Visit Github"
+	set desc = "Github besuchen"
 	set hidden = 1
 	var/githuburl = CONFIG_GET(string/githuburl)
 	if(githuburl)
@@ -55,7 +55,7 @@
 
 /client/verb/reportissue()
 	set name = "report-issue"
-	set desc = "Report an issue"
+	set desc = "Einen Fehler melden"
 	set hidden = 1
 	var/githuburl = CONFIG_GET(string/githuburl)
 	if(githuburl)
@@ -98,9 +98,9 @@ Admin:
 /client/verb/changelog()
 	set name = "Changelog"
 	set category = "OOC"
-	var/datum/asset/changelog = get_asset_datum(/datum/asset/simple/changelog)
+	var/datum/asset/simple/namespaced/changelog = get_asset_datum(/datum/asset/simple/namespaced/changelog)
 	changelog.send(src)
-	src << browse('html/changelog.html', "window=changes;size=675x650")
+	src << browse(changelog.get_htmlloader("changelog.html"), "window=changes;size=675x650")
 	if(prefs.lastchangelog != GLOB.changelog_hash)
 		prefs.lastchangelog = GLOB.changelog_hash
 		prefs.save_preferences()

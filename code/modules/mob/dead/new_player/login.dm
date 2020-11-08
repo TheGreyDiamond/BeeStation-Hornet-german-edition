@@ -28,7 +28,7 @@
 		var/tl = SSticker.GetTimeLeft()
 		var/postfix
 		if(tl > 0)
-			postfix = "in about [DisplayTimeText(tl)]"
+			postfix = "in etwa [DisplayTimeText(tl)]"
 		else
 			postfix = "soon"
-		to_chat(src, "Please set up your character and select \"Ready\". The game will start [postfix].")
+		to_chat(src, "Bitte stelle deinen Charakter ein und wähle \"Bereit\". Das Spiel wird [postfix] beginnen.")

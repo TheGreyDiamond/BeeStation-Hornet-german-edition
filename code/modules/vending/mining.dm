@@ -1,8 +1,8 @@
 /obj/machinery/vending/mining
 	name = "\improper Miner Nutrition Vendor"
-	desc = "A vending machine which vends pre-packaged meals. Nothing gourmet, but it won't taste horrible."
-	product_slogans = "Stay in the Fight!;Get back out there, champ!;Remember, stay alive!;Your services are much appreciated!"
-	product_ads = "Keep up, keep going!; Stay alive with the new Menu-35!;Meals fit for a demon slayer!; Grab a bite, and make us proud!"
+	desc = "Ein Automat, der vorverpackte Mahlzeiten ausgibt. Nichts für Feinschmecker, aber es wird nicht schrecklich schmecken."
+	product_slogans = "Bleib im Kampf!;Geh wieder da raus, Champ!;Denk dran, bleib am Leben!;Deine Dienste werden sehr geschätzt!"
+	product_ads = "Bleib dran, bleib dran!; Bleib am Leben mit dem neuen Menü-35!;Mahlzeiten, die für einen Dämonentöter geeignet sind!; Schnapp dir einen Bissen und mach uns stolz!"
 	icon_state = "sustenance"
 	light_color = LIGHT_COLOR_BLUEGREEN
 	products = list(/obj/item/reagent_containers/food/snacks/donkpocket/warm = 8,

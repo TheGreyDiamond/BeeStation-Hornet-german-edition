@@ -1,7 +1,7 @@
 /obj/machinery/vending/games
 	name = "\improper Good Clean Fun"
-	desc = "Vends things that the Captain and Head of Personnel are probably not going to appreciate you fiddling with instead of your job..."
-	product_ads = "Escape to a fantasy world!;Fuel your gambling addiction!;Ruin your friendships!;Roll for initiative!;Elves and dwarves!;Paranoid computers!;Totally not satanic!;Fun times forever!"
+	desc = "Verkauft Dinge, bei denen der Kapitän und der Personalchef es wahrscheinlich nicht zu schätzen wissen werden, dass du an deinem Job herumfummelst..."
+	product_ads = "Entfliehe in eine Fantasiewelt!;Schüre deine Spielsucht!;Ruiniere deine Freundschaften!;Ergreife die Initiative!;Elfen und Zwerge!;Paranoide Computer!;Absolut nicht satanisch!;Spaß für immer!"
 	icon_state = "games"
 	light_color = LIGHT_COLOR_ORANGE
 	products = list(/obj/item/toy/cards/deck = 5,
