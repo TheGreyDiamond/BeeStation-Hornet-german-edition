@@ -159,6 +159,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 		StartProcessing(10)
 	else
 		to_chat(world, "<span class='boldannounce'>Der Master Controller hat einige Probleme, wir werden ALLES neu initialisieren müssen</span>")
+
 		Initialize(20, TRUE)
 
 

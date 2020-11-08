@@ -41,6 +41,7 @@
 	asset_datum.send(client)
 	var/output = "<center><p><a href='byond://?src=[REF(src)];show_preferences=1'>Charactereinstellungen</a></p>"
 
+
 	if(SSticker.current_state <= GAME_STATE_PREGAME)
 		switch(ready)
 			if(PLAYER_NOT_READY)

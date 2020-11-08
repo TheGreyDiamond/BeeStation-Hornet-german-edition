@@ -68,6 +68,7 @@
 			dat += "</table>"
 
 			dat += "<br>Kleinere Straftaten:"
+
 			dat +={"<table style="text-align:center;" border="1" cellspacing="0" width="100%">
 			<tr>
 			<th>Verbechen</th>
@@ -105,7 +106,6 @@
 
 	var/datum/browser/popup = new(user, "warrant", "Security Warrant Console", 600, 400)
 	popup.set_content(dat.Join())
-	
 	popup.open()
 
 /obj/machinery/computer/warrant/Topic(href, href_list)
@@ -145,5 +145,6 @@
 							playsound(src, "terminal_type", 25, 0)
 					else
 						to_chat(M, "<span class='warning'>Geldstrafen können nur mit Holochips bezahlt werden</span>")
+
 	updateUsrDialog()
 	add_fingerprint(M)

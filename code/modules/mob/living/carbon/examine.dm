@@ -32,6 +32,7 @@
 		else if(get_bodypart(BODY_ZONE_HEAD))
 			. += "<span class='deadsay'>Es sieht so aus als würde [t_his] Gehirn fehlen...</span>"
 
+
 	var/list/missing = get_missing_limbs()
 	for(var/t in missing)
 		if(t==BODY_ZONE_HEAD)
